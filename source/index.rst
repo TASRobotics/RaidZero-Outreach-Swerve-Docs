@@ -6,10 +6,15 @@
 Welcome to 4253's Swerve Documentation!
 =======================================
 
-introdction asdfasdfasdf
+Welcome to FRC Team 4253's Swerve Documentation! This documentation contains everything
+you will need to know to get a swerve drive up and running!
 
 .. toctree::
    :titlesonly:
-   :caption: Introduction
+   :caption: Swerve Prerequisites
 
-   Docs/Intro/GettingStarted
+   Docs/Prerequisites/Hardware
+
+.. image:: Docs/Photos/LogoBW.png
+    :scale: 10%
+    :align: center
