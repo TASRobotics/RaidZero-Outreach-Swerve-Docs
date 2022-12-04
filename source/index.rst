@@ -11,9 +11,18 @@ you will need to know to get a swerve drive up and running!
 
 .. toctree::
    :titlesonly:
-   :caption: Swerve Prerequisites
+   :caption: Swerve: Pre-Software
 
    Docs/Prerequisites/Hardware
+   Docs/Prerequisites/SoftwarePrerequisites
+   Docs/Prerequisites/Conventions
+   Docs/Prerequisites/Configuration
+
+.. toctree::
+   :titlesonly:
+   :caption: Swerve: Software
+
+   Docs/Software/SwerveModuleClass
 
 .. image:: Docs/Photos/LogoBW.png
     :scale: 10%

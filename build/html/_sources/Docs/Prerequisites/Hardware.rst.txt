@@ -27,6 +27,22 @@ Swerve Drive Specialties:
 
   * Notable Features: Compact, robust, and popular among FRC teams
 
+.. list-table:: 
+
+    * - .. figure:: ../Photos/Hardware/MK4.webp
+            :alt: MK4 Swerve Module Image
+            :target: https://www.swervedrivespecialties.com/collections/kits/products/mk4-swerve-module
+            :scale: 30%
+
+            MK4 Swerve Module
+
+      - .. figure:: ../Photos/Hardware/MK4i.webp
+            :alt: MK4i Swerve Module Image
+            :target: https://www.swervedrivespecialties.com/collections/kits/products/mk4i-swerve-module
+            :scale: 30%
+
+            MK4i Swerve Module
+
 West Coast Products: 
 ====================
 
@@ -37,6 +53,13 @@ West Coast Products:
   * Weight (not including motors): 1.2-1.6 kg (depends on the model)
 
   * Notable Features: Very configurable, many different options to choose from
+
+.. figure:: ../Photos/Hardware/SwerveX.webp
+    :alt: Image of possible Swerve X configuration
+    :target: https://wcproducts.com/products/swerve-x
+    :scale: 45%
+
+    Possible Swerve X Configuration
 
 REV Robotics: 
 =============
@@ -49,6 +72,13 @@ REV Robotics:
 
   * Notable Features: Incredibly small and lightweight
 
+.. figure:: ../Photos/Hardware/MAXSwerve.webp
+    :alt: Image of MAXSwerve
+    :target: https://www.revrobotics.com/pre-order-rev-21-3005/
+    :scale: 25%
+
+    MAXSwerve Module
+
 Homemade Swerve:
 ================
 
@@ -56,7 +86,7 @@ Homemade Swerve:
 
   * Cost (not including motors): time and money
 
-  * Weight (not including motors): :math:`[0, \infty]`
+  * Weight (not including motors): :math:`[0, \infty)`
 
   * Notable Features: You can customize it any way you want
 
@@ -69,6 +99,22 @@ Thus, teams with a tighter
 budget can consider using the `Thrifty Absolute Magnetic Encoder 
 <https://www.thethriftybot.com/bearings/Thrifty-Absolute-Magnetic-Encoder-p421607500>`_. 
 This encoder uses the same mount as normal CANCoders, but come at a much cheaper price. 
+
+.. list-table:: 
+
+    * - .. figure:: ../Photos/Hardware/CANCoder.webp
+            :alt: CANCoder Image
+            :target: https://store.ctr-electronics.com/cancoder/
+            :scale: 20%
+
+            CANCoder
+
+      - .. figure:: ../Photos/Hardware/TTBEncoder.jpg
+            :alt: Thrifty Absolute Magnetic Encoder Image
+            :target: https://www.thethriftybot.com/bearings/Thrifty-Absolute-Magnetic-Encoder-p421607500
+            :scale: 45%
+
+            Thrifty Absolute Magnetic Encoder
 
 Conclusion
 **********
