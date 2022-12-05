@@ -24,6 +24,12 @@ you will need to know to get a swerve drive up and running!
 
    Docs/Software/SwerveModuleClass
 
+.. toctree::
+   :titlesonly:
+   :caption: Other
+
+   Docs/Sample
+
 .. image:: Docs/Photos/LogoBW.png
     :scale: 10%
     :align: center
