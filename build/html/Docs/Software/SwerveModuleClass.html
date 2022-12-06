@@ -86,8 +86,8 @@
 allowing us to know the current state according to the linear speed of the throttle in meters per second and the degrees the encoder has rotated. The
 method <code class="docutils literal notranslate"><span class="pre">setState</span></code> gets the current heading of the drive and takes a <code class="docutils literal notranslate"><span class="pre">SwerveModuleState</span></code> object. The method will use a PID controller to turn the
 drive to the desired heading at a desired speed.</p>
-<section id="private-members">
-<h2>Private Members<a class="headerlink" href="#private-members" title="Permalink to this heading"></a></h2>
+<section id="member-variables">
+<h2>Member variables<a class="headerlink" href="#member-variables" title="Permalink to this heading"></a></h2>
 <div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="c1">// Initialize rotor &amp; throttle motors</span><span class="w"></span>
 <span class="kd">private</span><span class="w"> </span><span class="n">WPI_TalonFX</span><span class="w"> </span><span class="n">mRotor</span><span class="p">;</span><span class="w"></span>
 <span class="kd">private</span><span class="w"> </span><span class="n">WPI_TalonFX</span><span class="w"> </span><span class="n">mThrottle</span><span class="p">;</span><span class="w"></span>
@@ -100,10 +100,15 @@ drive to the desired heading at a desired speed.</p>
 </pre></div>
 </div>
 </section>
-<section id="constructors">
-<h2>Constructors<a class="headerlink" href="#constructors" title="Permalink to this heading"></a></h2>
+<section id="constructor">
+<h2>Constructor<a class="headerlink" href="#constructor" title="Permalink to this heading"></a></h2>
+<p>Creates an instance of SwerveModule object</p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="kd">public</span><span class="w"> </span><span class="nf">SwerveModule</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">throttleID</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">rotorID</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">rotorEncoderID</span><span class="p">,</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">rotorOffsetAngleDeg</span><span class="p">)</span><span class="w"></span>
+</pre></div>
+</div>
+</section>
 <section id="parameters">
-<h3>Parameters<a class="headerlink" href="#parameters" title="Permalink to this heading"></a></h3>
+<h2>Parameters<a class="headerlink" href="#parameters" title="Permalink to this heading"></a></h2>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">int</span> <span class="pre">throttleID</span></code> - ID of throttle</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">int</span> <span class="pre">rotorID</span></code> - ID of rotors</p></li>
@@ -112,7 +117,7 @@ drive to the desired heading at a desired speed.</p>
 </ul>
 </section>
 <section id="assigning-member-variables">
-<h3>Assigning member variables<a class="headerlink" href="#assigning-member-variables" title="Permalink to this heading"></a></h3>
+<h2>Assigning member variables<a class="headerlink" href="#assigning-member-variables" title="Permalink to this heading"></a></h2>
 <div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="n">mThrottle</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">WPI_TalonFX</span><span class="p">(</span><span class="n">throttleID</span><span class="p">);</span><span class="w"></span>
 <span class="n">mRotor</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">WPI_TalonFX</span><span class="p">(</span><span class="n">rotorID</span><span class="p">);</span><span class="w"></span>
 <span class="n">mRotorEncoder</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">WPI_CANCoder</span><span class="p">(</span><span class="n">rotorEncoderID</span><span class="p">);</span><span class="w"></span>
@@ -121,7 +126,7 @@ drive to the desired heading at a desired speed.</p>
 <p>Creates new objects of throttle, rotor, and encoder and assigns them to specific IDs that are the parameters from the constructor.</p>
 </section>
 <section id="setting-factory-default">
-<h3>Setting factory default<a class="headerlink" href="#setting-factory-default" title="Permalink to this heading"></a></h3>
+<h2>Setting factory default<a class="headerlink" href="#setting-factory-default" title="Permalink to this heading"></a></h2>
 <div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="n">mThrottle</span><span class="p">.</span><span class="na">configFactoryDefault</span><span class="p">();</span><span class="w"></span>
 <span class="n">mRotor</span><span class="p">.</span><span class="na">configFactoryDefault</span><span class="p">();</span><span class="w"></span>
 <span class="n">mRotorEncoder</span><span class="p">.</span><span class="na">configFactoryDefault</span><span class="p">();</span><span class="w"></span>
@@ -130,7 +135,7 @@ drive to the desired heading at a desired speed.</p>
 <p>Resets throttle, rotor, and encoder to factory defaults.</p>
 </section>
 <section id="configuring-rotors">
-<h3>Configuring rotors<a class="headerlink" href="#configuring-rotors" title="Permalink to this heading"></a></h3>
+<h2>Configuring rotors<a class="headerlink" href="#configuring-rotors" title="Permalink to this heading"></a></h2>
 <div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="c1">// rotor config</span><span class="w"></span>
 <span class="n">mRotor</span><span class="p">.</span><span class="na">setInverted</span><span class="p">(</span><span class="n">SwerveConstants</span><span class="p">.</span><span class="na">kRotorMotorInversion</span><span class="p">);</span><span class="w"></span>
 <span class="n">mRotor</span><span class="p">.</span><span class="na">configVoltageCompSaturation</span><span class="p">(</span><span class="n">Constants</span><span class="p">.</span><span class="na">kVoltageCompensation</span><span class="p">);</span><span class="w"></span>
@@ -148,17 +153,17 @@ drive to the desired heading at a desired speed.</p>
 </div></blockquote>
 </li>
 <li><p>Toggles voltage compensation (true/false)</p></li>
-<li><dl class="simple">
-<dt>Sets neutral mode of rotors (Coast/Brake)</dt><dd><ul class="simple">
+<li><p>Sets neutral mode of rotors (Coast/Brake)</p>
+<blockquote>
+<div><ul class="simple">
 <li><p>Neutral mode: State of neutral throttle output</p></li>
 </ul>
-</dd>
-</dl>
+</div></blockquote>
 </li>
 </ol>
 </section>
 <section id="configuring-rotor-encoder">
-<h3>Configuring rotor encoder<a class="headerlink" href="#configuring-rotor-encoder" title="Permalink to this heading"></a></h3>
+<h2>Configuring rotor encoder<a class="headerlink" href="#configuring-rotor-encoder" title="Permalink to this heading"></a></h2>
 <div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="c1">// rotor encoder config</span><span class="w"></span>
 <span class="n">mRotorEncoder</span><span class="p">.</span><span class="na">configAbsoluteSensorRange</span><span class="p">(</span><span class="n">AbsoluteSensorRange</span><span class="p">.</span><span class="na">Signed_PlusMinus180</span><span class="p">);</span><span class="w"></span>
 <span class="n">mRotorEncoder</span><span class="p">.</span><span class="na">configMagnetOffset</span><span class="p">(</span><span class="n">rotorOffsetAngleDeg</span><span class="p">);</span><span class="w"></span>
@@ -166,17 +171,66 @@ drive to the desired heading at a desired speed.</p>
 <span class="n">mRotorEncoder</span><span class="p">.</span><span class="na">configSensorInitializationStrategy</span><span class="p">(</span><span class="n">SensorInitializationStrategy</span><span class="p">.</span><span class="na">BootToAbsolutePosition</span><span class="p">);</span><span class="w"></span>
 </pre></div>
 </div>
+<ol class="arabic">
+<li><p>Configures absolute sensor range for rotor encoder (<code class="docutils literal notranslate"><span class="pre">AbsoluteSensorRange</span></code> object)</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Sets desired value range for rotor encoder</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>Configures magnet offset of rotors (<code class="docutils literal notranslate"><span class="pre">rotorOffsetAngleDeg</span></code> param from constructor)</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Magnet offset: Adjusts (offsets) zero point of encoder</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>Configures sensor direction or rotor encoder (true/false)</p></li>
+<li><p>Configures initializiation of rotor encoder (<code class="docutils literal notranslate"><span class="pre">SensorInitializationStrategy</span></code> object)</p>
+<blockquote>
+<div><ul class="simple">
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">BootToZero</span></code></dt><dd><ul>
+<li><p>Initializes rotor encoder to 0</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">BootToAbsolutePosition</span></code></dt><dd><ul>
+<li><p>Initializes to absolute position of encoder</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</div></blockquote>
+</li>
+</ol>
 </section>
 <section id="configuring-rotor-pid">
-<h3>Configuring rotor PID<a class="headerlink" href="#configuring-rotor-pid" title="Permalink to this heading"></a></h3>
+<h2>Configuring rotor PID<a class="headerlink" href="#configuring-rotor-pid" title="Permalink to this heading"></a></h2>
 <div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="c1">// Rotor PID config</span><span class="w"></span>
 <span class="n">mRotorPID</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">PIDController</span><span class="p">(</span><span class="n">SwerveConstants</span><span class="p">.</span><span class="na">kRotor_kP</span><span class="p">,</span><span class="w"> </span><span class="n">SwerveConstants</span><span class="p">.</span><span class="na">kRotor_kI</span><span class="p">,</span><span class="w"> </span><span class="n">SwerveConstants</span><span class="p">.</span><span class="na">kRotor_kD</span><span class="p">);</span><span class="w"></span>
 <span class="n">mRotorPID</span><span class="p">.</span><span class="na">enableContinuousInput</span><span class="p">(</span><span class="o">-</span><span class="mi">180</span><span class="p">,</span><span class="w"> </span><span class="mi">180</span><span class="p">);</span><span class="w"></span>
 </pre></div>
 </div>
+<ol class="arabic">
+<li><p>Creates a new object of PID controller with imported swerve constants:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>kP - Proportional</p></li>
+<li><p>kI - Integral</p></li>
+<li><p>kD - Derivative</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>Enables continuous input on a range from -180 degrees to 180 degrees, measured on a circular scale.</p></li>
+</ol>
 </section>
 <section id="configuring-throttle">
-<h3>Configuring throttle<a class="headerlink" href="#configuring-throttle" title="Permalink to this heading"></a></h3>
+<h2>Configuring throttle<a class="headerlink" href="#configuring-throttle" title="Permalink to this heading"></a></h2>
 <div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="c1">// throttle config</span><span class="w"></span>
 <span class="n">mThrottle</span><span class="p">.</span><span class="na">configSelectedFeedbackSensor</span><span class="p">(</span><span class="n">FeedbackDevice</span><span class="p">.</span><span class="na">IntegratedSensor</span><span class="p">);</span><span class="w"></span>
 <span class="n">mThrottle</span><span class="p">.</span><span class="na">configVoltageCompSaturation</span><span class="p">(</span><span class="n">Constants</span><span class="p">.</span><span class="na">kVoltageCompensation</span><span class="p">);</span><span class="w"></span>
@@ -184,20 +238,30 @@ drive to the desired heading at a desired speed.</p>
 <span class="n">mThrottle</span><span class="p">.</span><span class="na">setNeutralMode</span><span class="p">(</span><span class="n">NeutralMode</span><span class="p">.</span><span class="na">Brake</span><span class="p">);</span><span class="w"></span>
 </pre></div>
 </div>
-</section>
+<ol class="arabic simple">
+<li><p>Configures remote feedback device for motor controller</p></li>
+<li><p>Configures voltage compensation saturation (double)</p></li>
+<li><p>Toggles voltage compensation saturation (true/false)</p></li>
+<li><p>Sets neutral mode for throttle (Coast/Brake)</p></li>
+</ol>
 </section>
 <section id="methods">
 <h2>Methods<a class="headerlink" href="#methods" title="Permalink to this heading"></a></h2>
+</section>
 <section id="getstate">
-<h3><code class="docutils literal notranslate"><span class="pre">getState()</span></code><a class="headerlink" href="#getstate" title="Permalink to this heading"></a></h3>
+<h2><code class="docutils literal notranslate"><span class="pre">getState()</span></code><a class="headerlink" href="#getstate" title="Permalink to this heading"></a></h2>
 <div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="kd">public</span><span class="w"> </span><span class="n">SwerveModuleState</span><span class="w"> </span><span class="nf">getState</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">throttleVelocity</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.0</span><span class="p">;</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
 </pre></div>
 </div>
+<ol class="arabic simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">throttleVelocity</span></code> - Calculates linear speed of swerve module based on configuration in meters per second</p></li>
+<li><p>Returns a new object of Swerve Module State constructed with the throttle velocity and the degrees of the absolute position of the encoder</p></li>
+</ol>
 </section>
 <section id="setstate">
-<h3><code class="docutils literal notranslate"><span class="pre">setState()</span></code><a class="headerlink" href="#setstate" title="Permalink to this heading"></a></h3>
+<h2><code class="docutils literal notranslate"><span class="pre">setState()</span></code><a class="headerlink" href="#setstate" title="Permalink to this heading"></a></h2>
 <div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">setState</span><span class="p">(</span><span class="n">SwerveModuleState</span><span class="w"> </span><span class="n">state</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="w">    </span><span class="n">SwerveModuleState</span><span class="w"> </span><span class="n">optimizedState</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">SwerveModuleState</span><span class="p">.</span><span class="na">optimize</span><span class="p">(</span><span class="n">state</span><span class="p">,</span><span class="w"> </span><span class="n">getState</span><span class="p">().</span><span class="na">angle</span><span class="p">);</span><span class="w"></span>
 <span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">rotorOutput</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">mRotorPID</span><span class="p">.</span><span class="na">calculate</span><span class="p">(</span><span class="n">getState</span><span class="p">().</span><span class="na">angle</span><span class="p">.</span><span class="na">getDegrees</span><span class="p">(),</span><span class="w"> </span><span class="n">optimizedState</span><span class="p">.</span><span class="na">angle</span><span class="p">.</span><span class="na">getDegrees</span><span class="p">());</span><span class="w"></span>
@@ -207,7 +271,12 @@ drive to the desired heading at a desired speed.</p>
 <span class="p">}</span><span class="w"></span>
 </pre></div>
 </div>
-</section>
+<ol class="arabic simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">optimizedState</span></code> - Current state (angle) of SwerveModule</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">rotorOutput</span></code> - Gets angle of current state &amp; optimized state of SwerveModule, then calculates the values using the rotor PID controller</p></li>
+<li><p>Sets rotor power to rotorOutput</p></li>
+<li><p>Sets throttle to speed of optimized state in meters per second</p></li>
+</ol>
 </section>
 </section>
 
