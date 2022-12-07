@@ -7,8 +7,15 @@ allowing us to know the current state according to the linear speed of the throt
 method ``setState`` gets the current heading of the drive and takes a ``SwerveModuleState`` object. The method will use a PID controller to turn the 
 drive to the desired heading at a desired speed.
 
-Member variables
-=================
+The image below shows an example of a swerve module.
+
+.. figure:: swerveModule.jpg
+    :alt: swerveModule image
+
+    The blue circle shows the throttle; orange circle represents the rotor; pink circle represents the encoder
+
+Instantiate instance variables
+==============================
 .. code-block:: java
     
         // Initialize rotor & throttle motors 
@@ -22,7 +29,7 @@ Member variables
         private PIDController mRotorPID;
 
 Constructor
-==============
+===========
 
 Creates an instance of SwerveModule object
 
@@ -31,7 +38,7 @@ Creates an instance of SwerveModule object
     public SwerveModule(int throttleID, int rotorID, int rotorEncoderID, double rotorOffsetAngleDeg)
 
 Parameters
-=============
+==========
 
 * ``int throttleID`` - ID of throttle
 
@@ -42,7 +49,7 @@ Parameters
 * ``double rotorOffsetAngleDeg`` - Offset value for rotor encoder
 
 Assigning member variables
-=============================
+==========================
 
 .. code-block:: java
 
@@ -52,8 +59,8 @@ Assigning member variables
 
 Creates new objects of throttle, rotor, and encoder and assigns them to specific IDs that are the parameters from the constructor.
 
-Setting factory default
-===========================
+Configure motors and sensors
+============================
 
 .. code-block:: java
 
@@ -64,7 +71,7 @@ Setting factory default
 Resets throttle, rotor, and encoder to factory defaults.
 
 Configuring rotors
-=====================
+==================
 
 .. code-block:: java
 
@@ -87,7 +94,7 @@ Configuring rotors
     * Neutral mode: State of neutral throttle output
 
 Configuring rotor encoder
-============================
+=========================
 
 .. code-block:: java
 
@@ -115,7 +122,7 @@ Configuring rotor encoder
         * Initializes to absolute position of encoder
 
 Configuring rotor PID
-=======================
+=====================
 
 .. code-block:: java
 
@@ -132,7 +139,7 @@ Configuring rotor PID
 2. Enables continuous input on a range from -180 degrees to 180 degrees, measured on a circular scale.
 
 Configuring throttle
-=========================
+====================
 
 .. code-block:: java
 
@@ -148,10 +155,10 @@ Configuring throttle
 4. Sets neutral mode for throttle (Coast/Brake)
 
 Methods
-=============
+=======
 
 ``getState()``
-=================
+==============
 
 .. code-block:: java
     
@@ -163,7 +170,7 @@ Methods
 2. Returns a new object of Swerve Module State constructed with the throttle velocity and the degrees of the absolute position of the encoder
 
 ``setState()``
-==================
+==============
 
 .. code-block:: java
 

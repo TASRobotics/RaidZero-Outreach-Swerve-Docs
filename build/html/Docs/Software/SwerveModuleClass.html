@@ -86,8 +86,15 @@
 allowing us to know the current state according to the linear speed of the throttle in meters per second and the degrees the encoder has rotated. The
 method <code class="docutils literal notranslate"><span class="pre">setState</span></code> gets the current heading of the drive and takes a <code class="docutils literal notranslate"><span class="pre">SwerveModuleState</span></code> object. The method will use a PID controller to turn the
 drive to the desired heading at a desired speed.</p>
-<section id="member-variables">
-<h2>Member variables<a class="headerlink" href="#member-variables" title="Permalink to this heading"></a></h2>
+<p>The image below shows an example of a swerve module.</p>
+<figure class="align-default" id="id1">
+<img alt="swerveModule image" src="../../_images/swerveModule.jpg" />
+<figcaption>
+<p><span class="caption-text">The blue circle shows the throttle; orange circle represents the rotor; pink circle represents the encoder</span><a class="headerlink" href="#id1" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+<section id="instantiate-instance-variables">
+<h2>Instantiate instance variables<a class="headerlink" href="#instantiate-instance-variables" title="Permalink to this heading"></a></h2>
 <div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="c1">// Initialize rotor &amp; throttle motors</span><span class="w"></span>
 <span class="kd">private</span><span class="w"> </span><span class="n">WPI_TalonFX</span><span class="w"> </span><span class="n">mRotor</span><span class="p">;</span><span class="w"></span>
 <span class="kd">private</span><span class="w"> </span><span class="n">WPI_TalonFX</span><span class="w"> </span><span class="n">mThrottle</span><span class="p">;</span><span class="w"></span>
@@ -125,8 +132,8 @@ drive to the desired heading at a desired speed.</p>
 </div>
 <p>Creates new objects of throttle, rotor, and encoder and assigns them to specific IDs that are the parameters from the constructor.</p>
 </section>
-<section id="setting-factory-default">
-<h2>Setting factory default<a class="headerlink" href="#setting-factory-default" title="Permalink to this heading"></a></h2>
+<section id="configure-motors-and-sensors">
+<h2>Configure motors and sensors<a class="headerlink" href="#configure-motors-and-sensors" title="Permalink to this heading"></a></h2>
 <div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="n">mThrottle</span><span class="p">.</span><span class="na">configFactoryDefault</span><span class="p">();</span><span class="w"></span>
 <span class="n">mRotor</span><span class="p">.</span><span class="na">configFactoryDefault</span><span class="p">();</span><span class="w"></span>
 <span class="n">mRotorEncoder</span><span class="p">.</span><span class="na">configFactoryDefault</span><span class="p">();</span><span class="w"></span>
