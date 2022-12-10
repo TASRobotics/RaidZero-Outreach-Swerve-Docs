@@ -40,7 +40,7 @@ You can also have different tabs
         .. code-block:: python
 
             print("Hello World")
-
+~
 Images look like this
 
 .. image:: Photos/LogoBW.png
@@ -53,6 +53,8 @@ You can also include captions like this
     :alt: Logo
 
     A caption
+    
+    a caption 2
 
 
 Write math equations like this: :math:`e^{i\pi} + 1 = 0`
