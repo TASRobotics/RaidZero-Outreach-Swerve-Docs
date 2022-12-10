@@ -14,145 +14,75 @@ The image below shows an example of a swerve module.
 
     The blue circle shows the throttle; orange circle represents the rotor; pink circle represents the encoder
 
-Instantiate instance variables
-==============================
-.. code-block:: java
-    
-        // Initialize rotor & throttle motors 
-        private WPI_TalonFX mRotor;
-        private WPI_TalonFX mThrottle;
-    
-        // Initialize rotor encoder
-        private WPI_CANCoder mRotorEncoder; 
-    
-        // Initialize rotor PID controller
-        private PIDController mRotorPID;
-
-Constructor
-===========
-
-Creates an instance of SwerveModule object
 
 .. code-block:: java
 
-    public SwerveModule(int throttleID, int rotorID, int rotorEncoderID, double rotorOffsetAngleDeg)
+    // Instance variables
 
-Parameters
-==========
+    // Initialize rotor & throttle motors 
+    private WPI_TalonFX mRotor;
+    private WPI_TalonFX mThrottle;
 
-* ``int throttleID`` - ID of throttle
+    // Initialize rotor encoder
+    private WPI_CANCoder mRotorEncoder; 
 
-* ``int rotorID`` - ID of rotors
+    // Initialize rotor PID controller
+    private PIDController mRotorPID; 
 
-* ``int rotorEncoderID`` - ID of rotor encoder
+    // Creates instance of SwerveModule
+    public SwerveModule(int throttleID, int rotorID, int rotorEncoderID, double rotorOffsetAngleDeg) 
+    {
 
-* ``double rotorOffsetAngleDeg`` - Offset value for rotor encoder
+        // Instantiate instance variables
+        // Creates new objects of throttle, rotor, and encoder and assigns 
+        // them to specific IDs that are the parameters from the constructor.
+        mThrottle = new WPI_TalonFX(throttleID);
+        mRotor = new WPI_TalonFX(rotorID);
+        mRotorEncoder = new WPI_CANCoder(rotorEncoderID);
 
-Assigning member variables
-==========================
+        //Resets throttle, rotor, and encoder to factory defaults.
+        mThrottle.configFactoryDefault();
+        mRotor.configFactoryDefault();
+        mRotorEncoder.configFactoryDefault();
 
-.. code-block:: java
+        // rotor config
+        // Sets inversion of rotors (true/false)
+        mRotor.setInverted(SwerveConstants.kRotorMotorInversion);
+        // Configures voltage compensation saturation (double)
+        mRotor.configVoltageCompSaturation(Constants.kVoltageCompensation);
+        // Toggles voltage compensation (true/false)
+        mRotor.enableVoltageCompensation(true);
+        // Sets neutral mode of rotors (Coast/Brake)
+        mRotor.setNeutralMode(NeutralMode.Brake); 
 
-    mThrottle = new WPI_TalonFX(throttleID);
-    mRotor = new WPI_TalonFX(rotorID);
-    mRotorEncoder = new WPI_CANCoder(rotorEncoderID);
+        // rotor encoder config
+        // Configures absolute sensor range for rotor encoder (AbsoluteSensorRange object)
+        mRotorEncoder.configAbsoluteSensorRange(AbsoluteSensorRange.Signed_PlusMinus180);
+        // Configures magnet offset of rotors (rotorOffsetAngleDeg param from constructor)
+        mRotorEncoder.configMagnetOffset(rotorOffsetAngleDeg);
+        // Configures sensor direction or rotor encoder (true/false)
+        mRotorEncoder.configSensorDirection(SwerveConstants.kRotorEncoderDirection); 
+        // Configures initializiation of rotor encoder (SensorInitializationStrategy object)
+        mRotorEncoder.configSensorInitializationStrategy(SensorInitializationStrategy.BootToAbsolutePosition); 
 
-Creates new objects of throttle, rotor, and encoder and assigns them to specific IDs that are the parameters from the constructor.
+        // Rotor PID config
+        // Creates a new object of PID controller with imported swerve constants
+        mRotorPID = new PIDController(SwerveConstants.kRotor_kP, SwerveConstants.kRotor_kI, SwerveConstants.kRotor_kD);
+        // Enables continuous input on a range from -180 degrees to 180 degrees, measured on a circular scale
+        mRotorPID.enableContinuousInput(-180, 180);
+        
+        // throttle config
+        // Configures remote feedback device for motor controller
+        mThrottle.configSelectedFeedbackSensor(FeedbackDevice.IntegratedSensor);
+        // Configures voltage compensation saturation (double)
+        mThrottle.configVoltageCompSaturation(Constants.kVoltageCompensation);
+        // Toggles voltage compensation saturation (true/false)
+        mThrottle.enableVoltageCompensation(true);
+        // Sets neutral mode for throttle (Coast/Brake)
+        mThrottle.setNeutralMode(NeutralMode.Brake);
+    }
 
-Configure motors and sensors
-============================
 
-.. code-block:: java
-
-    mThrottle.configFactoryDefault();
-    mRotor.configFactoryDefault();
-    mRotorEncoder.configFactoryDefault();
-
-Resets throttle, rotor, and encoder to factory defaults.
-
-Configuring rotors
-==================
-
-.. code-block:: java
-
-    // rotor config
-    mRotor.setInverted(SwerveConstants.kRotorMotorInversion); 
-    mRotor.configVoltageCompSaturation(Constants.kVoltageCompensation);
-    mRotor.enableVoltageCompensation(true);
-    mRotor.setNeutralMode(NeutralMode.Brake);
-
-1. Sets inversion of rotors (true/false)
-
-2. Configures voltage compensation saturation (double)
-
-    * Voltage compensation saturation: Ensures rotor receives same amount of voltage while battery charge decreases
-
-3. Toggles voltage compensation (true/false)
-
-4. Sets neutral mode of rotors (Coast/Brake)
-
-    * Neutral mode: State of neutral throttle output
-
-Configuring rotor encoder
-=========================
-
-.. code-block:: java
-
-    // rotor encoder config
-    mRotorEncoder.configAbsoluteSensorRange(AbsoluteSensorRange.Signed_PlusMinus180);
-    mRotorEncoder.configMagnetOffset(rotorOffsetAngleDeg);
-    mRotorEncoder.configSensorDirection(SwerveConstants.kRotorEncoderDirection); 
-    mRotorEncoder.configSensorInitializationStrategy(SensorInitializationStrategy.BootToAbsolutePosition);
-
-1. Configures absolute sensor range for rotor encoder (``AbsoluteSensorRange`` object)
-
-    * Sets desired value range for rotor encoder
-
-2. Configures magnet offset of rotors (``rotorOffsetAngleDeg`` param from constructor)
-
-    * Magnet offset: Adjusts (offsets) zero point of encoder
-
-3. Configures sensor direction or rotor encoder (true/false)
-
-4. Configures initializiation of rotor encoder (``SensorInitializationStrategy`` object)
-
-    * ``BootToZero``
-        * Initializes rotor encoder to 0
-    * ``BootToAbsolutePosition``
-        * Initializes to absolute position of encoder
-
-Configuring rotor PID
-=====================
-
-.. code-block:: java
-
-    // Rotor PID config 
-    mRotorPID = new PIDController(SwerveConstants.kRotor_kP, SwerveConstants.kRotor_kI, SwerveConstants.kRotor_kD);
-    mRotorPID.enableContinuousInput(-180, 180);
-
-1. Creates a new object of PID controller with imported swerve constants:
-
-    * kP - Proportional
-    * kI - Integral
-    * kD - Derivative
-
-2. Enables continuous input on a range from -180 degrees to 180 degrees, measured on a circular scale.
-
-Configuring throttle
-====================
-
-.. code-block:: java
-
-    // throttle config
-    mThrottle.configSelectedFeedbackSensor(FeedbackDevice.IntegratedSensor);
-    mThrottle.configVoltageCompSaturation(Constants.kVoltageCompensation);
-    mThrottle.enableVoltageCompensation(true);
-    mThrottle.setNeutralMode(NeutralMode.Brake);
-
-1. Configures remote feedback device for motor controller
-2. Configures voltage compensation saturation (double)
-3. Toggles voltage compensation saturation (true/false)
-4. Sets neutral mode for throttle (Coast/Brake)
 
 Methods
 =======
