@@ -7,6 +7,11 @@ allowing us to know the current state according to the linear speed of the throt
 method ``setState`` gets the current heading of the drive and takes a ``SwerveModuleState`` object. The method will use a PID controller to turn the 
 drive to the desired heading at a desired speed.
 
+WPI CANCoder api: https://api.ctr-electronics.com/phoenix/release/java/com/ctre/phoenix/sensors/WPI_CANCoder.html
+
+
+WPI TalonFX api: https://api.ctr-electronics.com/phoenix/release/java/com/ctre/phoenix/motorcontrol/can/WPI_TalonFX.html
+
 The image below shows an example of a swerve module.
 
 .. figure:: swerveModule.jpg
