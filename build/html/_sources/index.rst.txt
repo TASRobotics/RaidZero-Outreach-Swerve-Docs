@@ -23,6 +23,7 @@ you will need to know to get a swerve drive up and running!
    :caption: Swerve: Software
 
    Docs/Software/SwerveModuleClass
+   Docs/Software/SwerveClass
 
 .. toctree::
    :titlesonly:
