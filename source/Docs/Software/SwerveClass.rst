@@ -1,6 +1,6 @@
-##################
+############
 Swerve Class
-##################
+############
 
 This article will be explaining the swerve class. The Swerve class initializes 4 swerve modules together to work as the base of the robot. 
 This class will utilize the swerve module class to create the 4 objects used for the 4 wheels of the robot base.
@@ -12,8 +12,8 @@ This class will utilize the swerve module class to create the 4 objects used for
     <https://codedocs.revrobotics.com/java/com/revrobotics/package-summary.html>`_.
 
 
-Pigeon2 Sensor
-==============
+IMU Selection
+=============
 
 The image below is a Pigeon 2.0 sensor.
 
@@ -21,11 +21,16 @@ The image below is a Pigeon 2.0 sensor.
     :scale: 30%
     :alt: Pigeon 2.0 sensor
 
-mImu is the Pigeon2, or the Inertial Measurement Unit, which contains an accelerometer to sense and measure acceleration, a gyro to measure angular orientation, 
-and a 3 axis magnetometer to measure the magnetic waves around it. A WPI_Pigeon2 controller is used to call methods to get the values from this sensor.
+mImu is the `Pigeon2 <https://store.ctr-electronics.com/pigeon-2/>`_ (`API <https://api.ctr-electronics.com/phoenix/release/java/com/ctre/phoenix/sensors/WPI_Pigeon2.html>`_)
+, or the Inertial Measurement Unit, which contains an accelerometer to sense and measure acceleration, a gyro to measure angular orientation, 
+and a 3 axis magnetometer to measure the magnetic waves around it. A WPI_Pigeon2 controller is used to call methods to get the values from this sensor. 
+There are also other inertials that are commonly used:
+`navX <https://www.andymark.com/products/navx-mxp-robotics-navigation-sensor>`_ (`API <https://www.kauailabs.com/public_files/navx-mxp/apidocs/java/index.html>`_)
+, `navX2 <https://www.andymark.com/products/navx2-mxp-robotics-navigation-sensor>`_ (`API <https://www.kauailabs.com/public_files/navx-mxp/apidocs/java/index.html>`_)
+, `PigeonIMU <https://store.ctr-electronics.com/gadgeteer-pigeon-imu>`_ (`API <https://api.ctr-electronics.com/phoenix/release/java/com/ctre/phoenix/sensors/WPI_PigeonIMU.html>`_).
 
 Constructor
-===============
+===========
 
 .. code-block:: java
 
@@ -34,13 +39,13 @@ Constructor
 
     // Initializes the 4 swerve modules
     private final SwerveModule mLeftFrontModule, mRightFrontModule, mLeftRearModule, mRightRearModule;
+
     // Initializes odometry
     private SwerveDriveOdometry mOdometry;
 
     public Swerve() {
-        // Initializes the 4 swerve modules with SwerveConstants
-
-        // First set it at zero, look at offset, then change        
+        
+        // Initializes the 4 swerve modules with SwerveConstants      
         mLeftFrontModule = new SwerveModule(
             SwerveConstants.kLeftFrontThrottleID, 
             SwerveConstants.kLeftFrontRotorID, 
@@ -75,25 +80,6 @@ Constructor
 
 Methods
 =======
-
-``periodic()``
-**************
-
-Periodically called to update rotation and position of the swerve modules.
-
-.. code-block:: java
-
-    @Override
-    public void periodic() {
-        mOdometry.update( //updates robot position and rotation
-            mImu.getRotation2d(), //gets robot rotation
-            getModuleStates()[0], 
-            getModuleStates()[1], 
-            getModuleStates()[2],
-            getModuleStates()[3]
-        );
-    }
-
 
 ``drive()``
 ***********
@@ -201,5 +187,4 @@ Sets odometry position to a given x y position and angle
 **Parameters:**
 ---------------
 
-1. ``pose`` - A `Pose2d <https://first.wpi.edu/wpilib/allwpilib/docs/release/java
-    /edu/wpi/first/math/geometry/Pose2d.html>`_ object with the robot position and angle
+1. ``pose`` - A `Pose2d <https://first.wpi.edu/wpilib/allwpilib/docs/release/java/edu/wpi/first/math/geometry/Pose2d.html>`_ object with the robot position and angle

@@ -90,14 +90,19 @@ This class will utilize the swerve module class to create the 4 objects used for
 <p>For API specific issues, please see the <a class="reference external" href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">WPILib API</a>
 , <a class="reference external" href="https://api.ctr-electronics.com/phoenix/release/java/">CTRE API</a>, and the <a class="reference external" href="https://codedocs.revrobotics.com/java/com/revrobotics/package-summary.html">REV Robotics API</a>.</p>
 </div>
-<section id="pigeon2-sensor">
-<h2>Pigeon2 Sensor<a class="headerlink" href="#pigeon2-sensor" title="Permalink to this heading"></a></h2>
+<section id="imu-selection">
+<h2>IMU Selection<a class="headerlink" href="#imu-selection" title="Permalink to this heading"></a></h2>
 <p>The image below is a Pigeon 2.0 sensor.</p>
 <figure class="align-default">
 <a class="reference internal image-reference" href="../../_images/Pigeon2_CTRE.webp"><img alt="Pigeon 2.0 sensor" src="../../_images/Pigeon2_CTRE.webp" style="width: 351.3px; height: 384.0px;" /></a>
 </figure>
-<p>mImu is the Pigeon2, or the Inertial Measurement Unit, which contains an accelerometer to sense and measure acceleration, a gyro to measure angular orientation,
-and a 3 axis magnetometer to measure the magnetic waves around it. A WPI_Pigeon2 controller is used to call methods to get the values from this sensor.</p>
+<p>mImu is the <a class="reference external" href="https://store.ctr-electronics.com/pigeon-2/">Pigeon2</a> (<a class="reference external" href="https://api.ctr-electronics.com/phoenix/release/java/com/ctre/phoenix/sensors/WPI_Pigeon2.html">API</a>)
+, or the Inertial Measurement Unit, which contains an accelerometer to sense and measure acceleration, a gyro to measure angular orientation,
+and a 3 axis magnetometer to measure the magnetic waves around it. A WPI_Pigeon2 controller is used to call methods to get the values from this sensor.
+There are also other inertials that are commonly used:
+<a class="reference external" href="https://www.andymark.com/products/navx-mxp-robotics-navigation-sensor">navX</a> (<a class="reference external" href="https://www.kauailabs.com/public_files/navx-mxp/apidocs/java/index.html">API</a>)
+, <a class="reference external" href="https://www.andymark.com/products/navx2-mxp-robotics-navigation-sensor">navX2</a> (<a class="reference external" href="https://www.kauailabs.com/public_files/navx-mxp/apidocs/java/index.html">API</a>)
+, <a class="reference external" href="https://store.ctr-electronics.com/gadgeteer-pigeon-imu">PigeonIMU</a> (<a class="reference external" href="https://api.ctr-electronics.com/phoenix/release/java/com/ctre/phoenix/sensors/WPI_PigeonIMU.html">API</a>).</p>
 </section>
 <section id="constructor">
 <h2>Constructor<a class="headerlink" href="#constructor" title="Permalink to this heading"></a></h2>
@@ -106,13 +111,13 @@ and a 3 axis magnetometer to measure the magnetic waves around it. A WPI_Pigeon2
 
 <span class="c1">// Initializes the 4 swerve modules</span><span class="w"></span>
 <span class="kd">private</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="n">SwerveModule</span><span class="w"> </span><span class="n">mLeftFrontModule</span><span class="p">,</span><span class="w"> </span><span class="n">mRightFrontModule</span><span class="p">,</span><span class="w"> </span><span class="n">mLeftRearModule</span><span class="p">,</span><span class="w"> </span><span class="n">mRightRearModule</span><span class="p">;</span><span class="w"></span>
+
 <span class="c1">// Initializes odometry</span><span class="w"></span>
 <span class="kd">private</span><span class="w"> </span><span class="n">SwerveDriveOdometry</span><span class="w"> </span><span class="n">mOdometry</span><span class="p">;</span><span class="w"></span>
 
 <span class="kd">public</span><span class="w"> </span><span class="nf">Swerve</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="c1">// Initializes the 4 swerve modules with SwerveConstants</span><span class="w"></span>
 
-<span class="w">    </span><span class="c1">// First set it at zero, look at offset, then change</span><span class="w"></span>
+<span class="w">    </span><span class="c1">// Initializes the 4 swerve modules with SwerveConstants</span><span class="w"></span>
 <span class="w">    </span><span class="n">mLeftFrontModule</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">SwerveModule</span><span class="p">(</span><span class="w"></span>
 <span class="w">        </span><span class="n">SwerveConstants</span><span class="p">.</span><span class="na">kLeftFrontThrottleID</span><span class="p">,</span><span class="w"></span>
 <span class="w">        </span><span class="n">SwerveConstants</span><span class="p">.</span><span class="na">kLeftFrontRotorID</span><span class="p">,</span><span class="w"></span>
@@ -149,22 +154,6 @@ and a 3 axis magnetometer to measure the magnetic waves around it. A WPI_Pigeon2
 </section>
 <section id="methods">
 <h2>Methods<a class="headerlink" href="#methods" title="Permalink to this heading"></a></h2>
-<section id="periodic">
-<h3><code class="docutils literal notranslate"><span class="pre">periodic()</span></code><a class="headerlink" href="#periodic" title="Permalink to this heading"></a></h3>
-<p>Periodically called to update rotation and position of the swerve modules.</p>
-<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="nd">@Override</span><span class="w"></span>
-<span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">periodic</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="n">mOdometry</span><span class="p">.</span><span class="na">update</span><span class="p">(</span><span class="w"> </span><span class="c1">//updates robot position and rotation</span><span class="w"></span>
-<span class="w">        </span><span class="n">mImu</span><span class="p">.</span><span class="na">getRotation2d</span><span class="p">(),</span><span class="w"> </span><span class="c1">//gets robot rotation</span><span class="w"></span>
-<span class="w">        </span><span class="n">getModuleStates</span><span class="p">()</span><span class="o">[</span><span class="mi">0</span><span class="o">]</span><span class="p">,</span><span class="w"></span>
-<span class="w">        </span><span class="n">getModuleStates</span><span class="p">()</span><span class="o">[</span><span class="mi">1</span><span class="o">]</span><span class="p">,</span><span class="w"></span>
-<span class="w">        </span><span class="n">getModuleStates</span><span class="p">()</span><span class="o">[</span><span class="mi">2</span><span class="o">]</span><span class="p">,</span><span class="w"></span>
-<span class="w">        </span><span class="n">getModuleStates</span><span class="p">()</span><span class="o">[</span><span class="mi">3</span><span class="o">]</span><span class="w"></span>
-<span class="w">    </span><span class="p">);</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
-</pre></div>
-</div>
-</section>
 <section id="drive">
 <h3><code class="docutils literal notranslate"><span class="pre">drive()</span></code><a class="headerlink" href="#drive" title="Permalink to this heading"></a></h3>
 <p>Updates Chassis speeds based on controller XYZ values.</p>
@@ -224,8 +213,8 @@ and a 3 axis magnetometer to measure the magnetic waves around it. A WPI_Pigeon2
 <span class="p">}</span><span class="w"></span>
 </pre></div>
 </div>
-<section id="id1">
-<h4><strong>Parameters:</strong><a class="headerlink" href="#id1" title="Permalink to this heading"></a></h4>
+<section id="id4">
+<h4><strong>Parameters:</strong><a class="headerlink" href="#id4" title="Permalink to this heading"></a></h4>
 <ol class="arabic simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">desiredStates</span></code> - Array of desired <a class="reference external" href="https://first.wpi.edu/wpilib/allwpilib/docs/release/java/edu/wpi/first/math/kinematics/SwerveModuleState.html">SwerveModuleState</a>, order: [leftFront, leftRear, rightFront, rightRear]</p></li>
 </ol>
@@ -239,8 +228,8 @@ and a 3 axis magnetometer to measure the magnetic waves around it. A WPI_Pigeon2
 <span class="p">}</span><span class="w"></span>
 </pre></div>
 </div>
-<section id="id2">
-<h4><strong>Return:</strong><a class="headerlink" href="#id2" title="Permalink to this heading"></a></h4>
+<section id="id5">
+<h4><strong>Return:</strong><a class="headerlink" href="#id5" title="Permalink to this heading"></a></h4>
 <blockquote>
 <div><p>New <a class="reference external" href="https://first.wpi.edu/wpilib/allwpilib/docs/release/java/edu/wpi/first/math/geometry/Pose2d.html">Pose2d</a> representing robot position on the field in meters</p>
 </div></blockquote>
@@ -254,14 +243,10 @@ and a 3 axis magnetometer to measure the magnetic waves around it. A WPI_Pigeon2
 <span class="p">}</span><span class="w"></span>
 </pre></div>
 </div>
-<section id="id3">
-<h4><strong>Parameters:</strong><a class="headerlink" href="#id3" title="Permalink to this heading"></a></h4>
+<section id="id6">
+<h4><strong>Parameters:</strong><a class="headerlink" href="#id6" title="Permalink to this heading"></a></h4>
 <ol class="arabic simple">
-<li><dl class="simple">
-<dt><code class="docutils literal notranslate"><span class="pre">pose</span></code> - A <a href="#id4"><span class="problematic" id="id5">`</span></a>Pose2d &lt;<a class="reference external" href="https://first.wpi.edu/wpilib/allwpilib/docs/release/java">https://first.wpi.edu/wpilib/allwpilib/docs/release/java</a></dt><dd><p>/edu/wpi/first/math/geometry/Pose2d.html&gt;`_ object with the robot position and angle</p>
-</dd>
-</dl>
-</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pose</span></code> - A <a class="reference external" href="https://first.wpi.edu/wpilib/allwpilib/docs/release/java/edu/wpi/first/math/geometry/Pose2d.html">Pose2d</a> object with the robot position and angle</p></li>
 </ol>
 </section>
 </section>
