@@ -21,9 +21,9 @@ The image below is a Pigeon 2.0 sensor.
     :scale: 30%
     :alt: Pigeon 2.0 sensor
 
-mImu is the `Pigeon2 <https://store.ctr-electronics.com/pigeon-2/>`_ (`API <https://api.ctr-electronics.com/phoenix/release/java/com/ctre/phoenix/sensors/WPI_Pigeon2.html>`_)
-, or the Inertial Measurement Unit, which contains an accelerometer to sense and measure acceleration, a gyro to measure angular orientation, 
-and a 3 axis magnetometer to measure the magnetic waves around it. A WPI_Pigeon2 controller is used to call methods to get the values from this sensor. 
+mImu is the Inertial Measurement Unit, which contains an accelerometer measure acceleration and the angle of the robot. 
+For this documentation, the `Pigeon2 <https://store.ctr-electronics.com/pigeon-2/>`_ (`API <https://api.ctr-electronics.com/phoenix/release/java/com/ctre/phoenix/sensors/WPI_Pigeon2.html>`_)
+will be used. 
 There are also other inertials that are commonly used:
 `navX <https://www.andymark.com/products/navx-mxp-robotics-navigation-sensor>`_ (`API <https://www.kauailabs.com/public_files/navx-mxp/apidocs/java/index.html>`_)
 , `navX2 <https://www.andymark.com/products/navx2-mxp-robotics-navigation-sensor>`_ (`API <https://www.kauailabs.com/public_files/navx-mxp/apidocs/java/index.html>`_)
