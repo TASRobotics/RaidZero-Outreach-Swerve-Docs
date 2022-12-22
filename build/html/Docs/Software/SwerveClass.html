@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Swerve Class &mdash; 4253 Swerve Documentation 1.0.0 documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/tabs.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/sphinx_highlight.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Sample" href="../Sample.html" />
+    <link rel="prev" title="SwerveModule Class" href="SwerveModuleClass.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../index.html" class="icon icon-home"> 4253 Swerve Documentation
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Swerve: Pre-Software</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../Prerequisites/Hardware.html">Hardware</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Prerequisites/SoftwarePrerequisites.html">Software Prerequisites</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Prerequisites/Conventions.html">Conventions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Prerequisites/Configuration.html">Swerve Configuration</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Swerve: Software</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="SwerveModuleClass.html">SwerveModule Class</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Swerve Class</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Other</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../Sample.html">Sample</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">4253 Swerve Documentation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home"></a></li>
+      <li class="breadcrumb-item active">Swerve Class</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/Docs/Software/SwerveClass.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="swerve-class">
+<h1>Swerve Class<a class="headerlink" href="#swerve-class" title="Permalink to this heading"></a></h1>
+<p>This article will be explaining the swerve class. The Swerve class initializes 4 swerve modules together to work as the base of the robot.
+This class will utilize the swerve module class to create the 4 objects used for the 4 wheels of the robot base.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>For API specific issues, please see the <a class="reference external" href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">WPILib API</a>
+, <a class="reference external" href="https://api.ctr-electronics.com/phoenix/release/java/">CTRE API</a>, and the <a class="reference external" href="https://codedocs.revrobotics.com/java/com/revrobotics/package-summary.html">REV Robotics API</a>.</p>
+</div>
+<section id="imu-selection">
+<h2>IMU Selection<a class="headerlink" href="#imu-selection" title="Permalink to this heading"></a></h2>
+<p>The image below is a Pigeon 2.0 sensor.</p>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../../_images/Pigeon2_CTRE.webp"><img alt="Pigeon 2.0 sensor" src="../../_images/Pigeon2_CTRE.webp" style="width: 351.3px; height: 384.0px;" /></a>
+</figure>
+<p>mImu is the Inertial Measurement Unit, which contains an accelerometer measure acceleration and the angle of the robot.
+For this documentation, the <a class="reference external" href="https://store.ctr-electronics.com/pigeon-2/">Pigeon2</a> (<a class="reference external" href="https://api.ctr-electronics.com/phoenix/release/java/com/ctre/phoenix/sensors/WPI_Pigeon2.html">API</a>)
+will be used.
+There are also other inertials that are commonly used:
+<a class="reference external" href="https://www.andymark.com/products/navx-mxp-robotics-navigation-sensor">navX</a> (<a class="reference external" href="https://www.kauailabs.com/public_files/navx-mxp/apidocs/java/index.html">API</a>)
+, <a class="reference external" href="https://www.andymark.com/products/navx2-mxp-robotics-navigation-sensor">navX2</a> (<a class="reference external" href="https://www.kauailabs.com/public_files/navx-mxp/apidocs/java/index.html">API</a>)
+, <a class="reference external" href="https://store.ctr-electronics.com/gadgeteer-pigeon-imu">PigeonIMU</a> (<a class="reference external" href="https://api.ctr-electronics.com/phoenix/release/java/com/ctre/phoenix/sensors/WPI_PigeonIMU.html">API</a>).</p>
+</section>
+<section id="constructor">
+<h2>Constructor<a class="headerlink" href="#constructor" title="Permalink to this heading"></a></h2>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="c1">// Initialize IMU</span><span class="w"></span>
+<span class="kd">private</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="n">WPI_Pigeon2</span><span class="w"> </span><span class="n">mImu</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">WPI_Pigeon2</span><span class="p">(</span><span class="n">SwerveConstants</span><span class="p">.</span><span class="na">kImuID</span><span class="p">);</span><span class="w"></span>
+
+<span class="c1">// Initializes the 4 swerve modules</span><span class="w"></span>
+<span class="kd">private</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="n">SwerveModule</span><span class="w"> </span><span class="n">mLeftFrontModule</span><span class="p">,</span><span class="w"> </span><span class="n">mRightFrontModule</span><span class="p">,</span><span class="w"> </span><span class="n">mLeftRearModule</span><span class="p">,</span><span class="w"> </span><span class="n">mRightRearModule</span><span class="p">;</span><span class="w"></span>
+
+<span class="c1">// Initializes odometry</span><span class="w"></span>
+<span class="kd">private</span><span class="w"> </span><span class="n">SwerveDriveOdometry</span><span class="w"> </span><span class="n">mOdometry</span><span class="p">;</span><span class="w"></span>
+
+<span class="kd">public</span><span class="w"> </span><span class="nf">Swerve</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+
+<span class="w">    </span><span class="c1">// Initializes the 4 swerve modules with SwerveConstants</span><span class="w"></span>
+<span class="w">    </span><span class="n">mLeftFrontModule</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">SwerveModule</span><span class="p">(</span><span class="w"></span>
+<span class="w">        </span><span class="n">SwerveConstants</span><span class="p">.</span><span class="na">kLeftFrontThrottleID</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="n">SwerveConstants</span><span class="p">.</span><span class="na">kLeftFrontRotorID</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="n">SwerveConstants</span><span class="p">.</span><span class="na">kLeftFrontCANCoderID</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="n">SwerveConstants</span><span class="p">.</span><span class="na">kLeftFrontRotorOffset</span><span class="w"></span>
+<span class="w">    </span><span class="p">);</span><span class="w"></span>
+
+<span class="w">    </span><span class="n">mRightFrontModule</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">SwerveModule</span><span class="p">(</span><span class="w"></span>
+<span class="w">        </span><span class="n">SwerveConstants</span><span class="p">.</span><span class="na">kRightFrontThrottleID</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="n">SwerveConstants</span><span class="p">.</span><span class="na">kRightFrontRotorID</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="n">SwerveConstants</span><span class="p">.</span><span class="na">kRightFrontCANCoderID</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="n">SwerveConstants</span><span class="p">.</span><span class="na">kRightFrontRotorOffset</span><span class="w"></span>
+<span class="w">    </span><span class="p">);</span><span class="w"></span>
+
+<span class="w">    </span><span class="n">mLeftRearModule</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">SwerveModule</span><span class="p">(</span><span class="w"></span>
+<span class="w">        </span><span class="n">SwerveConstants</span><span class="p">.</span><span class="na">kLeftRearThrottleID</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="n">SwerveConstants</span><span class="p">.</span><span class="na">kLeftRearRotorID</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="n">SwerveConstants</span><span class="p">.</span><span class="na">kLeftRearCANCoderID</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="n">SwerveConstants</span><span class="p">.</span><span class="na">kLeftRearRotorOffset</span><span class="w"></span>
+<span class="w">    </span><span class="p">);</span><span class="w"></span>
+
+<span class="w">    </span><span class="n">mRightRearModule</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">SwerveModule</span><span class="p">(</span><span class="w"></span>
+<span class="w">        </span><span class="n">SwerveConstants</span><span class="p">.</span><span class="na">kRightRearThrottleID</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="n">SwerveConstants</span><span class="p">.</span><span class="na">kRightRearRotorID</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="n">SwerveConstants</span><span class="p">.</span><span class="na">kRightRearCANCoderID</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="n">SwerveConstants</span><span class="p">.</span><span class="na">kRightRearRotorOffset</span><span class="w"></span>
+<span class="w">    </span><span class="p">);</span><span class="w"></span>
+
+<span class="w">    </span><span class="c1">// Initializes SwerveDriveOdometry object with SwerveKinematics constant and robot heading</span><span class="w"></span>
+<span class="w">    </span><span class="n">mOdometry</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">SwerveDriveOdometry</span><span class="p">(</span><span class="n">SwerveConstants</span><span class="p">.</span><span class="na">kSwerveKinematics</span><span class="p">,</span><span class="w"> </span><span class="n">mImu</span><span class="p">.</span><span class="na">getRotation2d</span><span class="p">());</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+</section>
+<section id="methods">
+<h2>Methods<a class="headerlink" href="#methods" title="Permalink to this heading"></a></h2>
+<section id="drive">
+<h3><code class="docutils literal notranslate"><span class="pre">drive()</span></code><a class="headerlink" href="#drive" title="Permalink to this heading"></a></h3>
+<p>Updates Chassis speeds based on controller XYZ values.</p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">drive</span><span class="p">(</span><span class="kt">double</span><span class="w"> </span><span class="n">xSpeed</span><span class="p">,</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">ySpeed</span><span class="p">,</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">zSpeed</span><span class="p">,</span><span class="w"> </span><span class="kt">boolean</span><span class="w"> </span><span class="n">fieldOriented</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">SwerveModuleState</span><span class="o">[]</span><span class="w"> </span><span class="n">states</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">null</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="k">if</span><span class="p">(</span><span class="n">fieldOriented</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="n">states</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">SwerveConstants</span><span class="p">.</span><span class="na">kSwerveKinematics</span><span class="p">.</span><span class="na">toSwerveModuleStates</span><span class="p">(</span><span class="w"></span>
+<span class="w">            </span><span class="c1">//gyro rotation value needed if using field orientation</span><span class="w"></span>
+<span class="w">            </span><span class="n">ChassisSpeeds</span><span class="p">.</span><span class="na">fromFieldRelativeSpeeds</span><span class="p">(</span><span class="n">xSpeed</span><span class="p">,</span><span class="w"> </span><span class="n">ySpeed</span><span class="p">,</span><span class="w"> </span><span class="n">zSpeed</span><span class="p">,</span><span class="w"> </span><span class="n">mImu</span><span class="p">.</span><span class="na">getRotation2d</span><span class="p">())</span><span class="w"></span>
+<span class="w">        </span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="n">states</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">SwerveConstants</span><span class="p">.</span><span class="na">kSwerveKinematics</span><span class="p">.</span><span class="na">toSwerveModuleStates</span><span class="p">(</span><span class="w"></span>
+<span class="w">            </span><span class="k">new</span><span class="w"> </span><span class="n">ChassisSpeeds</span><span class="p">(</span><span class="n">xSpeed</span><span class="p">,</span><span class="w"> </span><span class="n">ySpeed</span><span class="p">,</span><span class="w"> </span><span class="n">zSpeed</span><span class="p">)</span><span class="w"></span>
+<span class="w">        </span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="n">setModuleStates</span><span class="p">(</span><span class="n">states</span><span class="p">);</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+<section id="parameters">
+<h4><strong>Parameters:</strong><a class="headerlink" href="#parameters" title="Permalink to this heading"></a></h4>
+<ol class="arabic simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">xSpeed</span></code> - x-axis controlled by left stick to move the robot in 2d space</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ySpeed</span></code> - y-axis controlled by left stick to move the robot in 2d space</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">zSpeed</span></code> - Desired speed of rotation, controlled by right stick</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">fieldOriented</span></code> - Determines if bot’s movement is oriented to the field</p></li>
+</ol>
+</section>
+</section>
+<section id="getmodulestates">
+<h3><code class="docutils literal notranslate"><span class="pre">getModuleStates()</span></code><a class="headerlink" href="#getmodulestates" title="Permalink to this heading"></a></h3>
+<p>Outputs the current state of the 4 drive swerve modules.</p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="kd">public</span><span class="w"> </span><span class="n">SwerveModuleState</span><span class="o">[]</span><span class="w"> </span><span class="nf">getModuleStates</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">SwerveModuleState</span><span class="o">[]</span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="n">mLeftFrontModule</span><span class="p">.</span><span class="na">getState</span><span class="p">(),</span><span class="w"></span>
+<span class="w">        </span><span class="n">mRightFrontModule</span><span class="p">.</span><span class="na">getState</span><span class="p">(),</span><span class="w"></span>
+<span class="w">        </span><span class="n">mLeftRearModule</span><span class="p">.</span><span class="na">getState</span><span class="p">(),</span><span class="w"></span>
+<span class="w">        </span><span class="n">mRightRearModule</span><span class="p">.</span><span class="na">getState</span><span class="p">()</span><span class="w"></span>
+<span class="w">    </span><span class="p">};</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+<section id="return">
+<h4><strong>Return:</strong><a class="headerlink" href="#return" title="Permalink to this heading"></a></h4>
+<p>Returns SwerveModuleState array with rotor throttle &amp; position</p>
+</section>
+</section>
+<section id="setmodulestates">
+<h3><code class="docutils literal notranslate"><span class="pre">setModuleStates()</span></code><a class="headerlink" href="#setmodulestates" title="Permalink to this heading"></a></h3>
+<p>Sets the state of the 4 drive swerve modules.</p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">setModuleStates</span><span class="p">(</span><span class="n">SwerveModuleState</span><span class="o">[]</span><span class="w"> </span><span class="n">desiredStates</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">SwerveDriveKinematics</span><span class="p">.</span><span class="na">desaturateWheelSpeeds</span><span class="p">(</span><span class="n">desiredStates</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="n">mLeftFrontModule</span><span class="p">.</span><span class="na">setState</span><span class="p">(</span><span class="n">desiredStates</span><span class="o">[</span><span class="mi">0</span><span class="o">]</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="n">mRightFrontModule</span><span class="p">.</span><span class="na">setState</span><span class="p">(</span><span class="n">desiredStates</span><span class="o">[</span><span class="mi">1</span><span class="o">]</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="n">mLeftRearModule</span><span class="p">.</span><span class="na">setState</span><span class="p">(</span><span class="n">desiredStates</span><span class="o">[</span><span class="mi">2</span><span class="o">]</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="n">mRightRearModule</span><span class="p">.</span><span class="na">setState</span><span class="p">(</span><span class="n">desiredStates</span><span class="o">[</span><span class="mi">3</span><span class="o">]</span><span class="p">);</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+<section id="id4">
+<h4><strong>Parameters:</strong><a class="headerlink" href="#id4" title="Permalink to this heading"></a></h4>
+<ol class="arabic simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">desiredStates</span></code> - Array of desired <a class="reference external" href="https://first.wpi.edu/wpilib/allwpilib/docs/release/java/edu/wpi/first/math/kinematics/SwerveModuleState.html">SwerveModuleState</a>, order: [leftFront, leftRear, rightFront, rightRear]</p></li>
+</ol>
+</section>
+</section>
+<section id="getpose">
+<h3><code class="docutils literal notranslate"><span class="pre">getPose()</span></code><a class="headerlink" href="#getpose" title="Permalink to this heading"></a></h3>
+<p>Gets the current position of the robot.</p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="kd">public</span><span class="w"> </span><span class="n">Pose2d</span><span class="w"> </span><span class="nf">getPose</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">mOdometry</span><span class="p">.</span><span class="na">getPoseMeters</span><span class="p">();</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+<section id="id5">
+<h4><strong>Return:</strong><a class="headerlink" href="#id5" title="Permalink to this heading"></a></h4>
+<blockquote>
+<div><p>New <a class="reference external" href="https://first.wpi.edu/wpilib/allwpilib/docs/release/java/edu/wpi/first/math/geometry/Pose2d.html">Pose2d</a> representing robot position on the field in meters</p>
+</div></blockquote>
+</section>
+</section>
+<section id="setpose">
+<h3><code class="docutils literal notranslate"><span class="pre">setPose()</span></code><a class="headerlink" href="#setpose" title="Permalink to this heading"></a></h3>
+<p>Sets odometry position to a given x y position and angle</p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">setPose</span><span class="p">(</span><span class="n">Pose2d</span><span class="w"> </span><span class="n">pose</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">mOdometry</span><span class="p">.</span><span class="na">resetPosition</span><span class="p">(</span><span class="n">pose</span><span class="p">,</span><span class="w"> </span><span class="n">mImu</span><span class="p">.</span><span class="na">getRotation2d</span><span class="p">());</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+<section id="id6">
+<h4><strong>Parameters:</strong><a class="headerlink" href="#id6" title="Permalink to this heading"></a></h4>
+<ol class="arabic simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">pose</span></code> - A <a class="reference external" href="https://first.wpi.edu/wpilib/allwpilib/docs/release/java/edu/wpi/first/math/geometry/Pose2d.html">Pose2d</a> object with the robot position and angle</p></li>
+</ol>
+</section>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="SwerveModuleClass.html" class="btn btn-neutral float-left" title="SwerveModule Class" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../Sample.html" class="btn btn-neutral float-right" title="Sample" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022, FRC 4253 Raid Zero.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
