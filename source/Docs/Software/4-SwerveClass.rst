@@ -62,8 +62,8 @@ Constructor
 Methods
 *******
 
-drive()
-=======
+drive
+=====
 
 Updates Chassis speeds based on controller XYZ values.
 
@@ -85,14 +85,16 @@ Updates Chassis speeds based on controller XYZ values.
     }
 
 **Parameters:**
+"""""""""""""""
+
     1. ``xSpeed`` - x-axis controlled by left stick to move the robot in 2d space
     2. ``ySpeed`` - y-axis controlled by left stick to move the robot in 2d space
     3. ``zSpeed`` - Desired speed of rotation, controlled by right stick
     4. ``fieldOriented`` - Determines if bot's movement is oriented to the field
 
 
-getModuleStates()
-=================
+getModuleStates
+===============
 
 Outputs the current state of the 4 drive swerve modules.
 
@@ -109,11 +111,13 @@ Outputs the current state of the 4 drive swerve modules.
 
 
 **Return:**
+"""""""""""
+
     Returns SwerveModuleState array with rotor throttle & position
 
 
-setModuleStates()
-=================
+setModuleStates
+===============
 
 Sets the state of the 4 drive swerve modules.
 
@@ -129,11 +133,13 @@ Sets the state of the 4 drive swerve modules.
     }
 
 **Parameters:**
+"""""""""""""""
+
     1. ``desiredStates`` - Array of desired `SwerveModuleState <https://first.wpi.edu/wpilib/allwpilib/docs/release/java
        /edu/wpi/first/math/kinematics/SwerveModuleState.html>`_.
 
-getPose()
-=========
+getPose
+=======
 
 Gets the current position of the robot.
 
@@ -144,12 +150,14 @@ Gets the current position of the robot.
     }
 
 **Return:**
+"""""""""""
+
     New `Pose2d <https://first.wpi.edu/wpilib/allwpilib/docs/release/java
     /edu/wpi/first/math/geometry/Pose2d.html>`_ representing robot position on the field in meters
 
 
-setPose()
-=========
+setPose
+=======
 
 Sets odometry position to a given x, y, position, and angle
 
@@ -160,5 +168,7 @@ Sets odometry position to a given x, y, position, and angle
     }
 
 **Parameters:**
+"""""""""""""""
+
     1. ``pose`` - A `Pose2d <https://first.wpi.edu/wpilib/allwpilib/docs/release/java/edu/wpi/first/math/geometry/Pose2d.html>`_ 
        object with the robot position and angle

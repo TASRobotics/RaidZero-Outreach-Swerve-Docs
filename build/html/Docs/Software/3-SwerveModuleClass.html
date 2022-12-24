@@ -190,7 +190,7 @@ speed.</p>
 <div class="section" id="constructor">
 <h2>Constructor<a class="headerlink" href="#constructor" title="Permalink to this headline">¶</a></h2>
 <div class="sphinx-tabs docutils container">
-<div aria-label="Tabbed content" role="tablist"><button aria-controls="panel-0-0-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-0-0-0" name="0-0" role="tab" tabindex="0">Falcon 500 (TalonFX) &amp; CANCoder</button><button aria-controls="panel-0-0-1" aria-selected="false" class="sphinx-tabs-tab" id="tab-0-0-1" name="0-1" role="tab" tabindex="-1">NEO (SparkMax) &amp; CANCoder</button><button aria-controls="panel-0-0-2" aria-selected="false" class="sphinx-tabs-tab" id="tab-0-0-2" name="0-2" role="tab" tabindex="-1">NEO (SparkMax) &amp; Analog Absolute Encoder</button></div><div aria-labelledby="tab-0-0-0" class="sphinx-tabs-panel" id="panel-0-0-0" name="0-0" role="tabpanel" tabindex="0"><div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="c1">// Initialize rotor &amp; throttle motors</span>
+<div aria-label="Tabbed content" role="tablist"><button aria-controls="panel-0-0-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-0-0-0" name="0-0" role="tab" tabindex="0">Talon FX &amp; CANCoder</button><button aria-controls="panel-0-0-1" aria-selected="false" class="sphinx-tabs-tab" id="tab-0-0-1" name="0-1" role="tab" tabindex="-1">SPARK MAX &amp; CANCoder</button><button aria-controls="panel-0-0-2" aria-selected="false" class="sphinx-tabs-tab" id="tab-0-0-2" name="0-2" role="tab" tabindex="-1">SPARK MAX &amp; Analog Absolute Encoder</button></div><div aria-labelledby="tab-0-0-0" class="sphinx-tabs-panel" id="panel-0-0-0" name="0-0" role="tabpanel" tabindex="0"><div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="c1">// Initialize rotor &amp; throttle motors</span>
 <span class="kd">private</span> <span class="n">WPI_TalonFX</span> <span class="n">mRotor</span><span class="p">;</span>
 <span class="kd">private</span> <span class="n">WPI_TalonFX</span> <span class="n">mThrottle</span><span class="p">;</span>
 
@@ -409,10 +409,10 @@ to prevent damage to the motors. Checkout the <a class="reference external" href
 <div class="section" id="methods">
 <h2>Methods<a class="headerlink" href="#methods" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="getstate">
-<h3><code class="docutils literal notranslate"><span class="pre">getState()</span></code><a class="headerlink" href="#getstate" title="Permalink to this headline">¶</a></h3>
+<h3>getState<a class="headerlink" href="#getstate" title="Permalink to this headline">¶</a></h3>
 <p>Outputs the current state of the swerve module.</p>
 <div class="sphinx-tabs docutils container">
-<div aria-label="Tabbed content" role="tablist"><button aria-controls="panel-1-1-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-1-1-0" name="1-0" role="tab" tabindex="0">CTRE</button><button aria-controls="panel-1-1-1" aria-selected="false" class="sphinx-tabs-tab" id="tab-1-1-1" name="1-1" role="tab" tabindex="-1">REV</button></div><div aria-labelledby="tab-1-1-0" class="sphinx-tabs-panel" id="panel-1-1-0" name="1-0" role="tabpanel" tabindex="0"><div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="kd">public</span> <span class="n">SwerveModuleState</span> <span class="nf">getState</span><span class="p">()</span> <span class="p">{</span>
+<div aria-label="Tabbed content" role="tablist"><button aria-controls="panel-1-1-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-1-1-0" name="1-0" role="tab" tabindex="0">Talon FX</button><button aria-controls="panel-1-1-1" aria-selected="false" class="sphinx-tabs-tab" id="tab-1-1-1" name="1-1" role="tab" tabindex="-1">SPARK MAX</button></div><div aria-labelledby="tab-1-1-0" class="sphinx-tabs-panel" id="panel-1-1-0" name="1-0" role="tabpanel" tabindex="0"><div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="kd">public</span> <span class="n">SwerveModuleState</span> <span class="nf">getState</span><span class="p">()</span> <span class="p">{</span>
     <span class="kt">double</span> <span class="n">throttleVelocity</span> <span class="o">=</span>
         <span class="n">mThrottle</span><span class="p">.</span><span class="na">getSelectedSensorVelocity</span><span class="p">()</span> <span class="o">*</span> <span class="n">SwerveConstants</span><span class="p">.</span><span class="na">kThrottleVelocityConversionFactor</span><span class="p">;</span>
 
@@ -441,7 +441,7 @@ throttle velocity and rotor angle.</p>
 </div>
 </div>
 <div class="section" id="setstate">
-<h3><code class="docutils literal notranslate"><span class="pre">setState()</span></code><a class="headerlink" href="#setstate" title="Permalink to this headline">¶</a></h3>
+<h3>setState<a class="headerlink" href="#setstate" title="Permalink to this headline">¶</a></h3>
 <p>Sets the state of the swerve module.</p>
 <div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="kd">public</span> <span class="kt">void</span> <span class="nf">setState</span><span class="p">(</span><span class="n">SwerveModuleState</span> <span class="n">state</span><span class="p">)</span> <span class="p">{</span>
     <span class="c1">// Optimize the desired state so that the rotor doesn&#39;t have to spin more than</span>

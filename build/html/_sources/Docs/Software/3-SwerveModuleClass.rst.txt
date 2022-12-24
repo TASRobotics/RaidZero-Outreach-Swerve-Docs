@@ -21,7 +21,7 @@ Constructor
 
 .. tabs::
 
-    .. tab:: Falcon 500 (TalonFX) & CANCoder
+    .. tab:: Talon FX & CANCoder
 
         .. code-block:: java
 
@@ -93,7 +93,7 @@ Constructor
                 mThrottle.setNeutralMode(NeutralMode.Brake);
             }
         
-    .. tab:: NEO (SparkMax) & CANCoder
+    .. tab:: SPARK MAX & CANCoder
 
         .. code-block:: java
 
@@ -172,7 +172,7 @@ Constructor
                 );
             }
 
-    .. tab:: NEO (SparkMax) & Analog Absolute Encoder
+    .. tab:: SPARK MAX & Analog Absolute Encoder
 
         .. code-block:: java
 
@@ -250,14 +250,14 @@ Constructor
 Methods
 *******
 
-``getState()``
---------------
+getState
+--------
 
 Outputs the current state of the swerve module.
 
 .. tabs::
     
-    .. tab:: CTRE
+    .. tab:: Talon FX
 
         .. code-block:: java
 
@@ -271,7 +271,7 @@ Outputs the current state of the swerve module.
                 );
             }
 
-    .. tab:: REV
+    .. tab:: SPARK MAX
 
         .. code-block:: java
 
@@ -289,8 +289,8 @@ Outputs the current state of the swerve module.
     /edu/wpi/first/math/kinematics/SwerveModuleState.html>`_ representing the current
     throttle velocity and rotor angle. 
 
-``setState()``
---------------
+setState
+--------
 
 Sets the state of the swerve module.
 
