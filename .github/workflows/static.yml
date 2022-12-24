@@ -31,7 +31,6 @@ jobs:
       - name: Installation
         run: pip install -r requirements.txt
       - name: Build
-        run: make clean 
         run: make html
       - name: Checkout
         uses: actions/checkout@v3
