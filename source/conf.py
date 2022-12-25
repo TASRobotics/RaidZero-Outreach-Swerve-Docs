@@ -63,9 +63,3 @@ html_sidebars = { '**': ['globaltoc.html', 'relations.html', 'sourcelink.html', 
 sphinx_tabs_valid_builders = ['linkcheck']
 
 sphinx_tabs_disable_tab_closing = True
-
-# language = ['en, zh_TW']
-
-locale_dirs = ['locale/']
-
-localization_languages = ['en, zh_TW']
