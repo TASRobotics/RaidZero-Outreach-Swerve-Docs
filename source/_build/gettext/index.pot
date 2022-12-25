@@ -1,0 +1,40 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2022, FRC 4253 Raid Zero
+# This file is distributed under the same license as the 4253 Swerve Documentation package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: 4253 Swerve Documentation \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-12-25 14:21+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../../index.rst:12
+#: ../../index.rst:12
+msgid "Swerve: Pre-Software"
+msgstr ""
+
+#: ../../index.rst:21
+#: ../../index.rst:21
+msgid "Swerve: Software"
+msgstr ""
+
+#: ../../index.rst:30
+#: ../../index.rst:30
+msgid "Extra"
+msgstr ""
+
+#: ../../index.rst:7
+msgid "Welcome to 4253's Swerve Documentation!"
+msgstr ""
+
+#: ../../index.rst:9
+msgid "Welcome to FRC Team 4253's Swerve Documentation! This documentation contains everything you will need to know to get a swerve drive up and running."
+msgstr ""
