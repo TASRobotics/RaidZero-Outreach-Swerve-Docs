@@ -52,9 +52,9 @@
 <li class="toctree-l1"><a class="reference internal" href="5-Teleop.html">Teleop</a></li>
 <li class="toctree-l1"><a class="reference internal" href="6-Auton.html">Autonomous Pathing</a></li>
 </ul>
-<p class="caption" role="heading"><span class="caption-text">Extra</span></p>
+<p class="caption" role="heading"><span class="caption-text">Further Topics</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="7-FurtherTopics.html">Further Topics to Explore</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../FurtherTopics/7-Feedforward.html">Feedforward</a></li>
 </ul>
 
         </div>
@@ -91,49 +91,49 @@
 </div>
 <section id="constructor">
 <h2>Constructor<a class="headerlink" href="#constructor" title="Permalink to this headline"></a></h2>
-<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="c1">// Initialize IMU</span>
-<span class="kd">private</span> <span class="kd">final</span> <span class="n">WPI_Pigeon2</span> <span class="n">mImu</span> <span class="o">=</span> <span class="k">new</span> <span class="n">WPI_Pigeon2</span><span class="p">(</span><span class="n">SwerveConstants</span><span class="p">.</span><span class="na">kImuID</span><span class="p">);</span>
-
-<span class="c1">// Initializes the 4 swerve modules</span>
-<span class="kd">private</span> <span class="kd">final</span> <span class="n">SwerveModule</span> <span class="n">mLeftFrontModule</span><span class="p">,</span> <span class="n">mRightFrontModule</span><span class="p">,</span> <span class="n">mLeftRearModule</span><span class="p">,</span> <span class="n">mRightRearModule</span><span class="p">;</span>
-
-<span class="c1">// Initializes odometry</span>
-<span class="kd">private</span> <span class="n">SwerveDriveOdometry</span> <span class="n">mOdometry</span><span class="p">;</span>
-
-<span class="kd">public</span> <span class="nf">Swerve</span><span class="p">()</span> <span class="p">{</span>
-
-    <span class="c1">// Initializes the 4 swerve modules with SwerveConstants</span>
-    <span class="n">mLeftFrontModule</span> <span class="o">=</span> <span class="k">new</span> <span class="n">SwerveModule</span><span class="p">(</span>
-        <span class="n">SwerveConstants</span><span class="p">.</span><span class="na">kLeftFrontThrottleID</span><span class="p">,</span>
-        <span class="n">SwerveConstants</span><span class="p">.</span><span class="na">kLeftFrontRotorID</span><span class="p">,</span>
-        <span class="n">SwerveConstants</span><span class="p">.</span><span class="na">kLeftFrontCANCoderID</span><span class="p">,</span>
-        <span class="n">SwerveConstants</span><span class="p">.</span><span class="na">kLeftFrontRotorOffset</span>
-    <span class="p">);</span>
-
-    <span class="n">mRightFrontModule</span> <span class="o">=</span> <span class="k">new</span> <span class="n">SwerveModule</span><span class="p">(</span>
-        <span class="n">SwerveConstants</span><span class="p">.</span><span class="na">kRightFrontThrottleID</span><span class="p">,</span>
-        <span class="n">SwerveConstants</span><span class="p">.</span><span class="na">kRightFrontRotorID</span><span class="p">,</span>
-        <span class="n">SwerveConstants</span><span class="p">.</span><span class="na">kRightFrontCANCoderID</span><span class="p">,</span>
-        <span class="n">SwerveConstants</span><span class="p">.</span><span class="na">kRightFrontRotorOffset</span>
-    <span class="p">);</span>
-
-    <span class="n">mLeftRearModule</span> <span class="o">=</span> <span class="k">new</span> <span class="n">SwerveModule</span><span class="p">(</span>
-        <span class="n">SwerveConstants</span><span class="p">.</span><span class="na">kLeftRearThrottleID</span><span class="p">,</span>
-        <span class="n">SwerveConstants</span><span class="p">.</span><span class="na">kLeftRearRotorID</span><span class="p">,</span>
-        <span class="n">SwerveConstants</span><span class="p">.</span><span class="na">kLeftRearCANCoderID</span><span class="p">,</span>
-        <span class="n">SwerveConstants</span><span class="p">.</span><span class="na">kLeftRearRotorOffset</span>
-    <span class="p">);</span>
-
-    <span class="n">mRightRearModule</span> <span class="o">=</span> <span class="k">new</span> <span class="n">SwerveModule</span><span class="p">(</span>
-        <span class="n">SwerveConstants</span><span class="p">.</span><span class="na">kRightRearThrottleID</span><span class="p">,</span>
-        <span class="n">SwerveConstants</span><span class="p">.</span><span class="na">kRightRearRotorID</span><span class="p">,</span>
-        <span class="n">SwerveConstants</span><span class="p">.</span><span class="na">kRightRearCANCoderID</span><span class="p">,</span>
-        <span class="n">SwerveConstants</span><span class="p">.</span><span class="na">kRightRearRotorOffset</span>
-    <span class="p">);</span>
-
-    <span class="c1">// Initializes SwerveDriveOdometry object with SwerveKinematics constant and robot heading</span>
-    <span class="n">mOdometry</span> <span class="o">=</span> <span class="k">new</span> <span class="n">SwerveDriveOdometry</span><span class="p">(</span><span class="n">SwerveConstants</span><span class="p">.</span><span class="na">kSwerveKinematics</span><span class="p">,</span> <span class="n">mImu</span><span class="p">.</span><span class="na">getRotation2d</span><span class="p">());</span>
-<span class="p">}</span>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="c1">// Initialize IMU</span>
+<span class="linenos"> 2</span><span class="kd">private</span> <span class="kd">final</span> <span class="n">WPI_Pigeon2</span> <span class="n">mImu</span> <span class="o">=</span> <span class="k">new</span> <span class="n">WPI_Pigeon2</span><span class="p">(</span><span class="n">SwerveConstants</span><span class="p">.</span><span class="na">kImuID</span><span class="p">);</span>
+<span class="linenos"> 3</span>
+<span class="linenos"> 4</span><span class="c1">// Initializes the 4 swerve modules</span>
+<span class="linenos"> 5</span><span class="kd">private</span> <span class="kd">final</span> <span class="n">SwerveModule</span> <span class="n">mLeftFrontModule</span><span class="p">,</span> <span class="n">mRightFrontModule</span><span class="p">,</span> <span class="n">mLeftRearModule</span><span class="p">,</span> <span class="n">mRightRearModule</span><span class="p">;</span>
+<span class="linenos"> 6</span>
+<span class="linenos"> 7</span><span class="c1">// Initializes odometry</span>
+<span class="linenos"> 8</span><span class="kd">private</span> <span class="n">SwerveDriveOdometry</span> <span class="n">mOdometry</span><span class="p">;</span>
+<span class="linenos"> 9</span>
+<span class="linenos">10</span><span class="kd">public</span> <span class="nf">Swerve</span><span class="p">()</span> <span class="p">{</span>
+<span class="linenos">11</span>
+<span class="linenos">12</span>    <span class="c1">// Initializes the 4 swerve modules with SwerveConstants</span>
+<span class="linenos">13</span>    <span class="n">mLeftFrontModule</span> <span class="o">=</span> <span class="k">new</span> <span class="n">SwerveModule</span><span class="p">(</span>
+<span class="linenos">14</span>        <span class="n">SwerveConstants</span><span class="p">.</span><span class="na">kLeftFrontThrottleID</span><span class="p">,</span>
+<span class="linenos">15</span>        <span class="n">SwerveConstants</span><span class="p">.</span><span class="na">kLeftFrontRotorID</span><span class="p">,</span>
+<span class="linenos">16</span>        <span class="n">SwerveConstants</span><span class="p">.</span><span class="na">kLeftFrontCANCoderID</span><span class="p">,</span>
+<span class="linenos">17</span>        <span class="n">SwerveConstants</span><span class="p">.</span><span class="na">kLeftFrontRotorOffset</span>
+<span class="linenos">18</span>    <span class="p">);</span>
+<span class="linenos">19</span>
+<span class="linenos">20</span>    <span class="n">mRightFrontModule</span> <span class="o">=</span> <span class="k">new</span> <span class="n">SwerveModule</span><span class="p">(</span>
+<span class="linenos">21</span>        <span class="n">SwerveConstants</span><span class="p">.</span><span class="na">kRightFrontThrottleID</span><span class="p">,</span>
+<span class="linenos">22</span>        <span class="n">SwerveConstants</span><span class="p">.</span><span class="na">kRightFrontRotorID</span><span class="p">,</span>
+<span class="linenos">23</span>        <span class="n">SwerveConstants</span><span class="p">.</span><span class="na">kRightFrontCANCoderID</span><span class="p">,</span>
+<span class="linenos">24</span>        <span class="n">SwerveConstants</span><span class="p">.</span><span class="na">kRightFrontRotorOffset</span>
+<span class="linenos">25</span>    <span class="p">);</span>
+<span class="linenos">26</span>
+<span class="linenos">27</span>    <span class="n">mLeftRearModule</span> <span class="o">=</span> <span class="k">new</span> <span class="n">SwerveModule</span><span class="p">(</span>
+<span class="linenos">28</span>        <span class="n">SwerveConstants</span><span class="p">.</span><span class="na">kLeftRearThrottleID</span><span class="p">,</span>
+<span class="linenos">29</span>        <span class="n">SwerveConstants</span><span class="p">.</span><span class="na">kLeftRearRotorID</span><span class="p">,</span>
+<span class="linenos">30</span>        <span class="n">SwerveConstants</span><span class="p">.</span><span class="na">kLeftRearCANCoderID</span><span class="p">,</span>
+<span class="linenos">31</span>        <span class="n">SwerveConstants</span><span class="p">.</span><span class="na">kLeftRearRotorOffset</span>
+<span class="linenos">32</span>    <span class="p">);</span>
+<span class="linenos">33</span>
+<span class="linenos">34</span>    <span class="n">mRightRearModule</span> <span class="o">=</span> <span class="k">new</span> <span class="n">SwerveModule</span><span class="p">(</span>
+<span class="linenos">35</span>        <span class="n">SwerveConstants</span><span class="p">.</span><span class="na">kRightRearThrottleID</span><span class="p">,</span>
+<span class="linenos">36</span>        <span class="n">SwerveConstants</span><span class="p">.</span><span class="na">kRightRearRotorID</span><span class="p">,</span>
+<span class="linenos">37</span>        <span class="n">SwerveConstants</span><span class="p">.</span><span class="na">kRightRearCANCoderID</span><span class="p">,</span>
+<span class="linenos">38</span>        <span class="n">SwerveConstants</span><span class="p">.</span><span class="na">kRightRearRotorOffset</span>
+<span class="linenos">39</span>    <span class="p">);</span>
+<span class="linenos">40</span>
+<span class="linenos">41</span>    <span class="c1">// Initializes SwerveDriveOdometry object with SwerveKinematics constant and robot heading</span>
+<span class="linenos">42</span>    <span class="n">mOdometry</span> <span class="o">=</span> <span class="k">new</span> <span class="n">SwerveDriveOdometry</span><span class="p">(</span><span class="n">SwerveConstants</span><span class="p">.</span><span class="na">kSwerveKinematics</span><span class="p">,</span> <span class="n">mImu</span><span class="p">.</span><span class="na">getRotation2d</span><span class="p">());</span>
+<span class="linenos">43</span><span class="p">}</span>
 </pre></div>
 </div>
 </section>
@@ -142,20 +142,20 @@
 <section id="drive">
 <h3>drive<a class="headerlink" href="#drive" title="Permalink to this headline"></a></h3>
 <p>Updates Chassis speeds based on controller XYZ values.</p>
-<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="kd">public</span> <span class="kt">void</span> <span class="nf">drive</span><span class="p">(</span><span class="kt">double</span> <span class="n">xSpeed</span><span class="p">,</span> <span class="kt">double</span> <span class="n">ySpeed</span><span class="p">,</span> <span class="kt">double</span> <span class="n">zSpeed</span><span class="p">,</span> <span class="kt">boolean</span> <span class="n">fieldOriented</span><span class="p">)</span> <span class="p">{</span>
-    <span class="n">SwerveModuleState</span><span class="o">[]</span> <span class="n">states</span> <span class="o">=</span> <span class="kc">null</span><span class="p">;</span>
-    <span class="k">if</span><span class="p">(</span><span class="n">fieldOriented</span><span class="p">)</span> <span class="p">{</span>
-        <span class="n">states</span> <span class="o">=</span> <span class="n">SwerveConstants</span><span class="p">.</span><span class="na">kSwerveKinematics</span><span class="p">.</span><span class="na">toSwerveModuleStates</span><span class="p">(</span>
-            <span class="c1">//gyro rotation value needed if using field orientation</span>
-            <span class="n">ChassisSpeeds</span><span class="p">.</span><span class="na">fromFieldRelativeSpeeds</span><span class="p">(</span><span class="n">xSpeed</span><span class="p">,</span> <span class="n">ySpeed</span><span class="p">,</span> <span class="n">zSpeed</span><span class="p">,</span> <span class="n">mImu</span><span class="p">.</span><span class="na">getRotation2d</span><span class="p">())</span>
-        <span class="p">);</span>
-    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-        <span class="n">states</span> <span class="o">=</span> <span class="n">SwerveConstants</span><span class="p">.</span><span class="na">kSwerveKinematics</span><span class="p">.</span><span class="na">toSwerveModuleStates</span><span class="p">(</span>
-            <span class="k">new</span> <span class="n">ChassisSpeeds</span><span class="p">(</span><span class="n">xSpeed</span><span class="p">,</span> <span class="n">ySpeed</span><span class="p">,</span> <span class="n">zSpeed</span><span class="p">)</span>
-        <span class="p">);</span>
-    <span class="p">}</span>
-    <span class="n">setModuleStates</span><span class="p">(</span><span class="n">states</span><span class="p">);</span>
-<span class="p">}</span>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="kd">public</span> <span class="kt">void</span> <span class="nf">drive</span><span class="p">(</span><span class="kt">double</span> <span class="n">xSpeed</span><span class="p">,</span> <span class="kt">double</span> <span class="n">ySpeed</span><span class="p">,</span> <span class="kt">double</span> <span class="n">zSpeed</span><span class="p">,</span> <span class="kt">boolean</span> <span class="n">fieldOriented</span><span class="p">)</span> <span class="p">{</span>
+<span class="linenos"> 2</span>    <span class="n">SwerveModuleState</span><span class="o">[]</span> <span class="n">states</span> <span class="o">=</span> <span class="kc">null</span><span class="p">;</span>
+<span class="linenos"> 3</span>    <span class="k">if</span><span class="p">(</span><span class="n">fieldOriented</span><span class="p">)</span> <span class="p">{</span>
+<span class="linenos"> 4</span>        <span class="n">states</span> <span class="o">=</span> <span class="n">SwerveConstants</span><span class="p">.</span><span class="na">kSwerveKinematics</span><span class="p">.</span><span class="na">toSwerveModuleStates</span><span class="p">(</span>
+<span class="linenos"> 5</span>            <span class="c1">//gyro rotation value needed if using field orientation</span>
+<span class="linenos"> 6</span>            <span class="n">ChassisSpeeds</span><span class="p">.</span><span class="na">fromFieldRelativeSpeeds</span><span class="p">(</span><span class="n">xSpeed</span><span class="p">,</span> <span class="n">ySpeed</span><span class="p">,</span> <span class="n">zSpeed</span><span class="p">,</span> <span class="n">mImu</span><span class="p">.</span><span class="na">getRotation2d</span><span class="p">())</span>
+<span class="linenos"> 7</span>        <span class="p">);</span>
+<span class="linenos"> 8</span>    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+<span class="linenos"> 9</span>        <span class="n">states</span> <span class="o">=</span> <span class="n">SwerveConstants</span><span class="p">.</span><span class="na">kSwerveKinematics</span><span class="p">.</span><span class="na">toSwerveModuleStates</span><span class="p">(</span>
+<span class="linenos">10</span>            <span class="k">new</span> <span class="n">ChassisSpeeds</span><span class="p">(</span><span class="n">xSpeed</span><span class="p">,</span> <span class="n">ySpeed</span><span class="p">,</span> <span class="n">zSpeed</span><span class="p">)</span>
+<span class="linenos">11</span>        <span class="p">);</span>
+<span class="linenos">12</span>    <span class="p">}</span>
+<span class="linenos">13</span>    <span class="n">setModuleStates</span><span class="p">(</span><span class="n">states</span><span class="p">);</span>
+<span class="linenos">14</span><span class="p">}</span>
 </pre></div>
 </div>
 <section id="parameters">
@@ -173,14 +173,14 @@
 <section id="getmodulestates">
 <h3>getModuleStates<a class="headerlink" href="#getmodulestates" title="Permalink to this headline"></a></h3>
 <p>Outputs the current state of the 4 drive swerve modules.</p>
-<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="kd">public</span> <span class="n">SwerveModuleState</span><span class="o">[]</span> <span class="nf">getModuleStates</span><span class="p">()</span> <span class="p">{</span>
-    <span class="k">return</span> <span class="k">new</span> <span class="n">SwerveModuleState</span><span class="o">[]</span><span class="p">{</span>
-        <span class="n">mLeftFrontModule</span><span class="p">.</span><span class="na">getState</span><span class="p">(),</span>
-        <span class="n">mRightFrontModule</span><span class="p">.</span><span class="na">getState</span><span class="p">(),</span>
-        <span class="n">mLeftRearModule</span><span class="p">.</span><span class="na">getState</span><span class="p">(),</span>
-        <span class="n">mRightRearModule</span><span class="p">.</span><span class="na">getState</span><span class="p">()</span>
-    <span class="p">};</span>
-<span class="p">}</span>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="kd">public</span> <span class="n">SwerveModuleState</span><span class="o">[]</span> <span class="nf">getModuleStates</span><span class="p">()</span> <span class="p">{</span>
+<span class="linenos">2</span>    <span class="k">return</span> <span class="k">new</span> <span class="n">SwerveModuleState</span><span class="o">[]</span><span class="p">{</span>
+<span class="linenos">3</span>        <span class="n">mLeftFrontModule</span><span class="p">.</span><span class="na">getState</span><span class="p">(),</span>
+<span class="linenos">4</span>        <span class="n">mRightFrontModule</span><span class="p">.</span><span class="na">getState</span><span class="p">(),</span>
+<span class="linenos">5</span>        <span class="n">mLeftRearModule</span><span class="p">.</span><span class="na">getState</span><span class="p">(),</span>
+<span class="linenos">6</span>        <span class="n">mRightRearModule</span><span class="p">.</span><span class="na">getState</span><span class="p">()</span>
+<span class="linenos">7</span>    <span class="p">};</span>
+<span class="linenos">8</span><span class="p">}</span>
 </pre></div>
 </div>
 <section id="return">
@@ -193,14 +193,14 @@
 <section id="setmodulestates">
 <h3>setModuleStates<a class="headerlink" href="#setmodulestates" title="Permalink to this headline"></a></h3>
 <p>Sets the state of the 4 drive swerve modules.</p>
-<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="c1">// Swerve module order: [leftFront, leftRear, rightFront, rightRear]</span>
-<span class="kd">public</span> <span class="kt">void</span> <span class="nf">setModuleStates</span><span class="p">(</span><span class="n">SwerveModuleState</span><span class="o">[]</span> <span class="n">desiredStates</span><span class="p">)</span> <span class="p">{</span>
-    <span class="n">SwerveDriveKinematics</span><span class="p">.</span><span class="na">desaturateWheelSpeeds</span><span class="p">(</span><span class="n">desiredStates</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
-    <span class="n">mLeftFrontModule</span><span class="p">.</span><span class="na">setState</span><span class="p">(</span><span class="n">desiredStates</span><span class="o">[</span><span class="mi">0</span><span class="o">]</span><span class="p">);</span>
-    <span class="n">mRightFrontModule</span><span class="p">.</span><span class="na">setState</span><span class="p">(</span><span class="n">desiredStates</span><span class="o">[</span><span class="mi">1</span><span class="o">]</span><span class="p">);</span>
-    <span class="n">mLeftRearModule</span><span class="p">.</span><span class="na">setState</span><span class="p">(</span><span class="n">desiredStates</span><span class="o">[</span><span class="mi">2</span><span class="o">]</span><span class="p">);</span>
-    <span class="n">mRightRearModule</span><span class="p">.</span><span class="na">setState</span><span class="p">(</span><span class="n">desiredStates</span><span class="o">[</span><span class="mi">3</span><span class="o">]</span><span class="p">);</span>
-<span class="p">}</span>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="c1">// Swerve module order: [leftFront, leftRear, rightFront, rightRear]</span>
+<span class="linenos">2</span><span class="kd">public</span> <span class="kt">void</span> <span class="nf">setModuleStates</span><span class="p">(</span><span class="n">SwerveModuleState</span><span class="o">[]</span> <span class="n">desiredStates</span><span class="p">)</span> <span class="p">{</span>
+<span class="linenos">3</span>    <span class="n">SwerveDriveKinematics</span><span class="p">.</span><span class="na">desaturateWheelSpeeds</span><span class="p">(</span><span class="n">desiredStates</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
+<span class="linenos">4</span>    <span class="n">mLeftFrontModule</span><span class="p">.</span><span class="na">setState</span><span class="p">(</span><span class="n">desiredStates</span><span class="o">[</span><span class="mi">0</span><span class="o">]</span><span class="p">);</span>
+<span class="linenos">5</span>    <span class="n">mRightFrontModule</span><span class="p">.</span><span class="na">setState</span><span class="p">(</span><span class="n">desiredStates</span><span class="o">[</span><span class="mi">1</span><span class="o">]</span><span class="p">);</span>
+<span class="linenos">6</span>    <span class="n">mLeftRearModule</span><span class="p">.</span><span class="na">setState</span><span class="p">(</span><span class="n">desiredStates</span><span class="o">[</span><span class="mi">2</span><span class="o">]</span><span class="p">);</span>
+<span class="linenos">7</span>    <span class="n">mRightRearModule</span><span class="p">.</span><span class="na">setState</span><span class="p">(</span><span class="n">desiredStates</span><span class="o">[</span><span class="mi">3</span><span class="o">]</span><span class="p">);</span>
+<span class="linenos">8</span><span class="p">}</span>
 </pre></div>
 </div>
 <section id="id1">
@@ -215,9 +215,9 @@
 <section id="getpose">
 <h3>getPose<a class="headerlink" href="#getpose" title="Permalink to this headline"></a></h3>
 <p>Gets the current position of the robot.</p>
-<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="kd">public</span> <span class="n">Pose2d</span> <span class="nf">getPose</span><span class="p">()</span> <span class="p">{</span>
-    <span class="k">return</span> <span class="n">mOdometry</span><span class="p">.</span><span class="na">getPoseMeters</span><span class="p">();</span>
-<span class="p">}</span>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="kd">public</span> <span class="n">Pose2d</span> <span class="nf">getPose</span><span class="p">()</span> <span class="p">{</span>
+<span class="linenos">2</span>    <span class="k">return</span> <span class="n">mOdometry</span><span class="p">.</span><span class="na">getPoseMeters</span><span class="p">();</span>
+<span class="linenos">3</span><span class="p">}</span>
 </pre></div>
 </div>
 <section id="id2">
@@ -230,9 +230,9 @@
 <section id="setpose">
 <h3>setPose<a class="headerlink" href="#setpose" title="Permalink to this headline"></a></h3>
 <p>Sets odometry position to a given x, y, position, and angle</p>
-<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="kd">public</span> <span class="kt">void</span> <span class="nf">setPose</span><span class="p">(</span><span class="n">Pose2d</span> <span class="n">pose</span><span class="p">)</span> <span class="p">{</span>
-    <span class="n">mOdometry</span><span class="p">.</span><span class="na">resetPosition</span><span class="p">(</span><span class="n">pose</span><span class="p">,</span> <span class="n">mImu</span><span class="p">.</span><span class="na">getRotation2d</span><span class="p">());</span>
-<span class="p">}</span>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="kd">public</span> <span class="kt">void</span> <span class="nf">setPose</span><span class="p">(</span><span class="n">Pose2d</span> <span class="n">pose</span><span class="p">)</span> <span class="p">{</span>
+<span class="linenos">2</span>    <span class="n">mOdometry</span><span class="p">.</span><span class="na">resetPosition</span><span class="p">(</span><span class="n">pose</span><span class="p">,</span> <span class="n">mImu</span><span class="p">.</span><span class="na">getRotation2d</span><span class="p">());</span>
+<span class="linenos">3</span><span class="p">}</span>
 </pre></div>
 </div>
 <section id="id3">

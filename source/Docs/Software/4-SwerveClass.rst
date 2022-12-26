@@ -14,6 +14,7 @@ Constructor
 ***********
 
 .. code-block:: java
+    :linenos:
 
     // Initialize IMU
     private final WPI_Pigeon2 mImu = new WPI_Pigeon2(SwerveConstants.kImuID);
@@ -68,6 +69,7 @@ drive
 Updates Chassis speeds based on controller XYZ values.
 
 .. code-block:: java
+    :linenos:
 
     public void drive(double xSpeed, double ySpeed, double zSpeed, boolean fieldOriented) {
         SwerveModuleState[] states = null;
@@ -99,6 +101,7 @@ getModuleStates
 Outputs the current state of the 4 drive swerve modules.
 
 .. code-block:: java
+    :linenos:
 
     public SwerveModuleState[] getModuleStates() {
         return new SwerveModuleState[]{
@@ -122,6 +125,7 @@ setModuleStates
 Sets the state of the 4 drive swerve modules.
 
 .. code-block:: java
+    :linenos:
 
     // Swerve module order: [leftFront, leftRear, rightFront, rightRear]
     public void setModuleStates(SwerveModuleState[] desiredStates) {
@@ -144,6 +148,7 @@ getPose
 Gets the current position of the robot.
 
 .. code-block:: java
+    :linenos:
 
     public Pose2d getPose() {
         return mOdometry.getPoseMeters();
@@ -162,6 +167,7 @@ setPose
 Sets odometry position to a given x, y, position, and angle
 
 .. code-block:: java
+    :linenos:
 
     public void setPose(Pose2d pose) {
         mOdometry.resetPosition(pose, mImu.getRotation2d());

@@ -53,9 +53,9 @@
 <li class="toctree-l1"><a class="reference internal" href="5-Teleop.html">Teleop</a></li>
 <li class="toctree-l1"><a class="reference internal" href="6-Auton.html">Autonomous Pathing</a></li>
 </ul>
-<p class="caption" role="heading"><span class="caption-text">Extra</span></p>
+<p class="caption" role="heading"><span class="caption-text">Further Topics</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="7-FurtherTopics.html">Further Topics to Explore</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../FurtherTopics/7-Feedforward.html">Feedforward</a></li>
 </ul>
 
         </div>
@@ -99,212 +99,218 @@ speed.</p>
 <section id="constructor">
 <h2>Constructor<a class="headerlink" href="#constructor" title="Permalink to this headline"></a></h2>
 <div class="sphinx-tabs docutils container">
-<div aria-label="Tabbed content" role="tablist"><button aria-controls="panel-0-0-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-0-0-0" name="0-0" role="tab" tabindex="0">Talon FX &amp; CANCoder</button><button aria-controls="panel-0-0-1" aria-selected="false" class="sphinx-tabs-tab" id="tab-0-0-1" name="0-1" role="tab" tabindex="-1">SPARK MAX &amp; CANCoder</button><button aria-controls="panel-0-0-2" aria-selected="false" class="sphinx-tabs-tab" id="tab-0-0-2" name="0-2" role="tab" tabindex="-1">SPARK MAX &amp; Analog Absolute Encoder</button></div><div aria-labelledby="tab-0-0-0" class="sphinx-tabs-panel" id="panel-0-0-0" name="0-0" role="tabpanel" tabindex="0"><div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="c1">// Initialize rotor &amp; throttle motors</span>
-<span class="kd">private</span> <span class="n">WPI_TalonFX</span> <span class="n">mRotor</span><span class="p">;</span>
-<span class="kd">private</span> <span class="n">WPI_TalonFX</span> <span class="n">mThrottle</span><span class="p">;</span>
-
-<span class="c1">// Initialize rotor encoder</span>
-<span class="kd">private</span> <span class="n">WPI_CANCoder</span> <span class="n">mRotorEncoder</span><span class="p">;</span>
-
-<span class="c1">// Initialize rotor PID controller</span>
-<span class="kd">private</span> <span class="n">PIDController</span> <span class="n">mRotorPID</span><span class="p">;</span>
-
-<span class="cm">/**</span>
-<span class="cm"> * Construct new SwerveModule</span>
-<span class="cm"> *</span>
-<span class="cm"> * @param throttleID CAN ID of throttle motor</span>
-<span class="cm"> * @param rotorID CAN ID of rotor motor</span>
-<span class="cm"> * @param rotorEncoderID CAN ID of rotor encoder</span>
-<span class="cm"> * @param rotorOffsetAngleDeg rotor encoder offset</span>
-<span class="cm"> */</span>
-<span class="kd">public</span> <span class="nf">SwerveModule</span><span class="p">(</span><span class="kt">int</span> <span class="n">throttleID</span><span class="p">,</span> <span class="kt">int</span> <span class="n">rotorID</span><span class="p">,</span> <span class="kt">int</span> <span class="n">rotorEncoderID</span><span class="p">,</span> <span class="kt">double</span> <span class="n">rotorOffsetAngleDeg</span><span class="p">)</span>
-<span class="p">{</span>
-    <span class="c1">// Instantiate throttle motor</span>
-    <span class="n">mThrottle</span> <span class="o">=</span> <span class="k">new</span> <span class="n">WPI_TalonFX</span><span class="p">(</span><span class="n">throttleID</span><span class="p">);</span>
-
-    <span class="c1">// Instantiate rotor motor</span>
-    <span class="n">mRotor</span> <span class="o">=</span> <span class="k">new</span> <span class="n">WPI_TalonFX</span><span class="p">(</span><span class="n">rotorID</span><span class="p">);</span>
-
-    <span class="c1">// Instantiate rotor absolute encoder</span>
-    <span class="n">mRotorEncoder</span> <span class="o">=</span> <span class="k">new</span> <span class="n">WPI_CANCoder</span><span class="p">(</span><span class="n">rotorEncoderID</span><span class="p">);</span>
-
-    <span class="c1">// Reset all configuration</span>
-    <span class="c1">// (technically optional, but good practice in case there are old</span>
-    <span class="c1">// configurations that can mess with the code)</span>
-    <span class="n">mThrottle</span><span class="p">.</span><span class="na">configFactoryDefault</span><span class="p">();</span>
-    <span class="n">mRotor</span><span class="p">.</span><span class="na">configFactoryDefault</span><span class="p">();</span>
-    <span class="n">mRotorEncoder</span><span class="p">.</span><span class="na">configFactoryDefault</span><span class="p">();</span>
-
-    <span class="c1">// Configures rotor motor according to previously defined constants</span>
-    <span class="n">mRotor</span><span class="p">.</span><span class="na">setInverted</span><span class="p">(</span><span class="n">SwerveConstants</span><span class="p">.</span><span class="na">kRotorMotorInversion</span><span class="p">);</span>
-    <span class="n">mRotor</span><span class="p">.</span><span class="na">configVoltageCompSaturation</span><span class="p">(</span><span class="n">Constants</span><span class="p">.</span><span class="na">kVoltageCompensation</span><span class="p">);</span>
-    <span class="n">mRotor</span><span class="p">.</span><span class="na">enableVoltageCompensation</span><span class="p">(</span><span class="kc">true</span><span class="p">);</span>
-    <span class="n">mRotor</span><span class="p">.</span><span class="na">setNeutralMode</span><span class="p">(</span><span class="n">NeutralMode</span><span class="p">.</span><span class="na">Brake</span><span class="p">);</span>
-
-    <span class="c1">// Configures rotor encoder according to previously defined constants</span>
-    <span class="n">mRotorEncoder</span><span class="p">.</span><span class="na">configAbsoluteSensorRange</span><span class="p">(</span><span class="n">AbsoluteSensorRange</span><span class="p">.</span><span class="na">Signed_PlusMinus180</span><span class="p">);</span>
-    <span class="n">mRotorEncoder</span><span class="p">.</span><span class="na">configMagnetOffset</span><span class="p">(</span><span class="n">rotorOffsetAngleDeg</span><span class="p">);</span>
-    <span class="n">mRotorEncoder</span><span class="p">.</span><span class="na">configSensorDirection</span><span class="p">(</span><span class="n">SwerveConstants</span><span class="p">.</span><span class="na">kRotorEncoderDirection</span><span class="p">);</span>
-    <span class="n">mRotorEncoder</span><span class="p">.</span><span class="na">configSensorInitializationStrategy</span><span class="p">(</span>
-        <span class="n">SensorInitializationStrategy</span><span class="p">.</span><span class="na">BootToAbsolutePosition</span>
-    <span class="p">);</span>
-
-    <span class="c1">// Configures rotor PID controller according to previously defined constants</span>
-    <span class="n">mRotorPID</span> <span class="o">=</span> <span class="k">new</span> <span class="n">PIDController</span><span class="p">(</span>
-        <span class="n">SwerveConstants</span><span class="p">.</span><span class="na">kRotor_kP</span><span class="p">,</span>
-        <span class="n">SwerveConstants</span><span class="p">.</span><span class="na">kRotor_kI</span><span class="p">,</span>
-        <span class="n">SwerveConstants</span><span class="p">.</span><span class="na">kRotor_kD</span>
-    <span class="p">);</span>
-
-    <span class="c1">// Continuous input considers the min &amp; max to be the same point and</span>
-    <span class="c1">// automatically calculates the shortest route to the setpoint</span>
-    <span class="n">mRotorPID</span><span class="p">.</span><span class="na">enableContinuousInput</span><span class="p">(</span><span class="o">-</span><span class="mi">180</span><span class="p">,</span> <span class="mi">180</span><span class="p">);</span>
-
-    <span class="c1">// Configures throttle motor according to previously defined constants</span>
-    <span class="n">mThrottle</span><span class="p">.</span><span class="na">configSelectedFeedbackSensor</span><span class="p">(</span><span class="n">FeedbackDevice</span><span class="p">.</span><span class="na">IntegratedSensor</span><span class="p">);</span>
-    <span class="n">mThrottle</span><span class="p">.</span><span class="na">configVoltageCompSaturation</span><span class="p">(</span><span class="n">Constants</span><span class="p">.</span><span class="na">kVoltageCompensation</span><span class="p">);</span>
-    <span class="n">mThrottle</span><span class="p">.</span><span class="na">enableVoltageCompensation</span><span class="p">(</span><span class="kc">true</span><span class="p">);</span>
-    <span class="n">mThrottle</span><span class="p">.</span><span class="na">setNeutralMode</span><span class="p">(</span><span class="n">NeutralMode</span><span class="p">.</span><span class="na">Brake</span><span class="p">);</span>
-<span class="p">}</span>
+<div aria-label="Tabbed content" role="tablist"><button aria-controls="panel-0-0-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-0-0-0" name="0-0" role="tab" tabindex="0">Talon FX &amp; CANCoder</button><button aria-controls="panel-0-0-1" aria-selected="false" class="sphinx-tabs-tab" id="tab-0-0-1" name="0-1" role="tab" tabindex="-1">SPARK MAX &amp; CANCoder</button><button aria-controls="panel-0-0-2" aria-selected="false" class="sphinx-tabs-tab" id="tab-0-0-2" name="0-2" role="tab" tabindex="-1">SPARK MAX &amp; Analog Absolute Encoder</button></div><div aria-labelledby="tab-0-0-0" class="sphinx-tabs-panel" id="panel-0-0-0" name="0-0" role="tabpanel" tabindex="0"><div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="c1">// Initialize rotor &amp; throttle motors</span>
+<span class="linenos"> 2</span><span class="kd">private</span> <span class="n">WPI_TalonFX</span> <span class="n">mRotor</span><span class="p">;</span>
+<span class="linenos"> 3</span><span class="kd">private</span> <span class="n">WPI_TalonFX</span> <span class="n">mThrottle</span><span class="p">;</span>
+<span class="linenos"> 4</span>
+<span class="linenos"> 5</span><span class="c1">// Initialize rotor encoder</span>
+<span class="linenos"> 6</span><span class="kd">private</span> <span class="n">WPI_CANCoder</span> <span class="n">mRotorEncoder</span><span class="p">;</span>
+<span class="linenos"> 7</span>
+<span class="linenos"> 8</span><span class="c1">// Initialize rotor PID controller</span>
+<span class="linenos"> 9</span><span class="kd">private</span> <span class="n">PIDController</span> <span class="n">mRotorPID</span><span class="p">;</span>
+<span class="linenos">10</span>
+<span class="linenos">11</span><span class="cm">/**</span>
+<span class="linenos">12</span><span class="cm"> * Construct new SwerveModule</span>
+<span class="linenos">13</span><span class="cm"> *</span>
+<span class="linenos">14</span><span class="cm"> * @param throttleID CAN ID of throttle motor</span>
+<span class="linenos">15</span><span class="cm"> * @param rotorID CAN ID of rotor motor</span>
+<span class="linenos">16</span><span class="cm"> * @param rotorEncoderID CAN ID of rotor encoder</span>
+<span class="linenos">17</span><span class="cm"> * @param rotorOffsetAngleDeg rotor encoder offset</span>
+<span class="linenos">18</span><span class="cm"> */</span>
+<span class="linenos">19</span><span class="kd">public</span> <span class="nf">SwerveModule</span><span class="p">(</span><span class="kt">int</span> <span class="n">throttleID</span><span class="p">,</span> <span class="kt">int</span> <span class="n">rotorID</span><span class="p">,</span> <span class="kt">int</span> <span class="n">rotorEncoderID</span><span class="p">,</span> <span class="kt">double</span> <span class="n">rotorOffsetAngleDeg</span><span class="p">)</span>
+<span class="linenos">20</span><span class="p">{</span>
+<span class="linenos">21</span>    <span class="c1">// Instantiate throttle motor</span>
+<span class="linenos">22</span>    <span class="n">mThrottle</span> <span class="o">=</span> <span class="k">new</span> <span class="n">WPI_TalonFX</span><span class="p">(</span><span class="n">throttleID</span><span class="p">);</span>
+<span class="linenos">23</span>
+<span class="linenos">24</span>    <span class="c1">// Instantiate rotor motor</span>
+<span class="linenos">25</span>    <span class="n">mRotor</span> <span class="o">=</span> <span class="k">new</span> <span class="n">WPI_TalonFX</span><span class="p">(</span><span class="n">rotorID</span><span class="p">);</span>
+<span class="linenos">26</span>
+<span class="linenos">27</span>    <span class="c1">// Instantiate rotor absolute encoder</span>
+<span class="linenos">28</span>    <span class="n">mRotorEncoder</span> <span class="o">=</span> <span class="k">new</span> <span class="n">WPI_CANCoder</span><span class="p">(</span><span class="n">rotorEncoderID</span><span class="p">);</span>
+<span class="linenos">29</span>
+<span class="linenos">30</span>    <span class="c1">// Reset all configuration</span>
+<span class="linenos">31</span>    <span class="c1">// (technically optional, but good practice in case there are old</span>
+<span class="linenos">32</span>    <span class="c1">// configurations that can mess with the code)</span>
+<span class="linenos">33</span>    <span class="n">mThrottle</span><span class="p">.</span><span class="na">configFactoryDefault</span><span class="p">();</span>
+<span class="linenos">34</span>    <span class="n">mRotor</span><span class="p">.</span><span class="na">configFactoryDefault</span><span class="p">();</span>
+<span class="linenos">35</span>    <span class="n">mRotorEncoder</span><span class="p">.</span><span class="na">configFactoryDefault</span><span class="p">();</span>
+<span class="linenos">36</span>
+<span class="linenos">37</span>    <span class="c1">// Configures rotor motor according to previously defined constants</span>
+<span class="linenos">38</span>    <span class="n">mRotor</span><span class="p">.</span><span class="na">setInverted</span><span class="p">(</span><span class="n">SwerveConstants</span><span class="p">.</span><span class="na">kRotorMotorInversion</span><span class="p">);</span>
+<span class="linenos">39</span>    <span class="n">mRotor</span><span class="p">.</span><span class="na">configVoltageCompSaturation</span><span class="p">(</span><span class="n">Constants</span><span class="p">.</span><span class="na">kVoltageCompensation</span><span class="p">);</span>
+<span class="linenos">40</span>    <span class="n">mRotor</span><span class="p">.</span><span class="na">enableVoltageCompensation</span><span class="p">(</span><span class="kc">true</span><span class="p">);</span>
+<span class="linenos">41</span>    <span class="n">mRotor</span><span class="p">.</span><span class="na">setNeutralMode</span><span class="p">(</span><span class="n">NeutralMode</span><span class="p">.</span><span class="na">Brake</span><span class="p">);</span>
+<span class="linenos">42</span>
+<span class="linenos">43</span>    <span class="c1">// Configures rotor encoder according to previously defined constants</span>
+<span class="linenos">44</span>    <span class="n">mRotorEncoder</span><span class="p">.</span><span class="na">configAbsoluteSensorRange</span><span class="p">(</span><span class="n">AbsoluteSensorRange</span><span class="p">.</span><span class="na">Signed_PlusMinus180</span><span class="p">);</span>
+<span class="linenos">45</span>    <span class="n">mRotorEncoder</span><span class="p">.</span><span class="na">configMagnetOffset</span><span class="p">(</span><span class="n">rotorOffsetAngleDeg</span><span class="p">);</span>
+<span class="linenos">46</span>    <span class="n">mRotorEncoder</span><span class="p">.</span><span class="na">configSensorDirection</span><span class="p">(</span><span class="n">SwerveConstants</span><span class="p">.</span><span class="na">kRotorEncoderDirection</span><span class="p">);</span>
+<span class="linenos">47</span>    <span class="n">mRotorEncoder</span><span class="p">.</span><span class="na">configSensorInitializationStrategy</span><span class="p">(</span>
+<span class="linenos">48</span>        <span class="n">SensorInitializationStrategy</span><span class="p">.</span><span class="na">BootToAbsolutePosition</span>
+<span class="linenos">49</span>    <span class="p">);</span>
+<span class="linenos">50</span>
+<span class="linenos">51</span>    <span class="c1">// Configures rotor PID controller according to previously defined constants</span>
+<span class="linenos">52</span>    <span class="n">mRotorPID</span> <span class="o">=</span> <span class="k">new</span> <span class="n">PIDController</span><span class="p">(</span>
+<span class="linenos">53</span>        <span class="n">SwerveConstants</span><span class="p">.</span><span class="na">kRotor_kP</span><span class="p">,</span>
+<span class="linenos">54</span>        <span class="n">SwerveConstants</span><span class="p">.</span><span class="na">kRotor_kI</span><span class="p">,</span>
+<span class="linenos">55</span>        <span class="n">SwerveConstants</span><span class="p">.</span><span class="na">kRotor_kD</span>
+<span class="linenos">56</span>    <span class="p">);</span>
+<span class="linenos">57</span>
+<span class="linenos">58</span>    <span class="c1">// Continuous input considers the min &amp; max to be the same point and</span>
+<span class="linenos">59</span>    <span class="c1">// automatically calculates the shortest route to the setpoint</span>
+<span class="linenos">60</span>    <span class="n">mRotorPID</span><span class="p">.</span><span class="na">enableContinuousInput</span><span class="p">(</span><span class="o">-</span><span class="mi">180</span><span class="p">,</span> <span class="mi">180</span><span class="p">);</span>
+<span class="linenos">61</span>
+<span class="linenos">62</span>    <span class="c1">// Configures throttle motor according to previously defined constants</span>
+<span class="linenos">63</span>    <span class="n">mThrottle</span><span class="p">.</span><span class="na">configSelectedFeedbackSensor</span><span class="p">(</span><span class="n">FeedbackDevice</span><span class="p">.</span><span class="na">IntegratedSensor</span><span class="p">);</span>
+<span class="linenos">64</span>    <span class="n">mThrottle</span><span class="p">.</span><span class="na">configVoltageCompSaturation</span><span class="p">(</span><span class="n">Constants</span><span class="p">.</span><span class="na">kVoltageCompensation</span><span class="p">);</span>
+<span class="linenos">65</span>    <span class="n">mThrottle</span><span class="p">.</span><span class="na">enableVoltageCompensation</span><span class="p">(</span><span class="kc">true</span><span class="p">);</span>
+<span class="linenos">66</span>    <span class="n">mThrottle</span><span class="p">.</span><span class="na">setNeutralMode</span><span class="p">(</span><span class="n">NeutralMode</span><span class="p">.</span><span class="na">Brake</span><span class="p">);</span>
+<span class="linenos">67</span><span class="p">}</span>
 </pre></div>
 </div>
-</div><div aria-labelledby="tab-0-0-1" class="sphinx-tabs-panel" hidden="true" id="panel-0-0-1" name="0-1" role="tabpanel" tabindex="0"><div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="c1">// Initialize rotor &amp; throttle motors</span>
-<span class="kd">private</span> <span class="n">CANSparkMax</span> <span class="n">mRotor</span><span class="p">;</span>
-<span class="kd">private</span> <span class="n">CANSparkMax</span> <span class="n">mThrottle</span><span class="p">;</span>
-
-<span class="c1">// Initialize throttle encoder</span>
-<span class="kd">private</span> <span class="n">RelativeEncoder</span> <span class="n">mThrottleEncoder</span><span class="p">;</span>
-
-<span class="c1">// Initialize rotor encoder</span>
-<span class="kd">private</span> <span class="n">WPI_CANCoder</span> <span class="n">mRotorEncoder</span><span class="p">;</span>
-
-<span class="c1">// Initialize rotor PID controller</span>
-<span class="kd">private</span> <span class="n">PIDController</span> <span class="n">mRotorPID</span><span class="p">;</span>
-
-<span class="cm">/**</span>
-<span class="cm"> * Construct new SwerveModule</span>
-<span class="cm"> *</span>
-<span class="cm"> * @param throttleID CAN ID of throttle motor</span>
-<span class="cm"> * @param rotorID CAN ID of rotor motor</span>
-<span class="cm"> * @param rotorEncoderID CAN ID of rotor encoder</span>
-<span class="cm"> * @param rotorOffsetAngleDeg rotor encoder offset</span>
-<span class="cm"> */</span>
-<span class="kd">public</span> <span class="nf">SwerveModule</span><span class="p">(</span><span class="kt">int</span> <span class="n">throttleID</span><span class="p">,</span> <span class="kt">int</span> <span class="n">rotorID</span><span class="p">,</span> <span class="kt">int</span> <span class="n">rotorEncoderID</span><span class="p">,</span> <span class="kt">double</span> <span class="n">rotorOffsetAngleDeg</span><span class="p">)</span>
-<span class="p">{</span>
-    <span class="c1">// Instantiate throttle motor &amp; respective encoder</span>
-    <span class="n">mThrottle</span> <span class="o">=</span> <span class="k">new</span> <span class="n">CANSparkMax</span><span class="p">(</span><span class="n">throttleID</span><span class="p">,</span> <span class="n">MotorType</span><span class="p">.</span><span class="na">kBrushless</span><span class="p">);</span>
-    <span class="n">mThrottleEncoder</span> <span class="o">=</span> <span class="n">mThrottle</span><span class="p">.</span><span class="na">getEncoder</span><span class="p">();</span>
-
-    <span class="c1">// Instantiate rotor motor</span>
-    <span class="n">mRotor</span> <span class="o">=</span> <span class="k">new</span> <span class="n">CANSparkMax</span><span class="p">(</span><span class="n">rotorID</span><span class="p">,</span> <span class="n">MotorType</span><span class="p">.</span><span class="na">kBrushless</span><span class="p">);</span>
-
-    <span class="c1">// Instantiate rotor absolute encoder</span>
-    <span class="n">mRotorEncoder</span> <span class="o">=</span> <span class="k">new</span> <span class="n">WPI_CANCoder</span><span class="p">(</span><span class="n">rotorEncoderID</span><span class="p">);</span>
-
-    <span class="c1">// Reset all configuration</span>
-    <span class="c1">// (technically optional, but good practice in case there are old</span>
-    <span class="c1">// configurations that can mess with the code)</span>
-    <span class="n">mThrottle</span><span class="p">.</span><span class="na">restoreFactoryDefaults</span><span class="p">();</span>
-    <span class="n">mRotor</span><span class="p">.</span><span class="na">restoreFactoryDefaults</span><span class="p">();</span>
-    <span class="n">mRotorEncoder</span><span class="p">.</span><span class="na">configFactoryDefault</span><span class="p">();</span>
-
-    <span class="c1">// Configures rotor motor according to previously defined constants</span>
-    <span class="n">mRotor</span><span class="p">.</span><span class="na">setInverted</span><span class="p">(</span><span class="n">SwerveConstants</span><span class="p">.</span><span class="na">kRotorMotorInversion</span><span class="p">);</span>
-    <span class="n">mRotor</span><span class="p">.</span><span class="na">enableVoltageCompensation</span><span class="p">(</span><span class="n">Constants</span><span class="p">.</span><span class="na">kVoltageCompensation</span><span class="p">);</span>
-    <span class="n">mRotor</span><span class="p">.</span><span class="na">setIdleMode</span><span class="p">(</span><span class="n">IdleMode</span><span class="p">.</span><span class="na">kBrake</span><span class="p">);</span>
-
-    <span class="c1">// Configures rotor encoder according to previously defined constants</span>
-    <span class="n">mRotorEncoder</span><span class="p">.</span><span class="na">configAbsoluteSensorRange</span><span class="p">(</span><span class="n">AbsoluteSensorRange</span><span class="p">.</span><span class="na">Signed_PlusMinus180</span><span class="p">);</span>
-    <span class="n">mRotorEncoder</span><span class="p">.</span><span class="na">configMagnetOffset</span><span class="p">(</span><span class="n">rotorOffsetAngleDeg</span><span class="p">);</span>
-    <span class="n">mRotorEncoder</span><span class="p">.</span><span class="na">configSensorDirection</span><span class="p">(</span><span class="n">SwerveConstants</span><span class="p">.</span><span class="na">kRotorEncoderDirection</span><span class="p">);</span>
-    <span class="n">mRotorEncoder</span><span class="p">.</span><span class="na">configSensorInitializationStrategy</span><span class="p">(</span>
-        <span class="n">SensorInitializationStrategy</span><span class="p">.</span><span class="na">BootToAbsolutePosition</span>
-    <span class="p">);</span>
-
-    <span class="c1">// Configures rotor PID controller according to previously defined constants</span>
-    <span class="n">mRotorPID</span> <span class="o">=</span> <span class="k">new</span> <span class="n">PIDController</span><span class="p">(</span>
-        <span class="n">SwerveConstants</span><span class="p">.</span><span class="na">kRotor_kP</span><span class="p">,</span>
-        <span class="n">SwerveConstants</span><span class="p">.</span><span class="na">kRotor_kI</span><span class="p">,</span>
-        <span class="n">SwerveConstants</span><span class="p">.</span><span class="na">kRotor_kD</span>
-    <span class="p">);</span>
-
-    <span class="c1">// Continuous input considers the min &amp; max to be the same point and</span>
-    <span class="c1">// automatically calculates the shortest route to the setpoint</span>
-    <span class="n">mRotorPID</span><span class="p">.</span><span class="na">enableContinuousInput</span><span class="p">(</span><span class="o">-</span><span class="mi">180</span><span class="p">,</span> <span class="mi">180</span><span class="p">);</span>
-
-    <span class="c1">// Configures throttle motor according to previously defined constants</span>
-    <span class="n">mThrottle</span><span class="p">.</span><span class="na">enableVoltageCompensation</span><span class="p">(</span><span class="n">Constants</span><span class="p">.</span><span class="na">kVoltageCompensation</span><span class="p">);</span>
-    <span class="n">mThrottle</span><span class="p">.</span><span class="na">setIdleMode</span><span class="p">(</span><span class="n">IdleMode</span><span class="p">.</span><span class="na">kBrake</span><span class="p">);</span>
-
-    <span class="c1">// Sets conversion factor to throttle encoder so that it reads</span>
-    <span class="c1">// velocity in meters per second instead of RPM</span>
-    <span class="n">mThrottleEncoder</span><span class="p">.</span><span class="na">setVelocityConversionFactor</span><span class="p">(</span>
-        <span class="n">SwerveConstants</span><span class="p">.</span><span class="na">kThrottleVelocityConversionFactor</span>
-    <span class="p">);</span>
-<span class="p">}</span>
+</div><div aria-labelledby="tab-0-0-1" class="sphinx-tabs-panel" hidden="true" id="panel-0-0-1" name="0-1" role="tabpanel" tabindex="0"><div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="c1">// Initialize rotor &amp; throttle motors</span>
+<span class="linenos"> 2</span><span class="kd">private</span> <span class="n">CANSparkMax</span> <span class="n">mRotor</span><span class="p">;</span>
+<span class="linenos"> 3</span><span class="kd">private</span> <span class="n">CANSparkMax</span> <span class="n">mThrottle</span><span class="p">;</span>
+<span class="linenos"> 4</span>
+<span class="linenos"> 5</span><span class="c1">// Initialize throttle encoder</span>
+<span class="linenos"> 6</span><span class="kd">private</span> <span class="n">RelativeEncoder</span> <span class="n">mThrottleEncoder</span><span class="p">;</span>
+<span class="linenos"> 7</span>
+<span class="linenos"> 8</span><span class="c1">// Initialize rotor encoder</span>
+<span class="linenos"> 9</span><span class="kd">private</span> <span class="n">WPI_CANCoder</span> <span class="n">mRotorEncoder</span><span class="p">;</span>
+<span class="linenos">10</span>
+<span class="linenos">11</span><span class="c1">// Initialize rotor PID controller</span>
+<span class="linenos">12</span><span class="kd">private</span> <span class="n">PIDController</span> <span class="n">mRotorPID</span><span class="p">;</span>
+<span class="linenos">13</span>
+<span class="linenos">14</span><span class="cm">/**</span>
+<span class="linenos">15</span><span class="cm"> * Construct new SwerveModule</span>
+<span class="linenos">16</span><span class="cm"> *</span>
+<span class="linenos">17</span><span class="cm"> * @param throttleID CAN ID of throttle motor</span>
+<span class="linenos">18</span><span class="cm"> * @param rotorID CAN ID of rotor motor</span>
+<span class="linenos">19</span><span class="cm"> * @param rotorEncoderID CAN ID of rotor encoder</span>
+<span class="linenos">20</span><span class="cm"> * @param rotorOffsetAngleDeg rotor encoder offset</span>
+<span class="linenos">21</span><span class="cm"> */</span>
+<span class="linenos">22</span><span class="kd">public</span> <span class="nf">SwerveModule</span><span class="p">(</span><span class="kt">int</span> <span class="n">throttleID</span><span class="p">,</span> <span class="kt">int</span> <span class="n">rotorID</span><span class="p">,</span> <span class="kt">int</span> <span class="n">rotorEncoderID</span><span class="p">,</span> <span class="kt">double</span> <span class="n">rotorOffsetAngleDeg</span><span class="p">)</span>
+<span class="linenos">23</span><span class="p">{</span>
+<span class="linenos">24</span>    <span class="c1">// Instantiate throttle motor &amp; respective encoder</span>
+<span class="linenos">25</span>    <span class="n">mThrottle</span> <span class="o">=</span> <span class="k">new</span> <span class="n">CANSparkMax</span><span class="p">(</span><span class="n">throttleID</span><span class="p">,</span> <span class="n">MotorType</span><span class="p">.</span><span class="na">kBrushless</span><span class="p">);</span>
+<span class="linenos">26</span>    <span class="n">mThrottleEncoder</span> <span class="o">=</span> <span class="n">mThrottle</span><span class="p">.</span><span class="na">getEncoder</span><span class="p">();</span>
+<span class="linenos">27</span>
+<span class="linenos">28</span>    <span class="c1">// Instantiate rotor motor</span>
+<span class="linenos">29</span>    <span class="n">mRotor</span> <span class="o">=</span> <span class="k">new</span> <span class="n">CANSparkMax</span><span class="p">(</span><span class="n">rotorID</span><span class="p">,</span> <span class="n">MotorType</span><span class="p">.</span><span class="na">kBrushless</span><span class="p">);</span>
+<span class="linenos">30</span>
+<span class="linenos">31</span>    <span class="c1">// Instantiate rotor absolute encoder</span>
+<span class="linenos">32</span>    <span class="n">mRotorEncoder</span> <span class="o">=</span> <span class="k">new</span> <span class="n">WPI_CANCoder</span><span class="p">(</span><span class="n">rotorEncoderID</span><span class="p">);</span>
+<span class="linenos">33</span>
+<span class="linenos">34</span>    <span class="c1">// Reset all configuration</span>
+<span class="linenos">35</span>    <span class="c1">// (technically optional, but good practice in case there are old</span>
+<span class="linenos">36</span>    <span class="c1">// configurations that can mess with the code)</span>
+<span class="linenos">37</span>    <span class="n">mThrottle</span><span class="p">.</span><span class="na">restoreFactoryDefaults</span><span class="p">();</span>
+<span class="linenos">38</span>    <span class="n">mRotor</span><span class="p">.</span><span class="na">restoreFactoryDefaults</span><span class="p">();</span>
+<span class="linenos">39</span>    <span class="n">mRotorEncoder</span><span class="p">.</span><span class="na">configFactoryDefault</span><span class="p">();</span>
+<span class="linenos">40</span>
+<span class="linenos">41</span>    <span class="c1">// Configures rotor motor according to previously defined constants</span>
+<span class="linenos">42</span>    <span class="n">mRotor</span><span class="p">.</span><span class="na">setInverted</span><span class="p">(</span><span class="n">SwerveConstants</span><span class="p">.</span><span class="na">kRotorMotorInversion</span><span class="p">);</span>
+<span class="linenos">43</span>    <span class="n">mRotor</span><span class="p">.</span><span class="na">enableVoltageCompensation</span><span class="p">(</span><span class="n">Constants</span><span class="p">.</span><span class="na">kVoltageCompensation</span><span class="p">);</span>
+<span class="linenos">44</span>    <span class="n">mRotor</span><span class="p">.</span><span class="na">setIdleMode</span><span class="p">(</span><span class="n">IdleMode</span><span class="p">.</span><span class="na">kBrake</span><span class="p">);</span>
+<span class="linenos">45</span>
+<span class="linenos">46</span>    <span class="c1">// Configures rotor encoder according to previously defined constants</span>
+<span class="linenos">47</span>    <span class="n">mRotorEncoder</span><span class="p">.</span><span class="na">configAbsoluteSensorRange</span><span class="p">(</span><span class="n">AbsoluteSensorRange</span><span class="p">.</span><span class="na">Signed_PlusMinus180</span><span class="p">);</span>
+<span class="linenos">48</span>    <span class="n">mRotorEncoder</span><span class="p">.</span><span class="na">configMagnetOffset</span><span class="p">(</span><span class="n">rotorOffsetAngleDeg</span><span class="p">);</span>
+<span class="linenos">49</span>    <span class="n">mRotorEncoder</span><span class="p">.</span><span class="na">configSensorDirection</span><span class="p">(</span><span class="n">SwerveConstants</span><span class="p">.</span><span class="na">kRotorEncoderDirection</span><span class="p">);</span>
+<span class="linenos">50</span>    <span class="n">mRotorEncoder</span><span class="p">.</span><span class="na">configSensorInitializationStrategy</span><span class="p">(</span>
+<span class="linenos">51</span>        <span class="n">SensorInitializationStrategy</span><span class="p">.</span><span class="na">BootToAbsolutePosition</span>
+<span class="linenos">52</span>    <span class="p">);</span>
+<span class="linenos">53</span>
+<span class="linenos">54</span>    <span class="c1">// Configures rotor PID controller according to previously defined constants</span>
+<span class="linenos">55</span>    <span class="n">mRotorPID</span> <span class="o">=</span> <span class="k">new</span> <span class="n">PIDController</span><span class="p">(</span>
+<span class="linenos">56</span>        <span class="n">SwerveConstants</span><span class="p">.</span><span class="na">kRotor_kP</span><span class="p">,</span>
+<span class="linenos">57</span>        <span class="n">SwerveConstants</span><span class="p">.</span><span class="na">kRotor_kI</span><span class="p">,</span>
+<span class="linenos">58</span>        <span class="n">SwerveConstants</span><span class="p">.</span><span class="na">kRotor_kD</span>
+<span class="linenos">59</span>    <span class="p">);</span>
+<span class="linenos">60</span>
+<span class="linenos">61</span>    <span class="c1">// Continuous input considers the min &amp; max to be the same point and</span>
+<span class="linenos">62</span>    <span class="c1">// automatically calculates the shortest route to the setpoint</span>
+<span class="linenos">63</span>    <span class="n">mRotorPID</span><span class="p">.</span><span class="na">enableContinuousInput</span><span class="p">(</span><span class="o">-</span><span class="mi">180</span><span class="p">,</span> <span class="mi">180</span><span class="p">);</span>
+<span class="linenos">64</span>
+<span class="linenos">65</span>    <span class="c1">// Configures throttle motor according to previously defined constants</span>
+<span class="linenos">66</span>    <span class="n">mThrottle</span><span class="p">.</span><span class="na">enableVoltageCompensation</span><span class="p">(</span><span class="n">Constants</span><span class="p">.</span><span class="na">kVoltageCompensation</span><span class="p">);</span>
+<span class="linenos">67</span>    <span class="n">mThrottle</span><span class="p">.</span><span class="na">setIdleMode</span><span class="p">(</span><span class="n">IdleMode</span><span class="p">.</span><span class="na">kBrake</span><span class="p">);</span>
+<span class="linenos">68</span>
+<span class="linenos">69</span>    <span class="c1">// Sets conversion factor to throttle encoder so that it reads</span>
+<span class="linenos">70</span>    <span class="c1">// velocity in meters per second instead of RPM</span>
+<span class="linenos">71</span>    <span class="n">mThrottleEncoder</span><span class="p">.</span><span class="na">setVelocityConversionFactor</span><span class="p">(</span>
+<span class="linenos">72</span>        <span class="n">SwerveConstants</span><span class="p">.</span><span class="na">kThrottleVelocityConversionFactor</span>
+<span class="linenos">73</span>    <span class="p">);</span>
+<span class="linenos">74</span><span class="p">}</span>
 </pre></div>
 </div>
-</div><div aria-labelledby="tab-0-0-2" class="sphinx-tabs-panel" hidden="true" id="panel-0-0-2" name="0-2" role="tabpanel" tabindex="0"><div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="c1">// Initialize rotor &amp; throttle motors</span>
-<span class="kd">private</span> <span class="n">CANSparkMax</span> <span class="n">mRotor</span><span class="p">;</span>
-<span class="kd">private</span> <span class="n">CANSparkMax</span> <span class="n">mThrottle</span><span class="p">;</span>
-
-<span class="c1">// Initialize throttle encoder</span>
-<span class="kd">private</span> <span class="n">RelativeEncoder</span> <span class="n">mThrottleEncoder</span><span class="p">;</span>
-
-<span class="c1">// Initialize rotor encoder</span>
-<span class="kd">private</span> <span class="n">AnalogPotentiometer</span> <span class="n">mRotorEncoder</span><span class="p">;</span>
-
-<span class="c1">// Initialize rotor PID controller</span>
-<span class="kd">private</span> <span class="n">PIDController</span> <span class="n">mRotorPID</span><span class="p">;</span>
-
-<span class="cm">/**</span>
-<span class="cm"> * Construct new SwerveModule</span>
-<span class="cm"> *</span>
-<span class="cm"> * @param throttleID CAN ID of throttle motor</span>
-<span class="cm"> * @param rotorID CAN ID of rotor motor</span>
-<span class="cm"> * @param rotorEncoderID analog ID of rotor encoder</span>
-<span class="cm"> * @param rotorOffsetAngleDeg rotor encoder offset</span>
-<span class="cm"> */</span>
-<span class="kd">public</span> <span class="nf">SwerveModule</span><span class="p">(</span><span class="kt">int</span> <span class="n">throttleID</span><span class="p">,</span> <span class="kt">int</span> <span class="n">rotorID</span><span class="p">,</span> <span class="kt">int</span> <span class="n">rotorEncoderID</span><span class="p">,</span> <span class="kt">double</span> <span class="n">rotorOffsetAngleDeg</span><span class="p">)</span>
-<span class="p">{</span>
-    <span class="c1">// Instantiate throttle motor &amp; respective encoder</span>
-    <span class="n">mThrottle</span> <span class="o">=</span> <span class="k">new</span> <span class="n">CANSparkMax</span><span class="p">(</span><span class="n">throttleID</span><span class="p">,</span> <span class="n">MotorType</span><span class="p">.</span><span class="na">kBrushless</span><span class="p">);</span>
-    <span class="n">mThrottleEncoder</span> <span class="o">=</span> <span class="n">mThrottle</span><span class="p">.</span><span class="na">getEncoder</span><span class="p">();</span>
-
-    <span class="c1">// Instantiate rotor motor</span>
-    <span class="n">mRotor</span> <span class="o">=</span> <span class="k">new</span> <span class="n">CANSparkMax</span><span class="p">(</span><span class="n">rotorID</span><span class="p">,</span> <span class="n">MotorType</span><span class="p">.</span><span class="na">kBrushless</span><span class="p">);</span>
-
-    <span class="c1">// Instantiate rotor absolute encoder</span>
-    <span class="c1">// - Full range = 360 because that should be the max possible value the</span>
-    <span class="c1">//   encoder should return</span>
-    <span class="n">mRotorEncoder</span> <span class="o">=</span> <span class="k">new</span> <span class="n">AnalogPotentiometer</span><span class="p">(</span><span class="n">rotorEncoderID</span><span class="p">,</span> <span class="mi">360</span><span class="p">,</span> <span class="n">rotorOffsetAngleDeg</span><span class="p">);</span>
-
-    <span class="c1">// Reset all configuration</span>
-    <span class="c1">// (technically optional, but good practice in case there are old</span>
-    <span class="c1">// configurations that can mess with the code)</span>
-    <span class="n">mThrottle</span><span class="p">.</span><span class="na">restoreFactoryDefaults</span><span class="p">();</span>
-    <span class="n">mRotor</span><span class="p">.</span><span class="na">restoreFactoryDefaults</span><span class="p">();</span>
-
-    <span class="c1">// Configures rotor motor according to previously defined constants</span>
-    <span class="n">mRotor</span><span class="p">.</span><span class="na">setInverted</span><span class="p">(</span><span class="n">SwerveConstants</span><span class="p">.</span><span class="na">kRotorMotorInversion</span><span class="p">);</span>
-    <span class="n">mRotor</span><span class="p">.</span><span class="na">enableVoltageCompensation</span><span class="p">(</span><span class="n">Constants</span><span class="p">.</span><span class="na">kVoltageCompensation</span><span class="p">);</span>
-    <span class="n">mRotor</span><span class="p">.</span><span class="na">setIdleMode</span><span class="p">(</span><span class="n">IdleMode</span><span class="p">.</span><span class="na">kBrake</span><span class="p">);</span>
-
-    <span class="c1">// Configures rotor PID controller according to previously defined constants</span>
-    <span class="n">mRotorPID</span> <span class="o">=</span> <span class="k">new</span> <span class="n">PIDController</span><span class="p">(</span>
-        <span class="n">SwerveConstants</span><span class="p">.</span><span class="na">kRotor_kP</span><span class="p">,</span>
-        <span class="n">SwerveConstants</span><span class="p">.</span><span class="na">kRotor_kI</span><span class="p">,</span>
-        <span class="n">SwerveConstants</span><span class="p">.</span><span class="na">kRotor_kD</span>
-    <span class="p">);</span>
-
-    <span class="c1">// Continuous input considers the min &amp; max to be the same point and</span>
-    <span class="c1">// automatically calculates the shortest route to the setpoint</span>
-    <span class="n">mRotorPID</span><span class="p">.</span><span class="na">enableContinuousInput</span><span class="p">(</span><span class="o">-</span><span class="mi">180</span><span class="p">,</span> <span class="mi">180</span><span class="p">);</span>
-
-    <span class="c1">// Configures throttle motor according to previously defined constants</span>
-    <span class="n">mThrottle</span><span class="p">.</span><span class="na">enableVoltageCompensation</span><span class="p">(</span><span class="n">Constants</span><span class="p">.</span><span class="na">kVoltageCompensation</span><span class="p">);</span>
-    <span class="n">mThrottle</span><span class="p">.</span><span class="na">setIdleMode</span><span class="p">(</span><span class="n">IdleMode</span><span class="p">.</span><span class="na">kBrake</span><span class="p">);</span>
-<span class="p">}</span>
+</div><div aria-labelledby="tab-0-0-2" class="sphinx-tabs-panel" hidden="true" id="panel-0-0-2" name="0-2" role="tabpanel" tabindex="0"><div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="c1">// Initialize rotor &amp; throttle motors</span>
+<span class="linenos"> 2</span><span class="kd">private</span> <span class="n">CANSparkMax</span> <span class="n">mRotor</span><span class="p">;</span>
+<span class="linenos"> 3</span><span class="kd">private</span> <span class="n">CANSparkMax</span> <span class="n">mThrottle</span><span class="p">;</span>
+<span class="linenos"> 4</span>
+<span class="linenos"> 5</span><span class="c1">// Initialize throttle encoder</span>
+<span class="linenos"> 6</span><span class="kd">private</span> <span class="n">RelativeEncoder</span> <span class="n">mThrottleEncoder</span><span class="p">;</span>
+<span class="linenos"> 7</span>
+<span class="linenos"> 8</span><span class="c1">// Initialize rotor encoder</span>
+<span class="linenos"> 9</span><span class="kd">private</span> <span class="n">AnalogPotentiometer</span> <span class="n">mRotorEncoder</span><span class="p">;</span>
+<span class="linenos">10</span>
+<span class="linenos">11</span><span class="c1">// Initialize rotor PID controller</span>
+<span class="linenos">12</span><span class="kd">private</span> <span class="n">PIDController</span> <span class="n">mRotorPID</span><span class="p">;</span>
+<span class="linenos">13</span>
+<span class="linenos">14</span><span class="cm">/**</span>
+<span class="linenos">15</span><span class="cm"> * Construct new SwerveModule</span>
+<span class="linenos">16</span><span class="cm"> *</span>
+<span class="linenos">17</span><span class="cm"> * @param throttleID CAN ID of throttle motor</span>
+<span class="linenos">18</span><span class="cm"> * @param rotorID CAN ID of rotor motor</span>
+<span class="linenos">19</span><span class="cm"> * @param rotorEncoderID analog ID of rotor encoder</span>
+<span class="linenos">20</span><span class="cm"> * @param rotorOffsetAngleDeg rotor encoder offset</span>
+<span class="linenos">21</span><span class="cm"> */</span>
+<span class="linenos">22</span><span class="kd">public</span> <span class="nf">SwerveModule</span><span class="p">(</span><span class="kt">int</span> <span class="n">throttleID</span><span class="p">,</span> <span class="kt">int</span> <span class="n">rotorID</span><span class="p">,</span> <span class="kt">int</span> <span class="n">rotorEncoderID</span><span class="p">,</span> <span class="kt">double</span> <span class="n">rotorOffsetAngleDeg</span><span class="p">)</span>
+<span class="linenos">23</span><span class="p">{</span>
+<span class="linenos">24</span>    <span class="c1">// Instantiate throttle motor &amp; respective encoder</span>
+<span class="linenos">25</span>    <span class="n">mThrottle</span> <span class="o">=</span> <span class="k">new</span> <span class="n">CANSparkMax</span><span class="p">(</span><span class="n">throttleID</span><span class="p">,</span> <span class="n">MotorType</span><span class="p">.</span><span class="na">kBrushless</span><span class="p">);</span>
+<span class="linenos">26</span>    <span class="n">mThrottleEncoder</span> <span class="o">=</span> <span class="n">mThrottle</span><span class="p">.</span><span class="na">getEncoder</span><span class="p">();</span>
+<span class="linenos">27</span>
+<span class="linenos">28</span>    <span class="c1">// Instantiate rotor motor</span>
+<span class="linenos">29</span>    <span class="n">mRotor</span> <span class="o">=</span> <span class="k">new</span> <span class="n">CANSparkMax</span><span class="p">(</span><span class="n">rotorID</span><span class="p">,</span> <span class="n">MotorType</span><span class="p">.</span><span class="na">kBrushless</span><span class="p">);</span>
+<span class="linenos">30</span>
+<span class="linenos">31</span>    <span class="c1">// Instantiate rotor absolute encoder</span>
+<span class="linenos">32</span>    <span class="c1">// - Full range = 360 because that should be the max possible value the</span>
+<span class="linenos">33</span>    <span class="c1">//   encoder should return</span>
+<span class="linenos">34</span>    <span class="n">mRotorEncoder</span> <span class="o">=</span> <span class="k">new</span> <span class="n">AnalogPotentiometer</span><span class="p">(</span><span class="n">rotorEncoderID</span><span class="p">,</span> <span class="mi">360</span><span class="p">,</span> <span class="n">rotorOffsetAngleDeg</span><span class="p">);</span>
+<span class="linenos">35</span>
+<span class="linenos">36</span>    <span class="c1">// Reset all configuration</span>
+<span class="linenos">37</span>    <span class="c1">// (technically optional, but good practice in case there are old</span>
+<span class="linenos">38</span>    <span class="c1">// configurations that can mess with the code)</span>
+<span class="linenos">39</span>    <span class="n">mThrottle</span><span class="p">.</span><span class="na">restoreFactoryDefaults</span><span class="p">();</span>
+<span class="linenos">40</span>    <span class="n">mRotor</span><span class="p">.</span><span class="na">restoreFactoryDefaults</span><span class="p">();</span>
+<span class="linenos">41</span>
+<span class="linenos">42</span>    <span class="c1">// Configures rotor motor according to previously defined constants</span>
+<span class="linenos">43</span>    <span class="n">mRotor</span><span class="p">.</span><span class="na">setInverted</span><span class="p">(</span><span class="n">SwerveConstants</span><span class="p">.</span><span class="na">kRotorMotorInversion</span><span class="p">);</span>
+<span class="linenos">44</span>    <span class="n">mRotor</span><span class="p">.</span><span class="na">enableVoltageCompensation</span><span class="p">(</span><span class="n">Constants</span><span class="p">.</span><span class="na">kVoltageCompensation</span><span class="p">);</span>
+<span class="linenos">45</span>    <span class="n">mRotor</span><span class="p">.</span><span class="na">setIdleMode</span><span class="p">(</span><span class="n">IdleMode</span><span class="p">.</span><span class="na">kBrake</span><span class="p">);</span>
+<span class="linenos">46</span>
+<span class="linenos">47</span>    <span class="c1">// Configures rotor PID controller according to previously defined constants</span>
+<span class="linenos">48</span>    <span class="n">mRotorPID</span> <span class="o">=</span> <span class="k">new</span> <span class="n">PIDController</span><span class="p">(</span>
+<span class="linenos">49</span>        <span class="n">SwerveConstants</span><span class="p">.</span><span class="na">kRotor_kP</span><span class="p">,</span>
+<span class="linenos">50</span>        <span class="n">SwerveConstants</span><span class="p">.</span><span class="na">kRotor_kI</span><span class="p">,</span>
+<span class="linenos">51</span>        <span class="n">SwerveConstants</span><span class="p">.</span><span class="na">kRotor_kD</span>
+<span class="linenos">52</span>    <span class="p">);</span>
+<span class="linenos">53</span>
+<span class="linenos">54</span>    <span class="c1">// Continuous input considers the min &amp; max to be the same point and</span>
+<span class="linenos">55</span>    <span class="c1">// automatically calculates the shortest route to the setpoint</span>
+<span class="linenos">56</span>    <span class="n">mRotorPID</span><span class="p">.</span><span class="na">enableContinuousInput</span><span class="p">(</span><span class="o">-</span><span class="mi">180</span><span class="p">,</span> <span class="mi">180</span><span class="p">);</span>
+<span class="linenos">57</span>
+<span class="linenos">58</span>    <span class="c1">// Configures throttle motor according to previously defined constants</span>
+<span class="linenos">59</span>    <span class="n">mThrottle</span><span class="p">.</span><span class="na">enableVoltageCompensation</span><span class="p">(</span><span class="n">Constants</span><span class="p">.</span><span class="na">kVoltageCompensation</span><span class="p">);</span>
+<span class="linenos">60</span>    <span class="n">mThrottle</span><span class="p">.</span><span class="na">setIdleMode</span><span class="p">(</span><span class="n">IdleMode</span><span class="p">.</span><span class="na">kBrake</span><span class="p">);</span>
+<span class="linenos">61</span>
+<span class="linenos">62</span>    <span class="c1">// Sets conversion factor to throttle encoder so that it reads</span>
+<span class="linenos">63</span>    <span class="c1">// velocity in meters per second instead of RPM</span>
+<span class="linenos">64</span>    <span class="n">mThrottleEncoder</span><span class="p">.</span><span class="na">setVelocityConversionFactor</span><span class="p">(</span>
+<span class="linenos">65</span>        <span class="n">SwerveConstants</span><span class="p">.</span><span class="na">kThrottleVelocityConversionFactor</span>
+<span class="linenos">66</span>    <span class="p">);</span>
+<span class="linenos">67</span><span class="p">}</span>
 </pre></div>
 </div>
 </div></div>
@@ -321,23 +327,23 @@ to prevent damage to the motors. Checkout the <a class="reference external" href
 <h3>getState<a class="headerlink" href="#getstate" title="Permalink to this headline"></a></h3>
 <p>Outputs the current state of the swerve module.</p>
 <div class="sphinx-tabs docutils container">
-<div aria-label="Tabbed content" role="tablist"><button aria-controls="panel-1-1-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-1-1-0" name="1-0" role="tab" tabindex="0">Talon FX</button><button aria-controls="panel-1-1-1" aria-selected="false" class="sphinx-tabs-tab" id="tab-1-1-1" name="1-1" role="tab" tabindex="-1">SPARK MAX</button></div><div aria-labelledby="tab-1-1-0" class="sphinx-tabs-panel" id="panel-1-1-0" name="1-0" role="tabpanel" tabindex="0"><div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="kd">public</span> <span class="n">SwerveModuleState</span> <span class="nf">getState</span><span class="p">()</span> <span class="p">{</span>
-    <span class="kt">double</span> <span class="n">throttleVelocity</span> <span class="o">=</span>
-        <span class="n">mThrottle</span><span class="p">.</span><span class="na">getSelectedSensorVelocity</span><span class="p">()</span> <span class="o">*</span> <span class="n">SwerveConstants</span><span class="p">.</span><span class="na">kThrottleVelocityConversionFactor</span><span class="p">;</span>
-
-    <span class="k">return</span> <span class="k">new</span> <span class="n">SwerveModuleState</span><span class="p">(</span>
-        <span class="n">throttleVelocity</span><span class="p">,</span>
-        <span class="n">Rotation2d</span><span class="p">.</span><span class="na">fromDegrees</span><span class="p">(</span><span class="n">mRotorEncoder</span><span class="p">.</span><span class="na">getAbsolutePosition</span><span class="p">())</span>
-    <span class="p">);</span>
-<span class="p">}</span>
+<div aria-label="Tabbed content" role="tablist"><button aria-controls="panel-1-1-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-1-1-0" name="1-0" role="tab" tabindex="0">Talon FX</button><button aria-controls="panel-1-1-1" aria-selected="false" class="sphinx-tabs-tab" id="tab-1-1-1" name="1-1" role="tab" tabindex="-1">SPARK MAX</button></div><div aria-labelledby="tab-1-1-0" class="sphinx-tabs-panel" id="panel-1-1-0" name="1-0" role="tabpanel" tabindex="0"><div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="kd">public</span> <span class="n">SwerveModuleState</span> <span class="nf">getState</span><span class="p">()</span> <span class="p">{</span>
+<span class="linenos">2</span>    <span class="kt">double</span> <span class="n">throttleVelocity</span> <span class="o">=</span>
+<span class="linenos">3</span>        <span class="n">mThrottle</span><span class="p">.</span><span class="na">getSelectedSensorVelocity</span><span class="p">()</span> <span class="o">*</span> <span class="n">SwerveConstants</span><span class="p">.</span><span class="na">kThrottleVelocityConversionFactor</span><span class="p">;</span>
+<span class="linenos">4</span>
+<span class="linenos">5</span>    <span class="k">return</span> <span class="k">new</span> <span class="n">SwerveModuleState</span><span class="p">(</span>
+<span class="linenos">6</span>        <span class="n">throttleVelocity</span><span class="p">,</span>
+<span class="linenos">7</span>        <span class="n">Rotation2d</span><span class="p">.</span><span class="na">fromDegrees</span><span class="p">(</span><span class="n">mRotorEncoder</span><span class="p">.</span><span class="na">getAbsolutePosition</span><span class="p">())</span>
+<span class="linenos">8</span>    <span class="p">);</span>
+<span class="linenos">9</span><span class="p">}</span>
 </pre></div>
 </div>
-</div><div aria-labelledby="tab-1-1-1" class="sphinx-tabs-panel" hidden="true" id="panel-1-1-1" name="1-1" role="tabpanel" tabindex="0"><div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="kd">public</span> <span class="n">SwerveModuleState</span> <span class="nf">getState</span><span class="p">()</span> <span class="p">{</span>
-    <span class="k">return</span> <span class="k">new</span> <span class="n">SwerveModuleState</span><span class="p">(</span>
-        <span class="n">mThrottleEncoder</span><span class="p">.</span><span class="na">getVelocity</span><span class="p">(),</span>
-        <span class="n">Rotation2d</span><span class="p">.</span><span class="na">fromDegrees</span><span class="p">(</span><span class="n">mRotorEncoder</span><span class="p">.</span><span class="na">getAbsolutePosition</span><span class="p">())</span>
-    <span class="p">);</span>
-<span class="p">}</span>
+</div><div aria-labelledby="tab-1-1-1" class="sphinx-tabs-panel" hidden="true" id="panel-1-1-1" name="1-1" role="tabpanel" tabindex="0"><div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="kd">public</span> <span class="n">SwerveModuleState</span> <span class="nf">getState</span><span class="p">()</span> <span class="p">{</span>
+<span class="linenos">2</span>    <span class="k">return</span> <span class="k">new</span> <span class="n">SwerveModuleState</span><span class="p">(</span>
+<span class="linenos">3</span>        <span class="n">mThrottleEncoder</span><span class="p">.</span><span class="na">getVelocity</span><span class="p">(),</span>
+<span class="linenos">4</span>        <span class="n">Rotation2d</span><span class="p">.</span><span class="na">fromDegrees</span><span class="p">(</span><span class="n">mRotorEncoder</span><span class="p">.</span><span class="na">getAbsolutePosition</span><span class="p">())</span>
+<span class="linenos">5</span>    <span class="p">);</span>
+<span class="linenos">6</span><span class="p">}</span>
 </pre></div>
 </div>
 </div></div>
@@ -352,21 +358,21 @@ throttle velocity and rotor angle.</p>
 <section id="setstate">
 <h3>setState<a class="headerlink" href="#setstate" title="Permalink to this headline"></a></h3>
 <p>Sets the state of the swerve module.</p>
-<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="kd">public</span> <span class="kt">void</span> <span class="nf">setState</span><span class="p">(</span><span class="n">SwerveModuleState</span> <span class="n">state</span><span class="p">)</span> <span class="p">{</span>
-    <span class="c1">// Optimize the desired state so that the rotor doesn&#39;t have to spin more than</span>
-    <span class="c1">// 90 degrees to get to the desired angle</span>
-    <span class="n">SwerveModuleState</span> <span class="n">optimizedState</span> <span class="o">=</span> <span class="n">SwerveModuleState</span><span class="p">.</span><span class="na">optimize</span><span class="p">(</span><span class="n">state</span><span class="p">,</span> <span class="n">getState</span><span class="p">().</span><span class="na">angle</span><span class="p">);</span>
-
-    <span class="c1">// Calculate rotor output using rotor PID controller by comparing the current</span>
-    <span class="c1">// angle with the desired angle</span>
-    <span class="kt">double</span> <span class="n">rotorOutput</span> <span class="o">=</span> <span class="n">mRotorPID</span><span class="p">.</span><span class="na">calculate</span><span class="p">(</span>
-        <span class="n">getState</span><span class="p">().</span><span class="na">angle</span><span class="p">.</span><span class="na">getDegrees</span><span class="p">(),</span>
-        <span class="n">optimizedState</span><span class="p">.</span><span class="na">angle</span><span class="p">.</span><span class="na">getDegrees</span><span class="p">()</span>
-    <span class="p">);</span>
-
-    <span class="n">mRotor</span><span class="p">.</span><span class="na">set</span><span class="p">(</span><span class="n">rotorOutput</span><span class="p">);</span>
-    <span class="n">mThrottle</span><span class="p">.</span><span class="na">set</span><span class="p">(</span><span class="n">optimizedState</span><span class="p">.</span><span class="na">speedMetersPerSecond</span><span class="p">);</span>
-<span class="p">}</span>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="kd">public</span> <span class="kt">void</span> <span class="nf">setState</span><span class="p">(</span><span class="n">SwerveModuleState</span> <span class="n">state</span><span class="p">)</span> <span class="p">{</span>
+<span class="linenos"> 2</span>    <span class="c1">// Optimize the desired state so that the rotor doesn&#39;t have to spin more than</span>
+<span class="linenos"> 3</span>    <span class="c1">// 90 degrees to get to the desired angle</span>
+<span class="linenos"> 4</span>    <span class="n">SwerveModuleState</span> <span class="n">optimizedState</span> <span class="o">=</span> <span class="n">SwerveModuleState</span><span class="p">.</span><span class="na">optimize</span><span class="p">(</span><span class="n">state</span><span class="p">,</span> <span class="n">getState</span><span class="p">().</span><span class="na">angle</span><span class="p">);</span>
+<span class="linenos"> 5</span>
+<span class="linenos"> 6</span>    <span class="c1">// Calculate rotor output using rotor PID controller by comparing the current</span>
+<span class="linenos"> 7</span>    <span class="c1">// angle with the desired angle</span>
+<span class="linenos"> 8</span>    <span class="kt">double</span> <span class="n">rotorOutput</span> <span class="o">=</span> <span class="n">mRotorPID</span><span class="p">.</span><span class="na">calculate</span><span class="p">(</span>
+<span class="linenos"> 9</span>        <span class="n">getState</span><span class="p">().</span><span class="na">angle</span><span class="p">.</span><span class="na">getDegrees</span><span class="p">(),</span>
+<span class="linenos">10</span>        <span class="n">optimizedState</span><span class="p">.</span><span class="na">angle</span><span class="p">.</span><span class="na">getDegrees</span><span class="p">()</span>
+<span class="linenos">11</span>    <span class="p">);</span>
+<span class="linenos">12</span>
+<span class="linenos">13</span>    <span class="n">mRotor</span><span class="p">.</span><span class="na">set</span><span class="p">(</span><span class="n">rotorOutput</span><span class="p">);</span>
+<span class="linenos">14</span>    <span class="n">mThrottle</span><span class="p">.</span><span class="na">set</span><span class="p">(</span><span class="n">optimizedState</span><span class="p">.</span><span class="na">speedMetersPerSecond</span><span class="p">);</span>
+<span class="linenos">15</span><span class="p">}</span>
 </pre></div>
 </div>
 <section id="parameters">

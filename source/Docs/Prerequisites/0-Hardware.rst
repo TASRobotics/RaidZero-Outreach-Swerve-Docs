@@ -101,7 +101,7 @@ for measuring the angle of the rotor. It is a great sensor but it can be a bit e
 Thus, teams with a tighter 
 budget can consider using the `Thrifty Absolute Magnetic Encoder 
 <https://www.thethriftybot.com/bearings/Thrifty-Absolute-Magnetic-Encoder-p421607500>`_. 
-This encoder uses the same mount as normal CANCoders, but come at a much cheaper price. 
+This encoder uses the same mount as normal CANCoders, but comes at a much cheaper price. 
 
 .. list-table:: 
 
@@ -123,7 +123,7 @@ IMU
 ===
 
 Additionally, teams must have an IMU on the robot to measure the angle of the robot. Popular 
-IMU choices include `Pigeon <https://store.ctr-electronics.com/pigeon-2/>`_ and 
+IMU choices include the `Pigeon <https://store.ctr-electronics.com/pigeon-2/>`_ and 
 `navX <https://www.andymark.com/products/navx2-mxp-robotics-navigation-sensor>`_ IMUs. 
 
 .. list-table:: 
@@ -145,6 +145,6 @@ IMU choices include `Pigeon <https://store.ctr-electronics.com/pigeon-2/>`_ and
 Conclusion
 **********
 
-As shown above, there are numerous ways you can create your custom swerve, 
+As shown above, there are numerous ways to customize your swerve, 
 all of which have their advantages and disadvantages. In the end, it all comes 
 down to how much time and money you are willing to spend on your swerve.

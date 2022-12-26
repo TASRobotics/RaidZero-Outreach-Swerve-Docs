@@ -29,9 +29,9 @@ you will need to know to get a swerve drive up and running.
 
 .. toctree::
    :titlesonly:
-   :caption: Extra
+   :caption: Further Topics
    
-   Docs/Software/7-FurtherTopics
+   Docs/FurtherTopics/7-Feedforward
 
 .. image:: Docs/Photos/LogoBW.png
     :scale: 10%

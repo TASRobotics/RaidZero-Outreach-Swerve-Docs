@@ -3,8 +3,8 @@ Swerve Configuration
 ####################
 
 Before you can start programming the swerve, you need to collect constants 
-specific to your robot. These constants will be used to configure the swerve. 
-All constants will be located in the ``Constants.java`` file. 
+specific to your robot that will be used to configure the swerve. 
+All constants will be recorded in ``Constants.java``. 
 
 Motor & Sensor IDs
 ******************
@@ -12,6 +12,7 @@ Motor & Sensor IDs
 Record the CAN IDs of the rotor and throttle motors. 
 
 .. code-block:: java
+    :linenos:
 
     // Rotor IDs
     public static final int kLeftFrontRotorID = 0;
@@ -28,6 +29,7 @@ Record the CAN IDs of the rotor and throttle motors.
 Record the CAN or analog IDs of the rotor encoders and IMU (not applicable for navX).
 
 .. code-block:: java
+    :linenos:
 
     // Rotor Encoder IDs
     public static final int kLeftFrontRotorEncoderID = 0;
@@ -42,11 +44,11 @@ Rotor Encoder Offsets
 *********************
 
 In order for the angle of the swerve modules to be in sync, you must
-compensate for potential encoder offsets. 
+compensate for potential rotor encoder offsets. 
 
 First, rotate the modules so that all wheels are facing in the same direction. 
-Additionally, when positive power is applied to the throttle motors, all 
-wheels should spin in the forward direction. 
+Next, ensure that when positive power is applied to throttle motors, all 
+wheels spin in the forward direction. 
 
 .. figure:: ../Photos/UpsidedownSwerve.jpg
     :scale: 35%
@@ -56,6 +58,7 @@ wheels should spin in the forward direction.
 Record the rotor encoder values for each module in the ``Constants.java`` file.
 
 .. code-block:: java
+    :linenos:
     
     public static final double kLeftFrontRotorOffset = -1 * LEFT_FRONT_ANGLE;
     public static final double kRightFrontRotorOffset = -1 * RIGHT_FRONT_ANGLE;
@@ -76,6 +79,7 @@ case, you will need to invert the rotor motor or encoder in the ``Constants.java
 by changing the boolean value of the motor/encoder to ``true``.
 
 .. code-block:: java
+    :linenos:
 
     public static final boolean kRotorEncoderDirection = false;
     public static final boolean kRotorMotorInversion = false;
@@ -92,6 +96,7 @@ positive X is forward, and positive Y is left, the configuration should
 look something like this. 
 
 .. code-block:: java
+    :linenos:
 
     // Swerve module order: front left, front right, rear left, rear right
     public static final SwerveDriveKinematics kSwerveKinematics = new SwerveDriveKinematics(
@@ -110,6 +115,7 @@ Max Speed/Acceleration
 Record the maximum speed and acceleration of the robot (meters).
 
 .. code-block:: java
+    :linenos:
 
     public static final double kMaxVelocityMetersPerSecond = 0.0;
     public static final double kMaxAccelerationMetersPerSecond = 0.0;
@@ -120,6 +126,7 @@ Wheel Diameter
 Record the diameter of the swerve wheels (meters).
 
 .. code-block:: java
+    :linenos:
 
     public static final double kWheelDiameterMeters = 0.0;
 
@@ -130,6 +137,7 @@ Record the throttle gear ratio (number of turns it takes the motor to rotate
 the wheel one revolution)
 
 .. code-block:: java
+    :linenos:
 
     public static final double kThrottleGearRatio = 0.0; 
 
@@ -146,6 +154,7 @@ be used to convert from throttle encoder velocity to linear velocity (meters/sec
         :math:`conversion = \frac{1}{gear ratio} \times \frac{1}{60} \times {wheel diameter} \times \pi`
 
         .. code-block:: java
+            :linenos:
 
             public static final double kThrottleVelocityConversionFactor = 
                 1/kThrottleGearRatio/60*kWheelDiameterMeters*Math.PI;
@@ -161,6 +170,7 @@ be used to convert from throttle encoder velocity to linear velocity (meters/sec
             used to convert from Falcon encoder ticks to rotations.
 
         .. code-block:: java
+            :linenos:
 
             public static final double kThrottleVelocityConversionFactor = 
                 1/kThrottleGearRatio/2048*kWheelDiameterMeters*Math.PI*10;

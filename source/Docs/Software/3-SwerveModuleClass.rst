@@ -24,6 +24,7 @@ Constructor
     .. tab:: Talon FX & CANCoder
 
         .. code-block:: java
+            :linenos:
 
             // Initialize rotor & throttle motors 
             private WPI_TalonFX mRotor;
@@ -96,6 +97,7 @@ Constructor
     .. tab:: SPARK MAX & CANCoder
 
         .. code-block:: java
+            :linenos:
 
             // Initialize rotor & throttle motors 
             private CANSparkMax mRotor;
@@ -175,6 +177,7 @@ Constructor
     .. tab:: SPARK MAX & Analog Absolute Encoder
 
         .. code-block:: java
+            :linenos:
 
             // Initialize rotor & throttle motors 
             private CANSparkMax mRotor;
@@ -236,6 +239,12 @@ Constructor
                 // Configures throttle motor according to previously defined constants
                 mThrottle.enableVoltageCompensation(Constants.kVoltageCompensation);
                 mThrottle.setIdleMode(IdleMode.kBrake);
+
+                // Sets conversion factor to throttle encoder so that it reads 
+                // velocity in meters per second instead of RPM
+                mThrottleEncoder.setVelocityConversionFactor(
+                    SwerveConstants.kThrottleVelocityConversionFactor
+                );
             }
 
 .. warning:: 
@@ -260,6 +269,7 @@ Outputs the current state of the swerve module.
     .. tab:: Talon FX
 
         .. code-block:: java
+            :linenos:
 
             public SwerveModuleState getState() {
                 double throttleVelocity = 
@@ -274,6 +284,7 @@ Outputs the current state of the swerve module.
     .. tab:: SPARK MAX
 
         .. code-block:: java
+            :linenos:
 
             public SwerveModuleState getState() {
                 return new SwerveModuleState(
@@ -295,6 +306,7 @@ setState
 Sets the state of the swerve module.
 
 .. code-block:: java
+    :linenos:
 
     public void setState(SwerveModuleState state) {
         // Optimize the desired state so that the rotor doesn't have to spin more than
