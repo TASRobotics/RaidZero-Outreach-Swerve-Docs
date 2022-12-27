@@ -22,17 +22,11 @@ you will need to know to get a swerve drive up and running.
    :titlesonly:
    :caption: Swerve: Software
 
-<<<<<<< HEAD
    Docs/Software/3-SwerveModuleClass
    Docs/Software/4-SwerveClass
-   Docs/Software/5-Teleop
+   Docs/Software/5-TeleOp
    Docs/Software/6-Auton
-=======
-   Docs/Software/SwerveModuleClass
-   Docs/Software/SwerveClass
-   Docs/Software/TeleOp
->>>>>>> 3f8af11101e005bba13c0037120b8d41aba50d14
-
+   
 .. toctree::
    :titlesonly:
    :caption: Further Topics
