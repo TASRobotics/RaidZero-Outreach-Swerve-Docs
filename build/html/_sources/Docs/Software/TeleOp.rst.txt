@@ -2,8 +2,8 @@
 TeleOp
 ######
 
-This section will be explaining manual robot control (Teleop). Teleop is short for teleoperation, or remote operation. 
-It indicates the operation of a system or machine at a distance. This documentation will be referring to the manual drive class, and specific parts of the RobotContainer class.
+This section will be explaining manual robot control (Teleop), which lasts 2 minutes and 15 seconds of the game.
+This documentation will be referring to the manual drive class, and specific parts of the RobotContainer class.
 More information about RobotContainer can be found `here <https://docs.wpilib.org/en/stable/docs/software/commandbased/structuring-command-based-project.html#robotcontainer>`_.
 
 Driving
@@ -16,33 +16,60 @@ For example, if the robot is facing east and the joystick is pushed forward, the
 Compared to robot oriented driving, the joystick's movement would be relative to the robot instead of the field.
 For example, if the robot was facing east and the joystick is pushed forward, the robot would move east.
 
+.. list-table:: **Field vs robot oriented driving**
+   :widths: 25 50 50
+   :header-rows: 1
+
+   * - 
+     - Field oriented
+     - Robot oriented
+   * - Omnidirectional
+     - Yes
+     - Yes
+   * - Requires IMU
+     - Yes (IMU drift*)
+     - No
+   * - Joystick movement
+     - Relative to field
+     - Relative to robot
+
+\* IMU drift may cause slight inaccuracy in field oriented driving.
+
 Joystick inputs
 ===============
 
 The X-axis of the bot controls the robot's left and right position relative to the field, while the Y-axis controls movement to and away from the driver. 
 The Z-axis rotates the robot.
-Here's an example of a `swerve drive <https://www.youtube.com/watch?v=50ZRrYFWPIc&ab_channel=FirstUpdatesNow>`_ and how it's controlled.
+Here's a demonstration of field oriented control:
+
+.. raw:: html
+
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/50ZRrYFWPIc?start=21" title="Field oriented control" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 
-Constructor
-===========
+Drive command
+=============
+
+The code below shows the constructor for the ManualDrive class.
 
 .. code-block:: java
 
-    private final Swerve mSwerve;
     // Initializes Swerve object
-    private final XboxController mController;
+    private final Swerve mSwerve;
     // Initializes Controller object
+    private final XboxController mController;
     
     public ManualDrive(Swerve drive, XboxController controller) {
-        mSwerve = drive;
         // Assigns Swerve object to parameter
-        mController = controller;
+        mSwerve = drive;
         // Assigns Controller object to parameter
+        mController = controller;
 
-        addRequirements(mSwerve);
         // Adds requirement of Swerve argument
+        addRequirements(mSwerve);
     }
+
+
 
 **Parameters:**
 ---------------
@@ -50,17 +77,19 @@ Constructor
 1. ``drive`` - a swerve object for the drive
 2. ``controller`` - a XboxController method for the controller
 
+A drive command has to be created to manually operate the robot. Calling the constructor will create the drive command, where it will then be used in RobotContainer.
 
-Methods
-=======
+
+Calling drive command
+=====================
 
 .. code-block:: java
 
     @Override 
     public void execute() {
-        mSwerve.drive(mController.getLeftY(), mController.getLeftX(), mController.getRightX(), true);
         // Drives with XSpeed, YSpeed, zSpeed
         // True/false for field oriented driving
+        mSwerve.drive(mController.getLeftY(), mController.getLeftX(), mController.getRightX(), true);
     }
 
    
@@ -68,18 +97,21 @@ The ManualDrive class is also used in the RobotContainer class, where the struct
 
 
 In ``RobotContainer.java``
-==========================
+--------------------------
 
 .. code-block:: java
 
+    // Creates a new instance of ManualDrive passing Swerve and Controller as parameters
     private final ManualDrive mManualDriveCommand = new ManualDrive(mSwerve, mController);
-    // Creates a new instance of ManualDrive passing Swerve and Controller as parameters.
-    
+
     public RobotContainer() {
         // Configure the button bindings
         configureButtonBindings();
 
-        mSwerve.setDefaultCommand(mManualDriveCommand);
         //set ManualDrive to be executed when in manual control
+        mSwerve.setDefaultCommand(mManualDriveCommand);
     }
-    
+
+A new instance of ManualDrive is created, which also creates the drive command.
+To use the drive command in RobotContainer, the default command of the Swerve object is set to the instance created. 
+When Teleop starts, the ManualDrive command will be automatically executed.
