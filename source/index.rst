@@ -24,9 +24,9 @@ you will need to know to get a swerve drive up and running.
 
    Docs/Software/3-SwerveModuleClass
    Docs/Software/4-SwerveClass
-   Docs/Software/5-Teleop
+   Docs/Software/5-TeleOp
    Docs/Software/6-Auton
-
+   
 .. toctree::
    :titlesonly:
    :caption: Further Topics

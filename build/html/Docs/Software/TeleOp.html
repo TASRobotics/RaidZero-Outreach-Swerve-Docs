@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TeleOp &mdash; 4253 Swerve Documentation 1.0.0 documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/tabs.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/sphinx_highlight.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Sample" href="../Sample.html" />
+    <link rel="prev" title="Swerve Class" href="SwerveClass.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../index.html" class="icon icon-home"> 4253 Swerve Documentation
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Swerve: Pre-Software</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../Prerequisites/Hardware.html">Hardware</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Prerequisites/SoftwarePrerequisites.html">Software Prerequisites</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Prerequisites/Conventions.html">Conventions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Prerequisites/Configuration.html">Swerve Configuration</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Swerve: Software</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="SwerveModuleClass.html">SwerveModule Class</a></li>
+<li class="toctree-l1"><a class="reference internal" href="SwerveClass.html">Swerve Class</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">TeleOp</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Other</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../Sample.html">Sample</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">4253 Swerve Documentation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home"></a></li>
+      <li class="breadcrumb-item active">TeleOp</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/Docs/Software/TeleOp.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="teleop">
+<h1>TeleOp<a class="headerlink" href="#teleop" title="Permalink to this heading"></a></h1>
+<p>This section will be explaining manual robot control (Teleop), which lasts 2 minutes and 15 seconds of the game.
+This documentation will be referring to the manual drive class, and specific parts of the RobotContainer class.
+More information about RobotContainer can be found <a class="reference external" href="https://docs.wpilib.org/en/stable/docs/software/commandbased/structuring-command-based-project.html#robotcontainer">here</a>.</p>
+<section id="driving">
+<h2>Driving<a class="headerlink" href="#driving" title="Permalink to this heading"></a></h2>
+<p>Field oriented driving involves an omnidirectional drive system that provides strafing motion in all directions and rotations with respect to the field.
+When the driving joystick is pushed forward, the robot moves forward with respect to the field.
+For example, if the robot is facing east and the joystick is pushed forward, the robot would move north.</p>
+<p>Compared to robot oriented driving, the joystick’s movement would be relative to the robot instead of the field.
+For example, if the robot was facing east and the joystick is pushed forward, the robot would move east.</p>
+<table class="colwidths-given docutils align-default" id="id1">
+<caption><span class="caption-text"><strong>Field vs robot oriented driving</strong></span><a class="headerlink" href="#id1" title="Permalink to this table"></a></caption>
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 40%" />
+<col style="width: 40%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"></th>
+<th class="head"><p>Field oriented</p></th>
+<th class="head"><p>Robot oriented</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Omnidirectional</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+</tr>
+<tr class="row-odd"><td><p>Requires IMU</p></td>
+<td><p>Yes (IMU drift*)</p></td>
+<td><p>No</p></td>
+</tr>
+<tr class="row-even"><td><p>Joystick movement</p></td>
+<td><p>Relative to field</p></td>
+<td><p>Relative to robot</p></td>
+</tr>
+</tbody>
+</table>
+<p>* IMU drift may cause slight inaccuracy in field oriented driving.</p>
+</section>
+<section id="joystick-inputs">
+<h2>Joystick inputs<a class="headerlink" href="#joystick-inputs" title="Permalink to this heading"></a></h2>
+<p>The X-axis of the bot controls the robot’s left and right position relative to the field, while the Y-axis controls movement to and away from the driver.
+The Z-axis rotates the robot.
+Here’s a demonstration of field oriented control:</p>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/50ZRrYFWPIc?start=21" title="Field oriented control" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></section>
+<section id="drive-command">
+<h2>Drive command<a class="headerlink" href="#drive-command" title="Permalink to this heading"></a></h2>
+<p>The code below shows the constructor for the ManualDrive class.</p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="c1">// Initializes Swerve object</span><span class="w"></span>
+<span class="kd">private</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="n">Swerve</span><span class="w"> </span><span class="n">mSwerve</span><span class="p">;</span><span class="w"></span>
+<span class="c1">// Initializes Controller object</span><span class="w"></span>
+<span class="kd">private</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="n">XboxController</span><span class="w"> </span><span class="n">mController</span><span class="p">;</span><span class="w"></span>
+
+<span class="kd">public</span><span class="w"> </span><span class="nf">ManualDrive</span><span class="p">(</span><span class="n">Swerve</span><span class="w"> </span><span class="n">drive</span><span class="p">,</span><span class="w"> </span><span class="n">XboxController</span><span class="w"> </span><span class="n">controller</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="c1">// Assigns Swerve object to parameter</span><span class="w"></span>
+<span class="w">    </span><span class="n">mSwerve</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">drive</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="c1">// Assigns Controller object to parameter</span><span class="w"></span>
+<span class="w">    </span><span class="n">mController</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">controller</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">    </span><span class="c1">// Adds requirement of Swerve argument</span><span class="w"></span>
+<span class="w">    </span><span class="n">addRequirements</span><span class="p">(</span><span class="n">mSwerve</span><span class="p">);</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+<section id="parameters">
+<h3><strong>Parameters:</strong><a class="headerlink" href="#parameters" title="Permalink to this heading"></a></h3>
+<ol class="arabic simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">drive</span></code> - a swerve object for the drive</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">controller</span></code> - a XboxController method for the controller</p></li>
+</ol>
+<p>A drive command has to be created to manually operate the robot. Calling the constructor will create the drive command, where it will then be used in RobotContainer.</p>
+</section>
+</section>
+<section id="calling-drive-command">
+<h2>Calling drive command<a class="headerlink" href="#calling-drive-command" title="Permalink to this heading"></a></h2>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="nd">@Override</span><span class="w"></span>
+<span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">execute</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="c1">// Drives with XSpeed, YSpeed, zSpeed</span><span class="w"></span>
+<span class="w">    </span><span class="c1">// True/false for field oriented driving</span><span class="w"></span>
+<span class="w">    </span><span class="n">mSwerve</span><span class="p">.</span><span class="na">drive</span><span class="p">(</span><span class="n">mController</span><span class="p">.</span><span class="na">getLeftY</span><span class="p">(),</span><span class="w"> </span><span class="n">mController</span><span class="p">.</span><span class="na">getLeftX</span><span class="p">(),</span><span class="w"> </span><span class="n">mController</span><span class="p">.</span><span class="na">getRightX</span><span class="p">(),</span><span class="w"> </span><span class="kc">true</span><span class="p">);</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+<p>The ManualDrive class is also used in the RobotContainer class, where the structure of the robot is declared.</p>
+<section id="in-robotcontainer-java">
+<h3>In <code class="docutils literal notranslate"><span class="pre">RobotContainer.java</span></code><a class="headerlink" href="#in-robotcontainer-java" title="Permalink to this heading"></a></h3>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="c1">// Creates a new instance of ManualDrive passing Swerve and Controller as parameters</span><span class="w"></span>
+<span class="kd">private</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="n">ManualDrive</span><span class="w"> </span><span class="n">mManualDriveCommand</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">ManualDrive</span><span class="p">(</span><span class="n">mSwerve</span><span class="p">,</span><span class="w"> </span><span class="n">mController</span><span class="p">);</span><span class="w"></span>
+
+<span class="kd">public</span><span class="w"> </span><span class="nf">RobotContainer</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="c1">// Configure the button bindings</span><span class="w"></span>
+<span class="w">    </span><span class="n">configureButtonBindings</span><span class="p">();</span><span class="w"></span>
+
+<span class="w">    </span><span class="c1">//set ManualDrive to be executed when in manual control</span><span class="w"></span>
+<span class="w">    </span><span class="n">mSwerve</span><span class="p">.</span><span class="na">setDefaultCommand</span><span class="p">(</span><span class="n">mManualDriveCommand</span><span class="p">);</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+<p>A new instance of ManualDrive is created, which also creates the drive command.
+To use the drive command in RobotContainer, the default command of the Swerve object is set to the instance created.
+When Teleop starts, the ManualDrive command will be automatically executed.</p>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="SwerveClass.html" class="btn btn-neutral float-left" title="Swerve Class" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../Sample.html" class="btn btn-neutral float-right" title="Sample" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022, FRC 4253 Raid Zero.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
