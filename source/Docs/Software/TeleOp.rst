@@ -9,12 +9,16 @@ More information about RobotContainer can be found `here <https://docs.wpilib.or
 Driving
 =======
 
-Field oriented driving involves an omnidirectional drive system that provides strafing motion in all directions and rotations with respect to the field. 
-When the driving joystick is pushed forward, the robot moves forward with respect to the field. 
+Field oriented driving involves a drive system that provides strafing motion in all directions and rotations with respect to the field. 
 For example, if the robot is facing east and the joystick is pushed forward, the robot would move north.
 
 Compared to robot oriented driving, the joystick's movement would be relative to the robot instead of the field.
 For example, if the robot was facing east and the joystick is pushed forward, the robot would move east.
+
+.. figure:: ../Photos/Software/Field-robot-oriented.png
+    :scale: 50%
+    :alt: Field/robot oriented driving comparison
+
 
 .. list-table:: **Field vs robot oriented driving**
    :widths: 25 50 50
@@ -23,9 +27,6 @@ For example, if the robot was facing east and the joystick is pushed forward, th
    * - 
      - Field oriented
      - Robot oriented
-   * - Omnidirectional
-     - Yes
-     - Yes
    * - Requires IMU
      - Yes (IMU drift*)
      - No
@@ -33,13 +34,10 @@ For example, if the robot was facing east and the joystick is pushed forward, th
      - Relative to field
      - Relative to robot
 
+
 \* IMU drift may cause slight inaccuracy in field oriented driving.
 
-Joystick inputs
-===============
 
-The X-axis of the bot controls the robot's left and right position relative to the field, while the Y-axis controls movement to and away from the driver. 
-The Z-axis rotates the robot.
 Here's a demonstration of field oriented control:
 
 .. raw:: html
