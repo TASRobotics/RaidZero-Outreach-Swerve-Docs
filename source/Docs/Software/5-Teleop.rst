@@ -9,6 +9,8 @@ More information about RobotContainer can be found `here <https://docs.wpilib.or
 Driving
 =======
 
+There are 2 main types of driving: field oriented and robot oriented.
+
 Field oriented driving involves a drive system that provides strafing motion in all directions and rotations with respect to the field. 
 For example, if the robot is facing east and the joystick is pushed forward, the robot would move north.
 
