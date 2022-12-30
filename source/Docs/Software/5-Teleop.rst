@@ -55,27 +55,21 @@ Since we will be using `command based programming <https://docs.wpilib.org/en
 manually operate the robot.
 
 Constructor
------------
+***********
 
 .. code-block:: java
     :linenos:
 
-    // Initializes Swerve object
     private final Swerve mSwerve;
-    // Initializes Controller object
     private final XboxController mController;
     
     public ManualDrive(Swerve drive, XboxController controller) {
-        // Assigns Swerve object to parameter
         mSwerve = drive;
-        // Assigns Controller object to parameter
         mController = controller;
 
-        // Adds requirement of Swerve argument
+        // Adds the Swerve subsystem as a requirement to the command
         addRequirements(mSwerve);
     }
-
-
 
 **Parameters:**
 """""""""""""""
@@ -87,7 +81,7 @@ A drive command has to be created to manually operate the robot. Calling the
 constructor will create the drive command, where it will then be used in RobotContainer.
 
 execute
--------
+*******
 
 The execute method is called repeatedly when the command is scheduled. This is 
 where the code for teleop will be written.
@@ -110,14 +104,14 @@ Finally, the drive command has to be called in RobotContainer.
 .. code-block:: java
     :linenos:
 
-    // Creates a new instance of ManualDrive passing Swerve and Controller as parameters
+    // Create new instance of ManualDrive, passing Swerve and Controller as parameters
     private final ManualDrive mManualDriveCommand = new ManualDrive(mSwerve, mController);
 
     public RobotContainer() {
         // Configure the button bindings
         configureButtonBindings();
 
-        //set ManualDrive to be executed when in manual control
+        // set ManualDrive to be executed in teleop
         mSwerve.setDefaultCommand(mManualDriveCommand);
     }
 

@@ -19,15 +19,11 @@ Constructor
     // Initialize IMU
     private final WPI_Pigeon2 mImu = new WPI_Pigeon2(SwerveConstants.kImuID);
 
-    // Initializes the 4 swerve modules
     private final SwerveModule mLeftFrontModule, mRightFrontModule, mLeftRearModule, mRightRearModule;
-
-    // Initializes odometry
     private SwerveDriveOdometry mOdometry;
 
     public Swerve() {
-        
-        // Initializes the 4 swerve modules with SwerveConstants      
+        // Instantiate swerve modules - each representing unique module on the robot
         mLeftFrontModule = new SwerveModule(
             SwerveConstants.kLeftFrontThrottleID, 
             SwerveConstants.kLeftFrontRotorID, 
@@ -56,17 +52,37 @@ Constructor
             SwerveConstants.kRightRearRotorOffset
         );
 
-        // Initializes SwerveDriveOdometry object with SwerveKinematics constant and robot heading
+        // Instantiate odometry - used for tracking position
         mOdometry = new SwerveDriveOdometry(SwerveConstants.kSwerveKinematics, mImu.getRotation2d());
     }
 
 Methods
 *******
 
+Updates odometry with current module state
+
+periodic
+========
+
+.. code-block:: java
+    :linenos:
+
+    @Override
+    public void periodic() {
+        // Updates odometry with current module state
+        mOdometry.update(
+            mImu.getRotation2d(), 
+            getModuleStates()[0], 
+            getModuleStates()[1],
+            getModuleStates()[2],
+            getModuleStates()[3]
+        );
+    }
+
 drive
 =====
 
-Updates Chassis speeds based on controller XYZ values.
+Moves chassis in desired direction & rotation
 
 .. code-block:: java
     :linenos:
@@ -75,7 +91,7 @@ Updates Chassis speeds based on controller XYZ values.
         SwerveModuleState[] states = null;
         if(fieldOriented) {
             states = SwerveConstants.kSwerveKinematics.toSwerveModuleStates(
-                //gyro rotation value needed if using field orientation
+                // IMU used for field oriented control
                 ChassisSpeeds.fromFieldRelativeSpeeds(xSpeed, ySpeed, zSpeed, mImu.getRotation2d())
             );
         } else {
@@ -89,10 +105,10 @@ Updates Chassis speeds based on controller XYZ values.
 **Parameters:**
 """""""""""""""
 
-    1. ``xSpeed`` - x-axis controlled by left stick to move the robot in 2d space
-    2. ``ySpeed`` - y-axis controlled by left stick to move the robot in 2d space
-    3. ``zSpeed`` - Desired speed of rotation, controlled by right stick
-    4. ``fieldOriented`` - Determines if bot's movement is oriented to the field
+    1. ``xSpeed`` - percent power in the X direction
+    2. ``ySpeed`` - percent power in the Y direction
+    3. ``zSpeed`` - percent power for rotation
+    4. ``fieldOriented`` - configure robot movement style (field or robot oriented)
 
 
 getModuleStates
@@ -116,7 +132,8 @@ Outputs the current state of the 4 drive swerve modules.
 **Return:**
 """""""""""
 
-    Returns SwerveModuleState array with rotor throttle & position
+    Return states of all modules in a SwerveModuleState array (Order: 
+    [leftFront, rightFront, leftRear, rightRear])
 
 
 setModuleStates

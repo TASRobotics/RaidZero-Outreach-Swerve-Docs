@@ -129,20 +129,16 @@ For example, if the robot was facing east and the joystick is pushed forward, th
 manually operate the robot.</p>
 <section id="constructor">
 <h3>Constructor<a class="headerlink" href="#constructor" title="Permalink to this headline"></a></h3>
-<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="c1">// Initializes Swerve object</span>
-<span class="linenos"> 2</span><span class="kd">private</span> <span class="kd">final</span> <span class="n">Swerve</span> <span class="n">mSwerve</span><span class="p">;</span>
-<span class="linenos"> 3</span><span class="c1">// Initializes Controller object</span>
-<span class="linenos"> 4</span><span class="kd">private</span> <span class="kd">final</span> <span class="n">XboxController</span> <span class="n">mController</span><span class="p">;</span>
-<span class="linenos"> 5</span>
-<span class="linenos"> 6</span><span class="kd">public</span> <span class="nf">ManualDrive</span><span class="p">(</span><span class="n">Swerve</span> <span class="n">drive</span><span class="p">,</span> <span class="n">XboxController</span> <span class="n">controller</span><span class="p">)</span> <span class="p">{</span>
-<span class="linenos"> 7</span>    <span class="c1">// Assigns Swerve object to parameter</span>
-<span class="linenos"> 8</span>    <span class="n">mSwerve</span> <span class="o">=</span> <span class="n">drive</span><span class="p">;</span>
-<span class="linenos"> 9</span>    <span class="c1">// Assigns Controller object to parameter</span>
-<span class="linenos">10</span>    <span class="n">mController</span> <span class="o">=</span> <span class="n">controller</span><span class="p">;</span>
-<span class="linenos">11</span>
-<span class="linenos">12</span>    <span class="c1">// Adds requirement of Swerve argument</span>
-<span class="linenos">13</span>    <span class="n">addRequirements</span><span class="p">(</span><span class="n">mSwerve</span><span class="p">);</span>
-<span class="linenos">14</span><span class="p">}</span>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="kd">private</span> <span class="kd">final</span> <span class="n">Swerve</span> <span class="n">mSwerve</span><span class="p">;</span>
+<span class="linenos"> 2</span><span class="kd">private</span> <span class="kd">final</span> <span class="n">XboxController</span> <span class="n">mController</span><span class="p">;</span>
+<span class="linenos"> 3</span>
+<span class="linenos"> 4</span><span class="kd">public</span> <span class="nf">ManualDrive</span><span class="p">(</span><span class="n">Swerve</span> <span class="n">drive</span><span class="p">,</span> <span class="n">XboxController</span> <span class="n">controller</span><span class="p">)</span> <span class="p">{</span>
+<span class="linenos"> 5</span>    <span class="n">mSwerve</span> <span class="o">=</span> <span class="n">drive</span><span class="p">;</span>
+<span class="linenos"> 6</span>    <span class="n">mController</span> <span class="o">=</span> <span class="n">controller</span><span class="p">;</span>
+<span class="linenos"> 7</span>
+<span class="linenos"> 8</span>    <span class="c1">// Adds the Swerve subsystem as a requirement to the command</span>
+<span class="linenos"> 9</span>    <span class="n">addRequirements</span><span class="p">(</span><span class="n">mSwerve</span><span class="p">);</span>
+<span class="linenos">10</span><span class="p">}</span>
 </pre></div>
 </div>
 <section id="parameters">
@@ -172,14 +168,14 @@ where the code for teleop will be written.</p>
 <section id="calling-the-drive-command">
 <h2>Calling the Drive Command<a class="headerlink" href="#calling-the-drive-command" title="Permalink to this headline"></a></h2>
 <p>Finally, the drive command has to be called in RobotContainer.</p>
-<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="c1">// Creates a new instance of ManualDrive passing Swerve and Controller as parameters</span>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="c1">// Create new instance of ManualDrive, passing Swerve and Controller as parameters</span>
 <span class="linenos"> 2</span><span class="kd">private</span> <span class="kd">final</span> <span class="n">ManualDrive</span> <span class="n">mManualDriveCommand</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ManualDrive</span><span class="p">(</span><span class="n">mSwerve</span><span class="p">,</span> <span class="n">mController</span><span class="p">);</span>
 <span class="linenos"> 3</span>
 <span class="linenos"> 4</span><span class="kd">public</span> <span class="nf">RobotContainer</span><span class="p">()</span> <span class="p">{</span>
 <span class="linenos"> 5</span>    <span class="c1">// Configure the button bindings</span>
 <span class="linenos"> 6</span>    <span class="n">configureButtonBindings</span><span class="p">();</span>
 <span class="linenos"> 7</span>
-<span class="linenos"> 8</span>    <span class="c1">//set ManualDrive to be executed when in manual control</span>
+<span class="linenos"> 8</span>    <span class="c1">// set ManualDrive to be executed in teleop</span>
 <span class="linenos"> 9</span>    <span class="n">mSwerve</span><span class="p">.</span><span class="na">setDefaultCommand</span><span class="p">(</span><span class="n">mManualDriveCommand</span><span class="p">);</span>
 <span class="linenos">10</span><span class="p">}</span>
 </pre></div>

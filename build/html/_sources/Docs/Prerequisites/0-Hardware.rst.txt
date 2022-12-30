@@ -2,7 +2,7 @@
 Hardware
 ########
 
-Having a good swerve starts with having good hardware. Here is a short summary of 
+Having a good swerve starts with having good hardware. Here is a summary of 
 potential swerve hardware you might use. 
 
 Modules: 
