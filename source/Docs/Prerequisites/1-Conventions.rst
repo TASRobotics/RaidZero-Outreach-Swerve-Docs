@@ -2,18 +2,18 @@
 Conventions
 ###########
 
-Here are the conventions used in these docs
+Here are the conventions used in these docs.
 
 Variable Naming
 ***************
 
-* Instance Variables: ``m[VARIABLE_NAME]``
+- Instance Variables: ``m[VARIABLE_NAME]``
 
-  * ex. ``mMotorController``
+  - ex. ``mMotorController``
 
-* Constants: ``k[VARIABLE_NAME]``
+- Constants: ``k[VARIABLE_NAME]``
 
-  * ex. ``kMotorControllerID``
+  - ex. ``kMotorControllerID``
 
 Swerve Part Naming
 ******************

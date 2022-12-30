@@ -134,7 +134,7 @@
 </div>
 <div class="section" id="methods">
 <h2>Methods<a class="headerlink" href="#methods" title="Permalink to this headline"></a></h2>
-<p>Updates odometry with current module state</p>
+<p>Updates odometry with current module state.</p>
 <div class="section" id="periodic">
 <h3>periodic<a class="headerlink" href="#periodic" title="Permalink to this headline"></a></h3>
 <div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="nd">@Override</span>
@@ -153,7 +153,7 @@
 </div>
 <div class="section" id="drive">
 <h3>drive<a class="headerlink" href="#drive" title="Permalink to this headline"></a></h3>
-<p>Moves chassis in desired direction &amp; rotation</p>
+<p>Moves chassis in desired direction &amp; rotation.</p>
 <div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="kd">public</span> <span class="kt">void</span> <span class="nf">drive</span><span class="p">(</span><span class="kt">double</span> <span class="n">xSpeed</span><span class="p">,</span> <span class="kt">double</span> <span class="n">ySpeed</span><span class="p">,</span> <span class="kt">double</span> <span class="n">zSpeed</span><span class="p">,</span> <span class="kt">boolean</span> <span class="n">fieldOriented</span><span class="p">)</span> <span class="p">{</span>
 <span class="linenos"> 2</span>    <span class="n">SwerveModuleState</span><span class="o">[]</span> <span class="n">states</span> <span class="o">=</span> <span class="kc">null</span><span class="p">;</span>
 <span class="linenos"> 3</span>    <span class="k">if</span><span class="p">(</span><span class="n">fieldOriented</span><span class="p">)</span> <span class="p">{</span>
@@ -199,7 +199,7 @@
 <h4><strong>Return:</strong><a class="headerlink" href="#return" title="Permalink to this headline"></a></h4>
 <blockquote>
 <div><p>Return states of all modules in a SwerveModuleState array (Order:
-[leftFront, rightFront, leftRear, rightRear])</p>
+[leftFront, rightFront, leftRear, rightRear]).</p>
 </div></blockquote>
 </div>
 </div>
@@ -220,7 +220,7 @@
 <h4><strong>Parameters:</strong><a class="headerlink" href="#id1" title="Permalink to this headline"></a></h4>
 <blockquote>
 <div><ol class="arabic simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">desiredStates</span></code> - Array of desired <a class="reference external" href="https://first.wpi.edu/wpilib/allwpilib/docs/release/java/edu/wpi/first/math/kinematics/SwerveModuleState.html">SwerveModuleState</a>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">desiredStates</span></code> - Array of desired <a class="reference external" href="https://first.wpi.edu/wpilib/allwpilib/docs/release/java/edu/wpi/first/math/kinematics/SwerveModuleState.html">SwerveModuleState</a></p></li>
 </ol>
 </div></blockquote>
 </div>
@@ -236,13 +236,13 @@
 <div class="section" id="id2">
 <h4><strong>Return:</strong><a class="headerlink" href="#id2" title="Permalink to this headline"></a></h4>
 <blockquote>
-<div><p>New <a class="reference external" href="https://first.wpi.edu/wpilib/allwpilib/docs/release/java/edu/wpi/first/math/geometry/Pose2d.html">Pose2d</a> representing robot position on the field in meters</p>
+<div><p>New <a class="reference external" href="https://first.wpi.edu/wpilib/allwpilib/docs/release/java/edu/wpi/first/math/geometry/Pose2d.html">Pose2d</a> representing robot position on the field in meters.</p>
 </div></blockquote>
 </div>
 </div>
 <div class="section" id="setpose">
 <h3>setPose<a class="headerlink" href="#setpose" title="Permalink to this headline"></a></h3>
-<p>Sets odometry position to a given x, y, position, and angle</p>
+<p>Sets odometry position to a given x, y, position, and angle.</p>
 <div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="kd">public</span> <span class="kt">void</span> <span class="nf">setPose</span><span class="p">(</span><span class="n">Pose2d</span> <span class="n">pose</span><span class="p">)</span> <span class="p">{</span>
 <span class="linenos">2</span>    <span class="n">mOdometry</span><span class="p">.</span><span class="na">resetPosition</span><span class="p">(</span><span class="n">pose</span><span class="p">,</span> <span class="n">mImu</span><span class="p">.</span><span class="na">getRotation2d</span><span class="p">());</span>
 <span class="linenos">3</span><span class="p">}</span>

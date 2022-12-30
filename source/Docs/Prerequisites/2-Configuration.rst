@@ -134,7 +134,7 @@ Throttle Gear Ratio
 -------------------
 
 Record the throttle gear ratio (number of turns it takes the motor to rotate 
-the wheel one revolution)
+the wheel one revolution).
 
 .. code-block:: java
     :linenos:

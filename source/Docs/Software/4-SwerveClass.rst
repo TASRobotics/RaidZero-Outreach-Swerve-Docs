@@ -59,7 +59,7 @@ Constructor
 Methods
 *******
 
-Updates odometry with current module state
+Updates odometry with current module state.
 
 periodic
 ========
@@ -82,7 +82,7 @@ periodic
 drive
 =====
 
-Moves chassis in desired direction & rotation
+Moves chassis in desired direction & rotation.
 
 .. code-block:: java
     :linenos:
@@ -133,8 +133,7 @@ Outputs the current state of the 4 drive swerve modules.
 """""""""""
 
     Return states of all modules in a SwerveModuleState array (Order: 
-    [leftFront, rightFront, leftRear, rightRear])
-
+    [leftFront, rightFront, leftRear, rightRear]).
 
 setModuleStates
 ===============
@@ -157,7 +156,7 @@ Sets the state of the 4 drive swerve modules.
 """""""""""""""
 
     1. ``desiredStates`` - Array of desired `SwerveModuleState <https://first.wpi.edu/wpilib/allwpilib/docs/release/java
-       /edu/wpi/first/math/kinematics/SwerveModuleState.html>`_.
+       /edu/wpi/first/math/kinematics/SwerveModuleState.html>`_
 
 getPose
 =======
@@ -175,13 +174,13 @@ Gets the current position of the robot.
 """""""""""
 
     New `Pose2d <https://first.wpi.edu/wpilib/allwpilib/docs/release/java
-    /edu/wpi/first/math/geometry/Pose2d.html>`_ representing robot position on the field in meters
+    /edu/wpi/first/math/geometry/Pose2d.html>`_ representing robot position on the field in meters.
 
 
 setPose
 =======
 
-Sets odometry position to a given x, y, position, and angle
+Sets odometry position to a given x, y, position, and angle.
 
 .. code-block:: java
     :linenos:

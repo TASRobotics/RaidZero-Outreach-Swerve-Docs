@@ -9,26 +9,26 @@ More information about RobotContainer can be found `here <https://docs.wpilib.or
 Driving
 =======
 
-There are 2 main types of driving: field oriented and robot oriented.
+There are 2 main types of driving: field-oriented and robot-oriented.
 
-Field oriented driving involves a drive system that provides strafing motion in all directions and rotations with respect to the field. 
+Field-oriented driving involves a drive system that provides strafing motion in all directions and rotations with respect to the field. 
 For example, if the robot is facing east and the joystick is pushed forward, the robot would move north.
 
-Compared to robot oriented driving, the joystick's movement would be relative to the robot instead of the field.
+Compared to robot-oriented driving, the joystick's movement would be relative to the robot instead of the field.
 For example, if the robot was facing east and the joystick is pushed forward, the robot would move east.
 
 .. figure:: ../Photos/Software/Field-robot-oriented.png
     :scale: 50%
-    :alt: Field/robot oriented driving comparison
+    :alt: Field/robot-oriented driving comparison
 
 
-.. list-table:: **Field vs robot oriented driving**
+.. list-table:: **Field vs robot-oriented driving**
    :widths: 25 50 50
    :header-rows: 1
 
    * - 
-     - Field oriented
-     - Robot oriented
+     - Field-oriented
+     - Robot-oriented
    * - Requires IMU
      - Yes (IMU drift*)
      - No
@@ -37,10 +37,10 @@ For example, if the robot was facing east and the joystick is pushed forward, th
      - Relative to robot
 
 
-\* IMU drift may cause slight inaccuracy in field oriented driving.
+\* IMU drift may cause slight inaccuracy in field-oriented driving.
 
 
-Here's a demonstration of field oriented control:
+Here's a demonstration of field-oriented control:
 
 .. raw:: html
 
@@ -92,7 +92,7 @@ where the code for teleop will be written.
     @Override 
     public void execute() {
         // Drives with XSpeed, YSpeed, zSpeed
-        // True/false for field oriented driving
+        // True/false for field-oriented driving
         mSwerve.drive(mController.getLeftY(), mController.getLeftX(), mController.getRightX(), true);
     }
 

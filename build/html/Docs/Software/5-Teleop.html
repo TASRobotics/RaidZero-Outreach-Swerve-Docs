@@ -87,16 +87,16 @@ This documentation will be referring to the manual drive class, and specific par
 More information about RobotContainer can be found <a class="reference external" href="https://docs.wpilib.org/en/stable/docs/software/commandbased/structuring-command-based-project.html#robotcontainer">here</a>.</p>
 <div class="section" id="driving">
 <h2>Driving<a class="headerlink" href="#driving" title="Permalink to this headline"></a></h2>
-<p>There are 2 main types of driving: field oriented and robot oriented.</p>
-<p>Field oriented driving involves a drive system that provides strafing motion in all directions and rotations with respect to the field.
+<p>There are 2 main types of driving: field-oriented and robot-oriented.</p>
+<p>Field-oriented driving involves a drive system that provides strafing motion in all directions and rotations with respect to the field.
 For example, if the robot is facing east and the joystick is pushed forward, the robot would move north.</p>
-<p>Compared to robot oriented driving, the joystick’s movement would be relative to the robot instead of the field.
+<p>Compared to robot-oriented driving, the joystick’s movement would be relative to the robot instead of the field.
 For example, if the robot was facing east and the joystick is pushed forward, the robot would move east.</p>
 <div class="figure align-default">
-<a class="reference internal image-reference" href="../../_images/Field-robot-oriented.png"><img alt="Field/robot oriented driving comparison" src="../../_images/Field-robot-oriented.png" style="width: 480.0px; height: 565.5px;" /></a>
+<a class="reference internal image-reference" href="../../_images/Field-robot-oriented.png"><img alt="Field/robot-oriented driving comparison" src="../../_images/Field-robot-oriented.png" style="width: 480.0px; height: 565.5px;" /></a>
 </div>
 <table class="colwidths-given docutils align-default" id="id1">
-<caption><span class="caption-text"><strong>Field vs robot oriented driving</strong></span><a class="headerlink" href="#id1" title="Permalink to this table"></a></caption>
+<caption><span class="caption-text"><strong>Field vs robot-oriented driving</strong></span><a class="headerlink" href="#id1" title="Permalink to this table"></a></caption>
 <colgroup>
 <col style="width: 20%" />
 <col style="width: 40%" />
@@ -104,8 +104,8 @@ For example, if the robot was facing east and the joystick is pushed forward, th
 </colgroup>
 <thead>
 <tr class="row-odd"><th class="head"></th>
-<th class="head"><p>Field oriented</p></th>
-<th class="head"><p>Robot oriented</p></th>
+<th class="head"><p>Field-oriented</p></th>
+<th class="head"><p>Robot-oriented</p></th>
 </tr>
 </thead>
 <tbody>
@@ -119,8 +119,8 @@ For example, if the robot was facing east and the joystick is pushed forward, th
 </tr>
 </tbody>
 </table>
-<p>* IMU drift may cause slight inaccuracy in field oriented driving.</p>
-<p>Here’s a demonstration of field oriented control:</p>
+<p>* IMU drift may cause slight inaccuracy in field-oriented driving.</p>
+<p>Here’s a demonstration of field-oriented control:</p>
 <iframe width="560" height="315" src="https://www.youtube.com/embed/50ZRrYFWPIc?start=21" title="Field oriented control" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
 <div class="section" id="drive-command">
 <h2>Drive Command<a class="headerlink" href="#drive-command" title="Permalink to this headline"></a></h2>
@@ -157,7 +157,7 @@ where the code for teleop will be written.</p>
 <div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="nd">@Override</span>
 <span class="linenos">2</span><span class="kd">public</span> <span class="kt">void</span> <span class="nf">execute</span><span class="p">()</span> <span class="p">{</span>
 <span class="linenos">3</span>    <span class="c1">// Drives with XSpeed, YSpeed, zSpeed</span>
-<span class="linenos">4</span>    <span class="c1">// True/false for field oriented driving</span>
+<span class="linenos">4</span>    <span class="c1">// True/false for field-oriented driving</span>
 <span class="linenos">5</span>    <span class="n">mSwerve</span><span class="p">.</span><span class="na">drive</span><span class="p">(</span><span class="n">mController</span><span class="p">.</span><span class="na">getLeftY</span><span class="p">(),</span> <span class="n">mController</span><span class="p">.</span><span class="na">getLeftX</span><span class="p">(),</span> <span class="n">mController</span><span class="p">.</span><span class="na">getRightX</span><span class="p">(),</span> <span class="kc">true</span><span class="p">);</span>
 <span class="linenos">6</span><span class="p">}</span>
 </pre></div>
