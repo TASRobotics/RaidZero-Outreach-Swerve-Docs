@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
-
+  <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Autonomous Pathing &mdash; 4253 Swerve Documentation 1.0.0 documentation</title>
       <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
@@ -81,12 +80,12 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="autonomous-pathing">
+  <div class="section" id="autonomous-pathing">
 <h1>Autonomous Pathing<a class="headerlink" href="#autonomous-pathing" title="Permalink to this headline"></a></h1>
 <p>There are many different ways to implement pathing. In this guide, we will
 use <a class="reference external" href="https://github.com/mjansen4857/pathplanner">PathPlanner</a> to generate
 and follow paths.</p>
-<section id="installation">
+<div class="section" id="installation">
 <h2>Installation<a class="headerlink" href="#installation" title="Permalink to this headline"></a></h2>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -98,8 +97,8 @@ and follow paths.</p>
 </div>
 <p>Next, download PathPlanner from the <a class="reference external" href="https://www.microsoft.com/en-us/p/frc-pathplanner/9nqbkb5dw909?cid=storebadge&amp;ocid=badge&amp;rtc=1&amp;activetab=pivot:overviewtab">Microsoft</a> or <a class="reference external" href="https://apps.apple.com/us/app/frc-pathplanner/id1593046876">Mac App</a>
 Store.</p>
-</section>
-<section id="path-generation">
+</div>
+<div class="section" id="path-generation">
 <h2>Path Generation<a class="headerlink" href="#path-generation" title="Permalink to this headline"></a></h2>
 <ol class="arabic simple">
 <li><p>Open PathPlanner, click “Switch Project” in the menu, and select the root
@@ -114,8 +113,8 @@ Make sure to also select “Holonomic Mode”.</p></li>
 <ol class="arabic simple" start="3">
 <li><p>Finally, draw the paths you want the robot to follow.</p></li>
 </ol>
-</section>
-<section id="path-following">
+</div>
+<div class="section" id="path-following">
 <h2>Path Following<a class="headerlink" href="#path-following" title="Permalink to this headline"></a></h2>
 <p>We will now extract the path made in PathPlanner and use it in our robot code.</p>
 <p>In <code class="docutils literal notranslate"><span class="pre">RobotContainer.java</span></code>, create an instance of <code class="docutils literal notranslate"><span class="pre">PathPlannerTrajectory</span></code> by
@@ -186,8 +185,8 @@ by making the robot follow a short path with a sharp turn.</p>
 <p>If the path following is inaccurate or violent, try changing some of the
 PID controller constants.</p>
 </div>
-</section>
-</section>
+</div>
+</div>
 
 
            </div>

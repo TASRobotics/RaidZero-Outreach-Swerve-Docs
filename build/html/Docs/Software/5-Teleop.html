@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
-
+  <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>TeleOp &mdash; 4253 Swerve Documentation 1.0.0 documentation</title>
       <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
@@ -81,21 +80,21 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="teleop">
+  <div class="section" id="teleop">
 <h1>TeleOp<a class="headerlink" href="#teleop" title="Permalink to this headline"></a></h1>
 <p>This section will be explaining manual robot control (Teleop), which lasts 2 minutes and 15 seconds of the game.
 This documentation will be referring to the manual drive class, and specific parts of the RobotContainer class.
 More information about RobotContainer can be found <a class="reference external" href="https://docs.wpilib.org/en/stable/docs/software/commandbased/structuring-command-based-project.html#robotcontainer">here</a>.</p>
-<section id="driving">
+<div class="section" id="driving">
 <h2>Driving<a class="headerlink" href="#driving" title="Permalink to this headline"></a></h2>
 <p>There are 2 main types of driving: field oriented and robot oriented.</p>
 <p>Field oriented driving involves a drive system that provides strafing motion in all directions and rotations with respect to the field.
 For example, if the robot is facing east and the joystick is pushed forward, the robot would move north.</p>
 <p>Compared to robot oriented driving, the joystick’s movement would be relative to the robot instead of the field.
 For example, if the robot was facing east and the joystick is pushed forward, the robot would move east.</p>
-<figure class="align-default">
+<div class="figure align-default">
 <a class="reference internal image-reference" href="../../_images/Field-robot-oriented.png"><img alt="Field/robot oriented driving comparison" src="../../_images/Field-robot-oriented.png" style="width: 480.0px; height: 565.5px;" /></a>
-</figure>
+</div>
 <table class="colwidths-given docutils align-default" id="id1">
 <caption><span class="caption-text"><strong>Field vs robot oriented driving</strong></span><a class="headerlink" href="#id1" title="Permalink to this table"></a></caption>
 <colgroup>
@@ -122,12 +121,12 @@ For example, if the robot was facing east and the joystick is pushed forward, th
 </table>
 <p>* IMU drift may cause slight inaccuracy in field oriented driving.</p>
 <p>Here’s a demonstration of field oriented control:</p>
-<iframe width="560" height="315" src="https://www.youtube.com/embed/50ZRrYFWPIc?start=21" title="Field oriented control" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></section>
-<section id="drive-command">
+<iframe width="560" height="315" src="https://www.youtube.com/embed/50ZRrYFWPIc?start=21" title="Field oriented control" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
+<div class="section" id="drive-command">
 <h2>Drive Command<a class="headerlink" href="#drive-command" title="Permalink to this headline"></a></h2>
 <p>Since we will be using <a class="reference external" href="https://docs.wpilib.org/en/latest/docs/software/commandbased/index.html">command based programming</a>, a drive command has to be created to
 manually operate the robot.</p>
-<section id="constructor">
+<div class="section" id="constructor">
 <h3>Constructor<a class="headerlink" href="#constructor" title="Permalink to this headline"></a></h3>
 <div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="kd">private</span> <span class="kd">final</span> <span class="n">Swerve</span> <span class="n">mSwerve</span><span class="p">;</span>
 <span class="linenos"> 2</span><span class="kd">private</span> <span class="kd">final</span> <span class="n">XboxController</span> <span class="n">mController</span><span class="p">;</span>
@@ -141,7 +140,7 @@ manually operate the robot.</p>
 <span class="linenos">10</span><span class="p">}</span>
 </pre></div>
 </div>
-<section id="parameters">
+<div class="section" id="parameters">
 <h4><strong>Parameters:</strong><a class="headerlink" href="#parameters" title="Permalink to this headline"></a></h4>
 <ol class="arabic simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">drive</span></code> - a swerve object for the drive</p></li>
@@ -149,9 +148,9 @@ manually operate the robot.</p>
 </ol>
 <p>A drive command has to be created to manually operate the robot. Calling the
 constructor will create the drive command, where it will then be used in RobotContainer.</p>
-</section>
-</section>
-<section id="execute">
+</div>
+</div>
+<div class="section" id="execute">
 <h3>execute<a class="headerlink" href="#execute" title="Permalink to this headline"></a></h3>
 <p>The execute method is called repeatedly when the command is scheduled. This is
 where the code for teleop will be written.</p>
@@ -163,9 +162,9 @@ where the code for teleop will be written.</p>
 <span class="linenos">6</span><span class="p">}</span>
 </pre></div>
 </div>
-</section>
-</section>
-<section id="calling-the-drive-command">
+</div>
+</div>
+<div class="section" id="calling-the-drive-command">
 <h2>Calling the Drive Command<a class="headerlink" href="#calling-the-drive-command" title="Permalink to this headline"></a></h2>
 <p>Finally, the drive command has to be called in RobotContainer.</p>
 <div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="c1">// Create new instance of ManualDrive, passing Swerve and Controller as parameters</span>
@@ -184,8 +183,8 @@ where the code for teleop will be written.</p>
 To use the drive command in RobotContainer, the default command of the Swerve object
 is set to the manual drive object. When Teleop starts, the ManualDrive command will
 be automatically executed.</p>
-</section>
-</section>
+</div>
+</div>
 
 
            </div>

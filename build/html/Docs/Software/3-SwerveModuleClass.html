@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
-
+  <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>SwerveModule Class &mdash; 4253 Swerve Documentation 1.0.0 documentation</title>
       <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
@@ -82,7 +81,7 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="swervemodule-class">
+  <div class="section" id="swervemodule-class">
 <h1>SwerveModule Class<a class="headerlink" href="#swervemodule-class" title="Permalink to this headline"></a></h1>
 <p>The SwerveModule class initializes the swerve module on the robot. The method
 <code class="docutils literal notranslate"><span class="pre">getState</span></code> returns a new object of the <code class="docutils literal notranslate"><span class="pre">SwerveModuleState</span></code> class, allowing us to
@@ -96,7 +95,7 @@ speed.</p>
 <p>For API specific issues, please see the <a class="reference external" href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">WPILib API</a>
 , <a class="reference external" href="https://api.ctr-electronics.com/phoenix/release/java/">CTRE API</a>, and the <a class="reference external" href="https://codedocs.revrobotics.com/java/com/revrobotics/package-summary.html">REV Robotics API</a>.</p>
 </div>
-<section id="constructor">
+<div class="section" id="constructor">
 <h2>Constructor<a class="headerlink" href="#constructor" title="Permalink to this headline"></a></h2>
 <div class="sphinx-tabs docutils container">
 <div aria-label="Tabbed content" role="tablist"><button aria-controls="panel-0-0-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-0-0-0" name="0-0" role="tab" tabindex="0">Talon FX &amp; CANCoder</button><button aria-controls="panel-0-0-1" aria-selected="false" class="sphinx-tabs-tab" id="tab-0-0-1" name="0-1" role="tab" tabindex="-1">SPARK MAX &amp; CANCoder</button><button aria-controls="panel-0-0-2" aria-selected="false" class="sphinx-tabs-tab" id="tab-0-0-2" name="0-2" role="tab" tabindex="-1">SPARK MAX &amp; Analog Absolute Encoder</button></div><div aria-labelledby="tab-0-0-0" class="sphinx-tabs-panel" id="panel-0-0-0" name="0-0" role="tabpanel" tabindex="0"><div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="c1">// Initialize rotor &amp; throttle motors</span>
@@ -320,10 +319,10 @@ speed.</p>
 to prevent damage to the motors. Checkout the <a class="reference external" href="https://api.ctr-electronics.com/phoenix/release/java/com/ctre/phoenix/motorcontrol/can/TalonFX.html#configSupplyCurrentLimit(com.ctre.phoenix.motorcontrol.SupplyCurrentLimitConfiguration)">CTRE</a> and
 <a class="reference external" href="https://codedocs.revrobotics.com/java/com/revrobotics/cansparkmax#setSmartCurrentLimit(int)">REV</a> documentation for more information regarding current limits.</p>
 </div>
-</section>
-<section id="methods">
+</div>
+<div class="section" id="methods">
 <h2>Methods<a class="headerlink" href="#methods" title="Permalink to this headline"></a></h2>
-<section id="getstate">
+<div class="section" id="getstate">
 <h3>getState<a class="headerlink" href="#getstate" title="Permalink to this headline"></a></h3>
 <p>Outputs the current state of the swerve module.</p>
 <div class="sphinx-tabs docutils container">
@@ -347,15 +346,15 @@ to prevent damage to the motors. Checkout the <a class="reference external" href
 </pre></div>
 </div>
 </div></div>
-<section id="return">
+<div class="section" id="return">
 <h4><strong>Return:</strong><a class="headerlink" href="#return" title="Permalink to this headline"></a></h4>
 <blockquote>
 <div><p>New <a class="reference external" href="https://first.wpi.edu/wpilib/allwpilib/docs/release/java/edu/wpi/first/math/kinematics/SwerveModuleState.html">SwerveModuleState</a> representing the current
 throttle velocity and rotor angle.</p>
 </div></blockquote>
-</section>
-</section>
-<section id="setstate">
+</div>
+</div>
+<div class="section" id="setstate">
 <h3>setState<a class="headerlink" href="#setstate" title="Permalink to this headline"></a></h3>
 <p>Sets the state of the swerve module.</p>
 <div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="kd">public</span> <span class="kt">void</span> <span class="nf">setState</span><span class="p">(</span><span class="n">SwerveModuleState</span> <span class="n">state</span><span class="p">)</span> <span class="p">{</span>
@@ -375,15 +374,15 @@ throttle velocity and rotor angle.</p>
 <span class="linenos">15</span><span class="p">}</span>
 </pre></div>
 </div>
-<section id="parameters">
+<div class="section" id="parameters">
 <h4>Parameters:<a class="headerlink" href="#parameters" title="Permalink to this headline"></a></h4>
 <ol class="arabic simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">state</span></code> - desired <a class="reference external" href="https://first.wpi.edu/wpilib/allwpilib/docs/release/java/edu/wpi/first/math/kinematics/SwerveModuleState.html">SwerveModuleState</a> (angle &amp; speed) of SwerveModule</p></li>
 </ol>
-</section>
-</section>
-</section>
-</section>
+</div>
+</div>
+</div>
+</div>
 
 
            </div>

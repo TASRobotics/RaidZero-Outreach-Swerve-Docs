@@ -33,6 +33,7 @@ release = '1.0.0'
 extensions = [
     'sphinx.ext.autosectionlabel',
     'sphinx_tabs.tabs',
+    'sphinx_rtd_theme'
 ]
 
 # Add any paths that contain templates here, relative to this directory.

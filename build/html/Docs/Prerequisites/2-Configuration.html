@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
-
+  <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Swerve Configuration &mdash; 4253 Swerve Documentation 1.0.0 documentation</title>
       <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
@@ -83,12 +82,12 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="swerve-configuration">
+  <div class="section" id="swerve-configuration">
 <h1>Swerve Configuration<a class="headerlink" href="#swerve-configuration" title="Permalink to this headline"></a></h1>
 <p>Before you can start programming the swerve, you need to collect constants
 specific to your robot that will be used to configure the swerve.
 All constants will be recorded in <code class="docutils literal notranslate"><span class="pre">Constants.java</span></code>.</p>
-<section id="motor-sensor-ids">
+<div class="section" id="motor-sensor-ids">
 <h2>Motor &amp; Sensor IDs<a class="headerlink" href="#motor-sensor-ids" title="Permalink to this headline"></a></h2>
 <p>Record the CAN IDs of the rotor and throttle motors.</p>
 <div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="c1">// Rotor IDs</span>
@@ -115,20 +114,18 @@ All constants will be recorded in <code class="docutils literal notranslate"><sp
 <span class="linenos">8</span><span class="kd">public</span> <span class="kd">static</span> <span class="kd">final</span> <span class="kt">int</span> <span class="n">kImuID</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
 </pre></div>
 </div>
-</section>
-<section id="rotor-encoder-offsets">
+</div>
+<div class="section" id="rotor-encoder-offsets">
 <h2>Rotor Encoder Offsets<a class="headerlink" href="#rotor-encoder-offsets" title="Permalink to this headline"></a></h2>
 <p>In order for the angle of the swerve modules to be in sync, you must
 compensate for potential rotor encoder offsets.</p>
 <p>First, rotate the modules so that all wheels are facing in the same direction.
 Next, ensure that when positive power is applied to throttle motors, all
 wheels spin in the forward direction.</p>
-<figure class="align-default" id="id1">
+<div class="figure align-default" id="id1">
 <a class="reference internal image-reference" href="../../_images/UpsidedownSwerve.jpg"><img alt="../../_images/UpsidedownSwerve.jpg" src="../../_images/UpsidedownSwerve.jpg" style="width: 451.49999999999994px; height: 377.65px;" /></a>
-<figcaption>
-<p><span class="caption-text"><a class="reference external" href="https://www.youtube.com/watch?v=wCakzMfRPKs&amp;ab_channel=Orbit1690">source</a></span><a class="headerlink" href="#id1" title="Permalink to this image"></a></p>
-</figcaption>
-</figure>
+<p class="caption"><span class="caption-text"><a class="reference external" href="https://www.youtube.com/watch?v=wCakzMfRPKs&amp;ab_channel=Orbit1690">source</a></span><a class="headerlink" href="#id1" title="Permalink to this image"></a></p>
+</div>
 <p>Record the rotor encoder values for each module in the <code class="docutils literal notranslate"><span class="pre">Constants.java</span></code> file.</p>
 <div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="kd">public</span> <span class="kd">static</span> <span class="kd">final</span> <span class="kt">double</span> <span class="n">kLeftFrontRotorOffset</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span> <span class="o">*</span> <span class="n">LEFT_FRONT_ANGLE</span><span class="p">;</span>
 <span class="linenos">2</span><span class="kd">public</span> <span class="kd">static</span> <span class="kd">final</span> <span class="kt">double</span> <span class="n">kRightFrontRotorOffset</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span> <span class="o">*</span> <span class="n">RIGHT_FRONT_ANGLE</span><span class="p">;</span>
@@ -141,8 +138,8 @@ wheels spin in the forward direction.</p>
 <p>The rotor offset will be added to the rotor encoder value. This is why
 the rotor offset is multiplied by -1.</p>
 </div>
-</section>
-<section id="rotor-motor-encoder-inversion">
+</div>
+<div class="section" id="rotor-motor-encoder-inversion">
 <h2>Rotor Motor &amp; Encoder Inversion<a class="headerlink" href="#rotor-motor-encoder-inversion" title="Permalink to this headline"></a></h2>
 <p>The rotor motor and encoder may need to be inverted. When positive power is applied
 to the rotor motor, the rotor encoder should increase in value. If this is not the
@@ -152,12 +149,12 @@ by changing the boolean value of the motor/encoder to <code class="docutils lite
 <span class="linenos">2</span><span class="kd">public</span> <span class="kd">static</span> <span class="kd">final</span> <span class="kt">boolean</span> <span class="n">kRotorMotorInversion</span> <span class="o">=</span> <span class="kc">false</span><span class="p">;</span>
 </pre></div>
 </div>
-</section>
-<section id="swerve-kinematics">
+</div>
+<div class="section" id="swerve-kinematics">
 <h2>Swerve Kinematics<a class="headerlink" href="#swerve-kinematics" title="Permalink to this headline"></a></h2>
-<figure class="align-default">
+<div class="figure align-default">
 <a class="reference internal image-reference" href="../../_images/AnnotatedSwerve2.PNG"><img alt="Width &amp; length of swerve" src="../../_images/AnnotatedSwerve2.PNG" style="width: 508.0px; height: 346.0px;" /></a>
-</figure>
+</div>
 <p>Record the width and length of the robot (units in meters). Since
 positive X is forward, and positive Y is left, the configuration should
 look something like this.</p>
@@ -170,33 +167,33 @@ look something like this.</p>
 <span class="linenos">7</span><span class="p">);</span>
 </pre></div>
 </div>
-</section>
-<section id="extra-constants">
+</div>
+<div class="section" id="extra-constants">
 <h2>Extra Constants<a class="headerlink" href="#extra-constants" title="Permalink to this headline"></a></h2>
-<section id="max-speed-acceleration">
+<div class="section" id="max-speed-acceleration">
 <h3>Max Speed/Acceleration<a class="headerlink" href="#max-speed-acceleration" title="Permalink to this headline"></a></h3>
 <p>Record the maximum speed and acceleration of the robot (meters).</p>
 <div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="kd">public</span> <span class="kd">static</span> <span class="kd">final</span> <span class="kt">double</span> <span class="n">kMaxVelocityMetersPerSecond</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">;</span>
 <span class="linenos">2</span><span class="kd">public</span> <span class="kd">static</span> <span class="kd">final</span> <span class="kt">double</span> <span class="n">kMaxAccelerationMetersPerSecond</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">;</span>
 </pre></div>
 </div>
-</section>
-<section id="wheel-diameter">
+</div>
+<div class="section" id="wheel-diameter">
 <h3>Wheel Diameter<a class="headerlink" href="#wheel-diameter" title="Permalink to this headline"></a></h3>
 <p>Record the diameter of the swerve wheels (meters).</p>
 <div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="kd">public</span> <span class="kd">static</span> <span class="kd">final</span> <span class="kt">double</span> <span class="n">kWheelDiameterMeters</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">;</span>
 </pre></div>
 </div>
-</section>
-<section id="throttle-gear-ratio">
+</div>
+<div class="section" id="throttle-gear-ratio">
 <h3>Throttle Gear Ratio<a class="headerlink" href="#throttle-gear-ratio" title="Permalink to this headline"></a></h3>
 <p>Record the throttle gear ratio (number of turns it takes the motor to rotate
 the wheel one revolution)</p>
 <div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="kd">public</span> <span class="kd">static</span> <span class="kd">final</span> <span class="kt">double</span> <span class="n">kThrottleGearRatio</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">;</span>
 </pre></div>
 </div>
-</section>
-<section id="throttle-velocity-conversion-constant">
+</div>
+<div class="section" id="throttle-velocity-conversion-constant">
 <h3>Throttle Velocity Conversion Constant<a class="headerlink" href="#throttle-velocity-conversion-constant" title="Permalink to this headline"></a></h3>
 <p>Finally, with the constants above, you can calculate the conversion constant that will
 be used to convert from throttle encoder velocity to linear velocity (meters/second).</p>
@@ -218,9 +215,9 @@ used to convert from Falcon encoder ticks to rotations.</p>
 </pre></div>
 </div>
 </div></div>
-</section>
-</section>
-</section>
+</div>
+</div>
+</div>
 
 
            </div>
