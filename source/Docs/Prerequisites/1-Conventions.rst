@@ -7,13 +7,9 @@ Here are the conventions used in these docs.
 Variable Naming
 ***************
 
-- Instance Variables: ``m[VARIABLE_NAME]``
+- Instance Variables: ``m[VARIABLE_NAME]`` (e.g. ``mMotorController``)
 
-  - ex. ``mMotorController``
-
-- Constants: ``k[VARIABLE_NAME]``
-
-  - ex. ``kMotorControllerID``
+- Constants: ``k[VARIABLE_NAME]`` (e.g. ``kMotorControllerID``)
 
 Swerve Part Naming
 ******************
@@ -26,12 +22,12 @@ Swerve Part Naming
     Swerve Parts; `source <https://www.swervedrivespecialties.com/collections/kits/products/mk4-swerve-module>`_
 
 1. **Throttle**: Controls the rotation of the wheel
-2. **Rotor**: Controls the direction of the wheel (**Throttle Encoder** measures the angle of the rotor)
+2. **Rotor**: Controls the angle of the wheel (**Throttle Encoder** *measures* the angle of the rotor)
 
 SwerveModule Order
 ******************
 
-The order of the swerve modules will always be as follows:
+Order of the Swerve Modules (in this guide):
 
 1. Left Front
 2. Right Front
