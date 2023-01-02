@@ -84,9 +84,9 @@ Homemade Swerve:
 
 - Your Imagination
 
-  - Cost (not including motors): time and money
+  - Cost: time and money
 
-  - Weight (not including motors): :math:`[0, \infty)`
+  - Weight: n/a
 
   - Notable Features: You can customize it any way you want
 
@@ -141,10 +141,3 @@ IMU choices include the `Pigeon <https://store.ctr-electronics.com/pigeon-2/>`_ 
             :scale: 20%
 
             Pigeon2 IMU
-
-Conclusion
-**********
-
-As shown above, there are numerous ways to customize your swerve, 
-all of which have their advantages and disadvantages. In the end, it all comes 
-down to how much time and money you are willing to spend on your swerve.

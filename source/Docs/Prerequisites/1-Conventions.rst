@@ -27,7 +27,7 @@ Swerve Part Naming
 SwerveModule Order
 ******************
 
-Order of the Swerve Modules (in this guide):
+Order of the Swerve Modules used in this guide:
 
 1. Left Front
 2. Right Front
