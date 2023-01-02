@@ -32,6 +32,7 @@ you will need to know to get a swerve drive up and running.
    :caption: Further Topics
    
    Docs/FurtherTopics/7-Feedforward
+   Docs/Sample.rst
 
 .. image:: Docs/Photos/LogoBW.png
     :scale: 10%

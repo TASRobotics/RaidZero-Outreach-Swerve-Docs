@@ -19,7 +19,9 @@ This is a subtitle
 If you have a big chunk of code, you can do something like this: 
 
 .. code-block:: cpp
+    :linenos:
 
+    // This is a comment
     std::shared_ptr<AsyncHolonomicChassisController> controller = 
         AsyncHolonomicChassisControllerBuilder(std::shared_ptr<okapi::OdomChassisController> ichassis)
 
@@ -30,17 +32,24 @@ You can also have different tabs
     .. tab:: C++
 
         .. code-block:: cpp
+            :linenos:
 
+            // comment
             int main() {
                 std::cout << "Hello World" << std::endl;
+                return 0;
             }
 
-    .. tab:: Python
+    .. tab:: Java
 
-        .. code-block:: python
+        .. code-block:: java
+            :linenos:
 
-            print("Hello World")
-~
+            // comment
+            public static void main(String[] args) {
+                System.out.println("Hello World");
+            }
+
 Images look like this
 
 .. image:: Photos/LogoBW.png
@@ -53,9 +62,6 @@ You can also include captions like this
     :alt: Logo
 
     A caption
-    
-    a caption 2
-
 
 Write math equations like this: :math:`e^{i\pi} + 1 = 0`
 
@@ -71,5 +77,6 @@ Make tables like this
 | row 3, col 1    | row 3, col 2    | row 3, col 3    |
 +-----------------+-----------------+-----------------+
 
-Check out other things you can do with sphinx 
-`here <https://www.sphinx-doc.org/en/master/usage/restructuredtext/basics.html>`_
+.. note:: 
+    Check out other things you can do with sphinx 
+    `here <https://www.sphinx-doc.org/en/master/usage/restructuredtext/basics.html>`_
