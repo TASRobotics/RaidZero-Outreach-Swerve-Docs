@@ -17,9 +17,16 @@ Check out more information regarding Sphinx at the [official documentation](http
 
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change. 
 
-## Contributors 
+## Contributors
 
+<!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
+<!-- prettier-ignore-start -->
+<!-- markdownlint-disable -->
 
+<!-- markdownlint-restore -->
+<!-- prettier-ignore-end -->
+
+<!-- ALL-CONTRIBUTORS-LIST:END -->
 
 ## License
 
