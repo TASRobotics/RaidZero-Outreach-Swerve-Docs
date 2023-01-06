@@ -14,6 +14,15 @@
       "contributions": [
         "code"
       ]
+    },
+    {
+      "login": "0x5b62656e5d",
+      "name": "ben",
+      "avatar_url": "https://avatars.githubusercontent.com/u/112295217?v=4",
+      "profile": "https://github.com/0x5b62656e5d",
+      "contributions": [
+        "code"
+      ]
     }
   ],
   "contributorsPerLine": 7,
