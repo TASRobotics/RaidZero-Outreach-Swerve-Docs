@@ -28,6 +28,7 @@ Pull requests are welcome. For major changes, please open an issue first to disc
   <tbody>
     <tr>
       <td align="center"><a href="https://github.com/jazonshou"><img src="https://avatars.githubusercontent.com/u/67040509?v=4?s=100" width="100px;" alt="Jason Zhou"/><br /><sub><b>Jason Zhou</b></sub></a><br /><a href="https://github.com/TASRobotics/RaidZero-Outreach-Swerve-Docs/commits?author=jazonshou" title="Code">💻</a></td>
+      <td align="center"><a href="https://github.com/gksDavid"><img src="https://avatars.githubusercontent.com/u/116065379?v=4?s=100" width="100px;" alt="gksDavid"/><br /><sub><b>gksDavid</b></sub></a><br /><a href="https://github.com/TASRobotics/RaidZero-Outreach-Swerve-Docs/commits?author=gksDavid" title="Code">💻</a></td>
     </tr>
   </tbody>
 </table>
