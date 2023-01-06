@@ -32,6 +32,7 @@ Pull requests are welcome. For major changes, please open an issue first to disc
       <td align="center"><a href="https://github.com/i-hdk"><img src="https://avatars.githubusercontent.com/u/59080145?v=4?s=100" width="100px;" alt="Isabella Lin"/><br /><sub><b>Isabella Lin</b></sub></a><br /><a href="https://github.com/TASRobotics/RaidZero-Outreach-Swerve-Docs/commits?author=i-hdk" title="Code">💻</a></td>
       <td align="center"><a href="https://github.com/0x5b62656e5d"><img src="https://avatars.githubusercontent.com/u/112295217?v=4?s=100" width="100px;" alt="ben"/><br /><sub><b>ben</b></sub></a><br /><a href="https://github.com/TASRobotics/RaidZero-Outreach-Swerve-Docs/commits?author=0x5b62656e5d" title="Code">💻</a></td>
       <td align="center"><a href="https://github.com/24crystalc"><img src="https://avatars.githubusercontent.com/u/116065369?v=4?s=100" width="100px;" alt="24crystalc"/><br /><sub><b>24crystalc</b></sub></a><br /><a href="https://github.com/TASRobotics/RaidZero-Outreach-Swerve-Docs/commits?author=24crystalc" title="Code">💻</a></td>
+      <td align="center"><a href="https://github.com/JacksonAHS"><img src="https://avatars.githubusercontent.com/u/116065416?v=4?s=100" width="100px;" alt="JacksonAHS"/><br /><sub><b>JacksonAHS</b></sub></a><br /><a href="https://github.com/TASRobotics/RaidZero-Outreach-Swerve-Docs/commits?author=JacksonAHS" title="Code">💻</a></td>
     </tr>
   </tbody>
 </table>
