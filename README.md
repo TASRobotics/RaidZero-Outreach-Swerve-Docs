@@ -35,6 +35,9 @@ Pull requests are welcome. For major changes, please open an issue first to disc
       <td align="center"><a href="https://github.com/JacksonAHS"><img src="https://avatars.githubusercontent.com/u/116065416?v=4?s=100" width="100px;" alt="JacksonAHS"/><br /><sub><b>JacksonAHS</b></sub></a><br /><a href="https://github.com/TASRobotics/RaidZero-Outreach-Swerve-Docs/commits?author=JacksonAHS" title="Code">💻</a></td>
       <td align="center"><a href="https://github.com/gksDavid"><img src="https://avatars.githubusercontent.com/u/116065379?v=4?s=100" width="100px;" alt="gksDavid"/><br /><sub><b>gksDavid</b></sub></a><br /><a href="https://github.com/TASRobotics/RaidZero-Outreach-Swerve-Docs/commits?author=gksDavid" title="Code">💻</a></td>
     </tr>
+    <tr>
+      <td align="center"><a href="https://github.com/sophiehsuu"><img src="https://avatars.githubusercontent.com/u/100355828?v=4?s=100" width="100px;" alt="sophiehsuu"/><br /><sub><b>sophiehsuu</b></sub></a><br /><a href="#translation-sophiehsuu" title="Translation">🌍</a></td>
+    </tr>
   </tbody>
 </table>
 
