@@ -37,6 +37,7 @@ Pull requests are welcome. For major changes, please open an issue first to disc
     </tr>
     <tr>
       <td align="center"><a href="https://github.com/sophiehsuu"><img src="https://avatars.githubusercontent.com/u/100355828?v=4?s=100" width="100px;" alt="sophiehsuu"/><br /><sub><b>sophiehsuu</b></sub></a><br /><a href="#translation-sophiehsuu" title="Translation">🌍</a></td>
+      <td align="center"><a href="https://github.com/AveryH1"><img src="https://avatars.githubusercontent.com/u/79828110?v=4?s=100" width="100px;" alt="AveryH"/><br /><sub><b>AveryH</b></sub></a><br /><a href="#translation-AveryH1" title="Translation">🌍</a></td>
     </tr>
   </tbody>
 </table>
