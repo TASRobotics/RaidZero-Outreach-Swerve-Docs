@@ -194,3 +194,7 @@ Sets odometry position to a given x, y, position, and angle.
 
     1. ``pose`` - A `Pose2d <https://first.wpi.edu/wpilib/allwpilib/docs/release/java/edu/wpi/first/math/geometry/Pose2d.html>`_ 
        object with the robot position and angle
+
+.. note::
+    Check out the code we use in these docs on our `Github <https://github.com/
+    TASRobotics/RaidZero-Swerve-Template>`_!

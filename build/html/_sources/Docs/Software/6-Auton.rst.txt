@@ -126,3 +126,7 @@ This allows the robot to follow the path you made in PathPlanner in autonomous.
 
     If the path following is inaccurate or violent, try changing some of the 
     PID controller constants. 
+
+.. note::
+    Check out the code we use in these docs on our `Github <https://github.com/
+    TASRobotics/RaidZero-Swerve-Template>`_!

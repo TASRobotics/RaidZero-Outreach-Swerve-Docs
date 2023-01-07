@@ -119,3 +119,7 @@ A new instance of ManualDrive is created, which also creates the drive command.
 To use the drive command in RobotContainer, the default command of the Swerve object 
 is set to the manual drive object. When Teleop starts, the ManualDrive command will 
 be automatically executed.
+
+.. note::
+    Check out the code we use in these docs on our `Github <https://github.com/
+    TASRobotics/RaidZero-Swerve-Template>`_!

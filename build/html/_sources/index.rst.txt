@@ -9,6 +9,10 @@ Welcome to 4253's Swerve Documentation!
 Welcome to FRC Team 4253's Swerve Documentation! This documentation contains everything
 you will need to know to get a swerve drive up and running.
 
+.. note::
+    Check out the code we use in these docs on our `Github <https://github.com/
+    TASRobotics/RaidZero-Swerve-Template>`_!
+
 .. toctree::
    :titlesonly:
    :caption: Swerve: Pre-Software

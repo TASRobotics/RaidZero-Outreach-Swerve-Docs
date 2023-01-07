@@ -329,3 +329,7 @@ Parameters:
 
 1. ``state`` - desired `SwerveModuleState <https://first.wpi.edu/wpilib/allwpilib/docs/release/java
    /edu/wpi/first/math/kinematics/SwerveModuleState.html>`_ (angle & speed) of SwerveModule
+
+.. note::
+    Check out the code we use in these docs on our `Github <https://github.com/
+    TASRobotics/RaidZero-Swerve-Template>`_!
