@@ -5,7 +5,9 @@
 
 # Raid Zero Outreach Swerve Docs
 
-Welcome to Raid Zero's swerve documentation! Check out the documentation at this [website](https://raidzero-swerve-docs.readthedocs.io/en/latest/). 
+Welcome to Raid Zero's swerve documentation! Check out the English documentation [here](https://raidzero-swerve-docs.readthedocs.io/en/latest/), Chinese (Traditional) documentation [here](https://raidzero-swerve-docs.readthedocs.io/zh_TW/latest/). 
+
+Additionally, check out the swerve source code used in these docs [here](https://github.com/TASRobotics/RaidZero-Swerve-Template).
 
 ## Building the Docs
 
