@@ -172,6 +172,11 @@ Constructor
                 mThrottleEncoder.setVelocityConversionFactor(
                     SwerveConstants.kThrottleVelocityConversionFactor
                 );
+                // Sets conversion factor to throttle encoder so that it reads 
+                // velocity in meters instead of rotations
+                mThrottleEncoder.setPositionConversionFactor(
+                    SwerveConstants.kThrottlePositionConversionFactor
+                );
             }
 
     .. tab:: SPARK MAX & Analog Absolute Encoder
@@ -245,6 +250,11 @@ Constructor
                 mThrottleEncoder.setVelocityConversionFactor(
                     SwerveConstants.kThrottleVelocityConversionFactor
                 );
+                // Sets conversion factor to throttle encoder so that it reads 
+                // velocity in meters instead of rotations
+                mThrottleEncoder.setPositionConversionFactor(
+                    SwerveConstants.kThrottlePositionConversionFactor
+                );
             }
 
 .. warning:: 
@@ -299,6 +309,46 @@ Outputs the current state of the swerve module.
     New `SwerveModuleState <https://first.wpi.edu/wpilib/allwpilib/docs/release/java
     /edu/wpi/first/math/kinematics/SwerveModuleState.html>`_ representing the current
     throttle velocity and rotor angle. 
+
+getPosition
+-----------
+
+Outputs the current position of the swerve module.
+
+.. tabs::
+    
+    .. tab:: Talon FX
+
+        .. code-block:: java
+            :linenos:
+
+            public SwerveModulePosition getPosition() {
+                double throttlePosition = mThrottle.getSelectedSensorPosition() * SwerveConstants.kThrottlePositionConversionFactor;
+
+                return new SwerveModulePosition(
+                    throttlePosition, 
+                    Rotation2d.fromDegrees(mRotorEncoder.getAbsolutePosition())
+                );
+            }
+
+    .. tab:: SPARK MAX
+
+        .. code-block:: java
+            :linenos:
+
+            public SwerveModulePosition getPosition() {
+                return new SwerveModulePosition(
+                    mThrottleEncoder.getPosition(), 
+                    Rotation2d.fromDegrees(mRotorEncoder.get())
+                );
+            }
+
+**Return:**
+"""""""""""
+
+    New `SwerveModulePosition <https://first.wpi.edu/wpilib/allwpilib/docs/release/java
+    /edu/wpi/first/math/kinematics/SwerveModulePosition.html>`_ representing the current
+    throttle position and rotor angle. 
 
 setState
 --------

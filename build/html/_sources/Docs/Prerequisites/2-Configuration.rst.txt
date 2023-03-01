@@ -141,11 +141,44 @@ the wheel one revolution).
 
     public static final double kThrottleGearRatio = 0.0; 
 
-Throttle Velocity Conversion Constant
--------------------------------------
+Throttle Conversion Constant
+----------------------------
 
 Finally, with the constants above, you can calculate the conversion constant that will 
-be used to convert from throttle encoder velocity to linear velocity (meters/second).
+be used to convert from throttle units to helpful units (meters). 
+
+Position Constant
+=================
+
+.. tabs::
+
+    .. tab:: Spark Max (Neo)
+
+        :math:`conversion = \frac{1}{gear ratio} \times {wheel diameter} \times \pi`
+
+        .. code-block:: java
+            :linenos:
+
+            public static final double kThrottleVelocityConversionFactor = 
+                1/kThrottleGearRatio*kWheelDiameterMeters*Math.PI;
+
+    .. tab:: Talon FX (Falcon 500)
+
+        :math:`conversion = \frac{1}{gear ratio} \times \frac{1}{2048} \times {wheel diameter} \times \pi`
+
+        .. note::
+
+            The :math:`\frac{1}{2048}` is 
+            used to convert from Falcon encoder ticks to rotations.
+
+        .. code-block:: java
+            :linenos:
+
+            public static final double kThrottleVelocityConversionFactor = 
+                1/kThrottleGearRatio/2048*kWheelDiameterMeters*Math.PI;
+
+Velocity Constant
+=================
 
 .. tabs::
 

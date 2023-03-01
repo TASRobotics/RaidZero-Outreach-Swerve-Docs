@@ -53,7 +53,11 @@ Constructor
         );
 
         // Instantiate odometry - used for tracking position
-        mOdometry = new SwerveDriveOdometry(SwerveConstants.kSwerveKinematics, mImu.getRotation2d());
+        mOdometry = new SwerveDriveOdometry(
+            SwerveConstants.kSwerveKinematics, 
+            mImu.getRotation2d(), 
+            getModulePositions()
+        );    
     }
 
 Methods
@@ -70,13 +74,7 @@ periodic
     @Override
     public void periodic() {
         // Updates odometry with current module state
-        mOdometry.update(
-            mImu.getRotation2d(), 
-            getModuleStates()[0], 
-            getModuleStates()[1],
-            getModuleStates()[2],
-            getModuleStates()[3]
-        );
+        mOdometry.update(mImu.getRotation2d(), getModulePositions());
     }
 
 drive
@@ -135,6 +133,30 @@ Outputs the current state of the 4 drive swerve modules.
     Return states of all modules in a SwerveModuleState array (Order: 
     [leftFront, rightFront, leftRear, rightRear]).
 
+getModulePositions
+==================
+
+Outputs the current positions of the 4 drive swerve modules.
+
+.. code-block:: java
+    :linenos:
+
+    public SwerveModulePosition[] getModulePositions() {
+        return new SwerveModulePosition[] {
+            mLeftFrontModule.getPosition(), 
+            mRightFrontModule.getPosition(), 
+            mLeftRearModule.getPosition(), 
+            mRightRearModule.getPosition()
+        };
+    }
+
+
+**Return:**
+"""""""""""
+
+    Return positions of all modules in a SwerveModulePosition array (Order: 
+    [leftFront, rightFront, leftRear, rightRear]).
+
 setModuleStates
 ===============
 
@@ -186,7 +208,7 @@ Sets odometry position to a given x, y, position, and angle.
     :linenos:
 
     public void setPose(Pose2d pose) {
-        mOdometry.resetPosition(pose, mImu.getRotation2d());
+        mOdometry.resetPosition(mImu.getRotation2d(), getModulePositions(), pose);
     }
 
 **Parameters:**

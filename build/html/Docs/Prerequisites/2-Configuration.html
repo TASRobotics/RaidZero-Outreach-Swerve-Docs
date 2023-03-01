@@ -193,17 +193,39 @@ the wheel one revolution).</p>
 </pre></div>
 </div>
 </div>
-<div class="section" id="throttle-velocity-conversion-constant">
-<h3>Throttle Velocity Conversion Constant<a class="headerlink" href="#throttle-velocity-conversion-constant" title="Permalink to this headline"></a></h3>
+<div class="section" id="throttle-conversion-constant">
+<h3>Throttle Conversion Constant<a class="headerlink" href="#throttle-conversion-constant" title="Permalink to this headline"></a></h3>
 <p>Finally, with the constants above, you can calculate the conversion constant that will
-be used to convert from throttle encoder velocity to linear velocity (meters/second).</p>
+be used to convert from throttle units to helpful units (meters).</p>
+<div class="section" id="position-constant">
+<h4>Position Constant<a class="headerlink" href="#position-constant" title="Permalink to this headline"></a></h4>
 <div class="sphinx-tabs docutils container">
-<div aria-label="Tabbed content" role="tablist"><button aria-controls="panel-0-0-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-0-0-0" name="0-0" role="tab" tabindex="0">Spark Max (Neo)</button><button aria-controls="panel-0-0-1" aria-selected="false" class="sphinx-tabs-tab" id="tab-0-0-1" name="0-1" role="tab" tabindex="-1">Talon FX (Falcon 500)</button></div><div aria-labelledby="tab-0-0-0" class="sphinx-tabs-panel" id="panel-0-0-0" name="0-0" role="tabpanel" tabindex="0"><p><span class="math notranslate nohighlight">\(conversion = \frac{1}{gear ratio} \times \frac{1}{60} \times {wheel diameter} \times \pi\)</span></p>
+<div aria-label="Tabbed content" role="tablist"><button aria-controls="panel-0-0-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-0-0-0" name="0-0" role="tab" tabindex="0">Spark Max (Neo)</button><button aria-controls="panel-0-0-1" aria-selected="false" class="sphinx-tabs-tab" id="tab-0-0-1" name="0-1" role="tab" tabindex="-1">Talon FX (Falcon 500)</button></div><div aria-labelledby="tab-0-0-0" class="sphinx-tabs-panel" id="panel-0-0-0" name="0-0" role="tabpanel" tabindex="0"><p><span class="math notranslate nohighlight">\(conversion = \frac{1}{gear ratio} \times {wheel diameter} \times \pi\)</span></p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="kd">public</span> <span class="kd">static</span> <span class="kd">final</span> <span class="kt">double</span> <span class="n">kThrottleVelocityConversionFactor</span> <span class="o">=</span>
+<span class="linenos">2</span>    <span class="mi">1</span><span class="o">/</span><span class="n">kThrottleGearRatio</span><span class="o">*</span><span class="n">kWheelDiameterMeters</span><span class="o">*</span><span class="n">Math</span><span class="p">.</span><span class="na">PI</span><span class="p">;</span>
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-0-0-1" class="sphinx-tabs-panel" hidden="true" id="panel-0-0-1" name="0-1" role="tabpanel" tabindex="0"><p><span class="math notranslate nohighlight">\(conversion = \frac{1}{gear ratio} \times \frac{1}{2048} \times {wheel diameter} \times \pi\)</span></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The <span class="math notranslate nohighlight">\(\frac{1}{2048}\)</span> is
+used to convert from Falcon encoder ticks to rotations.</p>
+</div>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="kd">public</span> <span class="kd">static</span> <span class="kd">final</span> <span class="kt">double</span> <span class="n">kThrottleVelocityConversionFactor</span> <span class="o">=</span>
+<span class="linenos">2</span>    <span class="mi">1</span><span class="o">/</span><span class="n">kThrottleGearRatio</span><span class="o">/</span><span class="mi">2048</span><span class="o">*</span><span class="n">kWheelDiameterMeters</span><span class="o">*</span><span class="n">Math</span><span class="p">.</span><span class="na">PI</span><span class="p">;</span>
+</pre></div>
+</div>
+</div></div>
+</div>
+<div class="section" id="velocity-constant">
+<h4>Velocity Constant<a class="headerlink" href="#velocity-constant" title="Permalink to this headline"></a></h4>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" role="tablist"><button aria-controls="panel-1-1-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-1-1-0" name="1-0" role="tab" tabindex="0">Spark Max (Neo)</button><button aria-controls="panel-1-1-1" aria-selected="false" class="sphinx-tabs-tab" id="tab-1-1-1" name="1-1" role="tab" tabindex="-1">Talon FX (Falcon 500)</button></div><div aria-labelledby="tab-1-1-0" class="sphinx-tabs-panel" id="panel-1-1-0" name="1-0" role="tabpanel" tabindex="0"><p><span class="math notranslate nohighlight">\(conversion = \frac{1}{gear ratio} \times \frac{1}{60} \times {wheel diameter} \times \pi\)</span></p>
 <div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="kd">public</span> <span class="kd">static</span> <span class="kd">final</span> <span class="kt">double</span> <span class="n">kThrottleVelocityConversionFactor</span> <span class="o">=</span>
 <span class="linenos">2</span>    <span class="mi">1</span><span class="o">/</span><span class="n">kThrottleGearRatio</span><span class="o">/</span><span class="mi">60</span><span class="o">*</span><span class="n">kWheelDiameterMeters</span><span class="o">*</span><span class="n">Math</span><span class="p">.</span><span class="na">PI</span><span class="p">;</span>
 </pre></div>
 </div>
-</div><div aria-labelledby="tab-0-0-1" class="sphinx-tabs-panel" hidden="true" id="panel-0-0-1" name="0-1" role="tabpanel" tabindex="0"><p><span class="math notranslate nohighlight">\(conversion = \frac{1}{gear ratio} \times \frac{1}{2048} \times {wheel diameter} \times \pi \times 10\)</span></p>
+</div><div aria-labelledby="tab-1-1-1" class="sphinx-tabs-panel" hidden="true" id="panel-1-1-1" name="1-1" role="tabpanel" tabindex="0"><p><span class="math notranslate nohighlight">\(conversion = \frac{1}{gear ratio} \times \frac{1}{2048} \times {wheel diameter} \times \pi \times 10\)</span></p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>The <span class="math notranslate nohighlight">\(10\)</span> is used to convert from 100ms to 1s, since the Talon FX
@@ -215,6 +237,7 @@ used to convert from Falcon encoder ticks to rotations.</p>
 </pre></div>
 </div>
 </div></div>
+</div>
 </div>
 </div>
 </div>
