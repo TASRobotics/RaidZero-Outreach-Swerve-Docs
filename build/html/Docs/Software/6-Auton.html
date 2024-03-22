@@ -1,20 +1,24 @@
 <!DOCTYPE html>
-<html class="writer-html5" lang="en" >
+<html class="writer-html5" lang="en" data-content_root="../../">
 <head>
-  <meta charset="utf-8" />
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Autonomous Pathing &mdash; 4253 Swerve Documentation 1.0.0 documentation</title>
-      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
-      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
-      <link rel="stylesheet" href="../../_static/tabs.css" type="text/css" />
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=fa44fd50" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../../_static/tabs.css?v=a5c4661c" />
+
+  
   <!--[if lt IE 9]>
     <script src="../../_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
-        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
-        <script src="../../_static/jquery.js"></script>
-        <script src="../../_static/underscore.js"></script>
-        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../_static/documentation_options.js?v=8d563738"></script>
+        <script src="../../_static/doctools.js?v=888ff710"></script>
+        <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
@@ -27,11 +31,15 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search" >
-            <a href="../../index.html" class="icon icon-home"> 4253 Swerve Documentation
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            4253 Swerve Documentation
           </a>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" />
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
@@ -69,7 +77,7 @@
         <div class="rst-content">
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-      <li><a href="../../index.html" class="icon icon-home"></a></li>
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
       <li class="breadcrumb-item active">Autonomous Pathing</li>
       <li class="wy-breadcrumbs-aside">
             <a href="../../_sources/Docs/Software/6-Auton.rst.txt" rel="nofollow"> View page source</a>
@@ -80,13 +88,13 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <div class="section" id="autonomous-pathing">
-<h1>Autonomous Pathing<a class="headerlink" href="#autonomous-pathing" title="Permalink to this headline"></a></h1>
+  <section id="autonomous-pathing">
+<h1>Autonomous Pathing<a class="headerlink" href="#autonomous-pathing" title="Link to this heading"></a></h1>
 <p>There are many different ways to implement pathing. In this guide, we will
 use <a class="reference external" href="https://github.com/mjansen4857/pathplanner">PathPlanner</a> to generate
 and follow paths.</p>
-<div class="section" id="installation">
-<h2>Installation<a class="headerlink" href="#installation" title="Permalink to this headline"></a></h2>
+<section id="installation">
+<h2>Installation<a class="headerlink" href="#installation" title="Link to this heading"></a></h2>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>Offical documentation can be found <a class="reference external" href="https://github.com/mjansen4857/pathplanner/wiki">here</a>.</p>
@@ -97,9 +105,9 @@ and follow paths.</p>
 </div>
 <p>Next, download PathPlanner from the <a class="reference external" href="https://www.microsoft.com/en-us/p/frc-pathplanner/9nqbkb5dw909?cid=storebadge&amp;ocid=badge&amp;rtc=1&amp;activetab=pivot:overviewtab">Microsoft</a> or <a class="reference external" href="https://apps.apple.com/us/app/frc-pathplanner/id1593046876">Mac App</a>
 Store.</p>
-</div>
-<div class="section" id="path-generation">
-<h2>Path Generation<a class="headerlink" href="#path-generation" title="Permalink to this headline"></a></h2>
+</section>
+<section id="path-generation">
+<h2>Path Generation<a class="headerlink" href="#path-generation" title="Link to this heading"></a></h2>
 <ol class="arabic simple">
 <li><p>Open PathPlanner, click “Switch Project” in the menu, and select the root
 of your project.</p></li>
@@ -113,40 +121,40 @@ Make sure to also select “Holonomic Mode”.</p></li>
 <ol class="arabic simple" start="3">
 <li><p>Finally, draw the paths you want the robot to follow.</p></li>
 </ol>
-</div>
-<div class="section" id="path-following">
-<h2>Path Following<a class="headerlink" href="#path-following" title="Permalink to this headline"></a></h2>
+</section>
+<section id="path-following">
+<h2>Path Following<a class="headerlink" href="#path-following" title="Link to this heading"></a></h2>
 <p>We will now extract the path made in PathPlanner and use it in our robot code.</p>
 <p>In <code class="docutils literal notranslate"><span class="pre">RobotContainer.java</span></code>, create an instance of <code class="docutils literal notranslate"><span class="pre">PathPlannerTrajectory</span></code> by
 extracting the path you made in PathPlanner.</p>
-<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="kd">private</span> <span class="n">PathPlannerTrajectory</span> <span class="n">mTrajectory</span> <span class="o">=</span> <span class="n">PathPlanner</span><span class="p">.</span><span class="na">loadPath</span><span class="p">(</span>
-<span class="linenos">2</span>    <span class="s">&quot;PATH NAME&quot;</span><span class="p">,</span>
-<span class="linenos">3</span>    <span class="n">SwerveConstants</span><span class="p">.</span><span class="na">kMaxVelocityMetersPerSecond</span><span class="p">,</span>
-<span class="linenos">4</span>    <span class="n">SwerveConstants</span><span class="p">.</span><span class="na">kMaxAccelerationMetersPerSecond</span>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="kd">private</span><span class="w"> </span><span class="n">PathPlannerTrajectory</span><span class="w"> </span><span class="n">mTrajectory</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">PathPlanner</span><span class="p">.</span><span class="na">loadPath</span><span class="p">(</span>
+<span class="linenos">2</span><span class="w">    </span><span class="s">&quot;PATH NAME&quot;</span><span class="p">,</span>
+<span class="linenos">3</span><span class="w">    </span><span class="n">SwerveConstants</span><span class="p">.</span><span class="na">kMaxVelocityMetersPerSecond</span><span class="p">,</span>
+<span class="linenos">4</span><span class="w">    </span><span class="n">SwerveConstants</span><span class="p">.</span><span class="na">kMaxAccelerationMetersPerSecond</span>
 <span class="linenos">5</span><span class="p">);</span>
 </pre></div>
 </div>
 <p>Next, create 3 different PID controllers that will be used to control robot
 heading and movement in the x and y directions.</p>
 <div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="c1">// PID controller for movement in the X direction</span>
-<span class="linenos"> 2</span><span class="kd">private</span> <span class="n">PIDController</span> <span class="n">mXController</span> <span class="o">=</span> <span class="k">new</span> <span class="n">PIDController</span><span class="p">(</span>
-<span class="linenos"> 3</span>    <span class="n">SwerveConstants</span><span class="p">.</span><span class="na">kPathingX_kP</span><span class="p">,</span>
-<span class="linenos"> 4</span>    <span class="n">SwerveConstants</span><span class="p">.</span><span class="na">kPathingX_kI</span><span class="p">,</span>
-<span class="linenos"> 5</span>    <span class="n">SwerveConstants</span><span class="p">.</span><span class="na">kPathingX_kD</span>
+<span class="linenos"> 2</span><span class="kd">private</span><span class="w"> </span><span class="n">PIDController</span><span class="w"> </span><span class="n">mXController</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">PIDController</span><span class="p">(</span>
+<span class="linenos"> 3</span><span class="w">    </span><span class="n">SwerveConstants</span><span class="p">.</span><span class="na">kPathingX_kP</span><span class="p">,</span>
+<span class="linenos"> 4</span><span class="w">    </span><span class="n">SwerveConstants</span><span class="p">.</span><span class="na">kPathingX_kI</span><span class="p">,</span>
+<span class="linenos"> 5</span><span class="w">    </span><span class="n">SwerveConstants</span><span class="p">.</span><span class="na">kPathingX_kD</span>
 <span class="linenos"> 6</span><span class="p">);</span>
 <span class="linenos"> 7</span>
 <span class="linenos"> 8</span><span class="c1">// PID controller for movement in the Y direction</span>
-<span class="linenos"> 9</span><span class="kd">private</span> <span class="n">PIDController</span> <span class="n">mYController</span> <span class="o">=</span> <span class="k">new</span> <span class="n">PIDController</span><span class="p">(</span>
-<span class="linenos">10</span>    <span class="n">SwerveConstants</span><span class="p">.</span><span class="na">kPathingY_kP</span><span class="p">,</span>
-<span class="linenos">11</span>    <span class="n">SwerveConstants</span><span class="p">.</span><span class="na">kPathingY_kI</span><span class="p">,</span>
-<span class="linenos">12</span>    <span class="n">SwerveConstants</span><span class="p">.</span><span class="na">kPathingY_kD</span>
+<span class="linenos"> 9</span><span class="kd">private</span><span class="w"> </span><span class="n">PIDController</span><span class="w"> </span><span class="n">mYController</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">PIDController</span><span class="p">(</span>
+<span class="linenos">10</span><span class="w">    </span><span class="n">SwerveConstants</span><span class="p">.</span><span class="na">kPathingY_kP</span><span class="p">,</span>
+<span class="linenos">11</span><span class="w">    </span><span class="n">SwerveConstants</span><span class="p">.</span><span class="na">kPathingY_kI</span><span class="p">,</span>
+<span class="linenos">12</span><span class="w">    </span><span class="n">SwerveConstants</span><span class="p">.</span><span class="na">kPathingY_kD</span>
 <span class="linenos">13</span><span class="p">);</span>
 <span class="linenos">14</span>
 <span class="linenos">15</span><span class="c1">// PID controller for robot heading</span>
-<span class="linenos">16</span><span class="kd">private</span> <span class="n">PIDController</span> <span class="n">mThetaController</span> <span class="o">=</span> <span class="k">new</span> <span class="n">PIDController</span><span class="p">(</span>
-<span class="linenos">17</span>    <span class="n">SwerveConstants</span><span class="p">.</span><span class="na">kPathingTheta_kP</span><span class="p">,</span>
-<span class="linenos">18</span>    <span class="n">SwerveConstants</span><span class="p">.</span><span class="na">kPathingTheta_kI</span><span class="p">,</span>
-<span class="linenos">19</span>    <span class="n">SwerveConstants</span><span class="p">.</span><span class="na">kPathingTheta_kD</span>
+<span class="linenos">16</span><span class="kd">private</span><span class="w"> </span><span class="n">PIDController</span><span class="w"> </span><span class="n">mThetaController</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">PIDController</span><span class="p">(</span>
+<span class="linenos">17</span><span class="w">    </span><span class="n">SwerveConstants</span><span class="p">.</span><span class="na">kPathingTheta_kP</span><span class="p">,</span>
+<span class="linenos">18</span><span class="w">    </span><span class="n">SwerveConstants</span><span class="p">.</span><span class="na">kPathingTheta_kI</span><span class="p">,</span>
+<span class="linenos">19</span><span class="w">    </span><span class="n">SwerveConstants</span><span class="p">.</span><span class="na">kPathingTheta_kD</span>
 <span class="linenos">20</span><span class="p">);</span>
 </pre></div>
 </div>
@@ -159,23 +167,23 @@ straight paths. Once the X and Y controllers are tuned, tune the theta controlle
 by making the robot follow a short path with a sharp turn.</p>
 </div>
 <p>Finally, create a <code class="docutils literal notranslate"><span class="pre">SwerveControllerCommand</span></code> that will be used to follow the path.</p>
-<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="kd">private</span> <span class="n">PPSwerveControllerCommand</span> <span class="n">mCommand</span> <span class="o">=</span> <span class="k">new</span> <span class="n">PPSwerveControllerCommand</span><span class="p">(</span>
-<span class="linenos"> 2</span>    <span class="n">mTrajectory</span><span class="p">,</span>
-<span class="linenos"> 3</span>    <span class="n">mSwerve</span><span class="p">::</span><span class="n">getPose</span><span class="p">,</span>
-<span class="linenos"> 4</span>    <span class="n">SwerveConstants</span><span class="p">.</span><span class="na">kSwerveKinematics</span><span class="p">,</span>
-<span class="linenos"> 5</span>    <span class="n">mXController</span><span class="p">,</span>
-<span class="linenos"> 6</span>    <span class="n">mYController</span><span class="p">,</span>
-<span class="linenos"> 7</span>    <span class="n">mThetaController</span><span class="p">,</span>
-<span class="linenos"> 8</span>    <span class="n">mSwerve</span><span class="p">::</span><span class="n">setModuleStates</span><span class="p">,</span>
-<span class="linenos"> 9</span>    <span class="n">mSwerve</span>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="kd">private</span><span class="w"> </span><span class="n">PPSwerveControllerCommand</span><span class="w"> </span><span class="n">mCommand</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">PPSwerveControllerCommand</span><span class="p">(</span>
+<span class="linenos"> 2</span><span class="w">    </span><span class="n">mTrajectory</span><span class="p">,</span>
+<span class="linenos"> 3</span><span class="w">    </span><span class="n">mSwerve</span><span class="p">::</span><span class="n">getPose</span><span class="p">,</span>
+<span class="linenos"> 4</span><span class="w">    </span><span class="n">SwerveConstants</span><span class="p">.</span><span class="na">kSwerveKinematics</span><span class="p">,</span>
+<span class="linenos"> 5</span><span class="w">    </span><span class="n">mXController</span><span class="p">,</span>
+<span class="linenos"> 6</span><span class="w">    </span><span class="n">mYController</span><span class="p">,</span>
+<span class="linenos"> 7</span><span class="w">    </span><span class="n">mThetaController</span><span class="p">,</span>
+<span class="linenos"> 8</span><span class="w">    </span><span class="n">mSwerve</span><span class="p">::</span><span class="n">setModuleStates</span><span class="p">,</span>
+<span class="linenos"> 9</span><span class="w">    </span><span class="n">mSwerve</span>
 <span class="linenos">10</span><span class="p">);</span>
 </pre></div>
 </div>
 <p>Return the command in <code class="docutils literal notranslate"><span class="pre">getAutonomousCommand()</span></code>.</p>
 <div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="nd">@Override</span>
-<span class="linenos">2</span><span class="kd">public</span> <span class="n">Command</span> <span class="nf">getAutonomousCommand</span><span class="p">()</span> <span class="p">{</span>
-<span class="linenos">3</span>    <span class="c1">// `andThen...` is used to stop the robot after the path is finished</span>
-<span class="linenos">4</span>    <span class="k">return</span> <span class="n">command</span><span class="p">.</span><span class="na">andThen</span><span class="p">(()</span> <span class="o">-&gt;</span> <span class="n">mSwerve</span><span class="p">.</span><span class="na">drive</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="kc">false</span><span class="p">));</span>
+<span class="linenos">2</span><span class="kd">public</span><span class="w"> </span><span class="n">Command</span><span class="w"> </span><span class="nf">getAutonomousCommand</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos">3</span><span class="w">    </span><span class="c1">// `andThen...` is used to stop the robot after the path is finished</span>
+<span class="linenos">4</span><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">command</span><span class="p">.</span><span class="na">andThen</span><span class="p">(()</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">mSwerve</span><span class="p">.</span><span class="na">drive</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="kc">false</span><span class="p">));</span>
 <span class="linenos">5</span><span class="p">}</span>
 </pre></div>
 </div>
@@ -189,8 +197,8 @@ PID controller constants.</p>
 <p class="admonition-title">Note</p>
 <p>Check out the code we use in these docs on our <a class="reference external" href="https://github.com/TASRobotics/RaidZero-Swerve-Template">Github</a>!</p>
 </div>
-</div>
-</div>
+</section>
+</section>
 
 
            </div>

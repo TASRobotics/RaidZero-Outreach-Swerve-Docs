@@ -1,21 +1,25 @@
 <!DOCTYPE html>
-<html class="writer-html5" lang="en" >
+<html class="writer-html5" lang="en" data-content_root="../../">
 <head>
-  <meta charset="utf-8" />
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Swerve Configuration &mdash; 4253 Swerve Documentation 1.0.0 documentation</title>
-      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
-      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
-      <link rel="stylesheet" href="../../_static/tabs.css" type="text/css" />
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=fa44fd50" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../../_static/tabs.css?v=a5c4661c" />
+
+  
   <!--[if lt IE 9]>
     <script src="../../_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
-        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
-        <script src="../../_static/jquery.js"></script>
-        <script src="../../_static/underscore.js"></script>
-        <script src="../../_static/doctools.js"></script>
-        <script src="../../_static/tabs.js"></script>
+        <script src="../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../_static/documentation_options.js?v=8d563738"></script>
+        <script src="../../_static/doctools.js?v=888ff710"></script>
+        <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../../_static/tabs.js?v=3030b3cb"></script>
         <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script src="../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
@@ -29,11 +33,15 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search" >
-            <a href="../../index.html" class="icon icon-home"> 4253 Swerve Documentation
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            4253 Swerve Documentation
           </a>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" />
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
@@ -71,7 +79,7 @@
         <div class="rst-content">
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-      <li><a href="../../index.html" class="icon icon-home"></a></li>
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
       <li class="breadcrumb-item active">Swerve Configuration</li>
       <li class="wy-breadcrumbs-aside">
             <a href="../../_sources/Docs/Prerequisites/2-Configuration.rst.txt" rel="nofollow"> View page source</a>
@@ -82,55 +90,57 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <div class="section" id="swerve-configuration">
-<h1>Swerve Configuration<a class="headerlink" href="#swerve-configuration" title="Permalink to this headline"></a></h1>
+  <section id="swerve-configuration">
+<h1>Swerve Configuration<a class="headerlink" href="#swerve-configuration" title="Link to this heading"></a></h1>
 <p>Before you can start programming the swerve, you need to collect constants
 specific to your robot that will be used to configure the swerve.
 All constants will be recorded in <code class="docutils literal notranslate"><span class="pre">Constants.java</span></code>.</p>
-<div class="section" id="motor-sensor-ids">
-<h2>Motor &amp; Sensor IDs<a class="headerlink" href="#motor-sensor-ids" title="Permalink to this headline"></a></h2>
+<section id="motor-sensor-ids">
+<h2>Motor &amp; Sensor IDs<a class="headerlink" href="#motor-sensor-ids" title="Link to this heading"></a></h2>
 <p>Record the CAN IDs of the rotor and throttle motors.</p>
 <div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="c1">// Rotor IDs</span>
-<span class="linenos"> 2</span><span class="kd">public</span> <span class="kd">static</span> <span class="kd">final</span> <span class="kt">int</span> <span class="n">kLeftFrontRotorID</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
-<span class="linenos"> 3</span><span class="kd">public</span> <span class="kd">static</span> <span class="kd">final</span> <span class="kt">int</span> <span class="n">kRightFrontRotorID</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
-<span class="linenos"> 4</span><span class="kd">public</span> <span class="kd">static</span> <span class="kd">final</span> <span class="kt">int</span> <span class="n">kLeftRearRotorID</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
-<span class="linenos"> 5</span><span class="kd">public</span> <span class="kd">static</span> <span class="kd">final</span> <span class="kt">int</span> <span class="n">kRightRearRotorID</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+<span class="linenos"> 2</span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">kLeftFrontRotorID</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="linenos"> 3</span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">kRightFrontRotorID</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="linenos"> 4</span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">kLeftRearRotorID</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="linenos"> 5</span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">kRightRearRotorID</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
 <span class="linenos"> 6</span>
 <span class="linenos"> 7</span><span class="c1">// Throttle IDs</span>
-<span class="linenos"> 8</span><span class="kd">public</span> <span class="kd">static</span> <span class="kd">final</span> <span class="kt">int</span> <span class="n">kLeftFrontThrottleID</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
-<span class="linenos"> 9</span><span class="kd">public</span> <span class="kd">static</span> <span class="kd">final</span> <span class="kt">int</span> <span class="n">kRightFrontThrottleID</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
-<span class="linenos">10</span><span class="kd">public</span> <span class="kd">static</span> <span class="kd">final</span> <span class="kt">int</span> <span class="n">kLeftRearThrottleID</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
-<span class="linenos">11</span><span class="kd">public</span> <span class="kd">static</span> <span class="kd">final</span> <span class="kt">int</span> <span class="n">kRightRearThrottleID</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+<span class="linenos"> 8</span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">kLeftFrontThrottleID</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="linenos"> 9</span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">kRightFrontThrottleID</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="linenos">10</span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">kLeftRearThrottleID</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="linenos">11</span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">kRightRearThrottleID</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
 </pre></div>
 </div>
 <p>Record the CAN or analog IDs of the rotor encoders and IMU (not applicable for navX).</p>
 <div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="c1">// Rotor Encoder IDs</span>
-<span class="linenos">2</span><span class="kd">public</span> <span class="kd">static</span> <span class="kd">final</span> <span class="kt">int</span> <span class="n">kLeftFrontRotorEncoderID</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
-<span class="linenos">3</span><span class="kd">public</span> <span class="kd">static</span> <span class="kd">final</span> <span class="kt">int</span> <span class="n">kRightFrontRotorEncoderID</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
-<span class="linenos">4</span><span class="kd">public</span> <span class="kd">static</span> <span class="kd">final</span> <span class="kt">int</span> <span class="n">kLeftRearRotorEncoderID</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
-<span class="linenos">5</span><span class="kd">public</span> <span class="kd">static</span> <span class="kd">final</span> <span class="kt">int</span> <span class="n">kRightRearRotorEncoderID</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+<span class="linenos">2</span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">kLeftFrontRotorEncoderID</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="linenos">3</span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">kRightFrontRotorEncoderID</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="linenos">4</span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">kLeftRearRotorEncoderID</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="linenos">5</span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">kRightRearRotorEncoderID</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
 <span class="linenos">6</span>
 <span class="linenos">7</span><span class="c1">// IMU ID</span>
-<span class="linenos">8</span><span class="kd">public</span> <span class="kd">static</span> <span class="kd">final</span> <span class="kt">int</span> <span class="n">kImuID</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+<span class="linenos">8</span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">kImuID</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="rotor-encoder-offsets">
-<h2>Rotor Encoder Offsets<a class="headerlink" href="#rotor-encoder-offsets" title="Permalink to this headline"></a></h2>
+</section>
+<section id="rotor-encoder-offsets">
+<h2>Rotor Encoder Offsets<a class="headerlink" href="#rotor-encoder-offsets" title="Link to this heading"></a></h2>
 <p>In order for the angle of the swerve modules to be in sync, you must
 compensate for potential rotor encoder offsets.</p>
 <p>First, rotate the modules so that all wheels are facing in the same direction.
 Next, ensure that when positive power is applied to throttle motors, all
 wheels spin in the forward direction.</p>
-<div class="figure align-default" id="id1">
+<figure class="align-default" id="id1">
 <a class="reference internal image-reference" href="../../_images/UpsidedownSwerve.jpg"><img alt="../../_images/UpsidedownSwerve.jpg" src="../../_images/UpsidedownSwerve.jpg" style="width: 451.49999999999994px; height: 377.65px;" /></a>
-<p class="caption"><span class="caption-text"><a class="reference external" href="https://www.youtube.com/watch?v=wCakzMfRPKs&amp;ab_channel=Orbit1690">source</a></span><a class="headerlink" href="#id1" title="Permalink to this image"></a></p>
-</div>
+<figcaption>
+<p><span class="caption-text"><a class="reference external" href="https://www.youtube.com/watch?v=wCakzMfRPKs&amp;ab_channel=Orbit1690">source</a></span><a class="headerlink" href="#id1" title="Link to this image"></a></p>
+</figcaption>
+</figure>
 <p>Record the rotor encoder values for each module in the <code class="docutils literal notranslate"><span class="pre">Constants.java</span></code> file.</p>
-<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="kd">public</span> <span class="kd">static</span> <span class="kd">final</span> <span class="kt">double</span> <span class="n">kLeftFrontRotorOffset</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span> <span class="o">*</span> <span class="n">LEFT_FRONT_ANGLE</span><span class="p">;</span>
-<span class="linenos">2</span><span class="kd">public</span> <span class="kd">static</span> <span class="kd">final</span> <span class="kt">double</span> <span class="n">kRightFrontRotorOffset</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span> <span class="o">*</span> <span class="n">RIGHT_FRONT_ANGLE</span><span class="p">;</span>
-<span class="linenos">3</span><span class="kd">public</span> <span class="kd">static</span> <span class="kd">final</span> <span class="kt">double</span> <span class="n">kLeftRearRotorOffset</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span> <span class="o">*</span> <span class="n">LEFT_REAR_ANGLE</span><span class="p">;</span>
-<span class="linenos">4</span><span class="kd">public</span> <span class="kd">static</span> <span class="kd">final</span> <span class="kt">double</span> <span class="n">kRightRearRotorOffset</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span> <span class="o">*</span> <span class="n">RIGHT_REAR_ANGLE</span><span class="p">;</span>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">kLeftFrontRotorOffset</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">-</span><span class="mi">1</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">LEFT_FRONT_ANGLE</span><span class="p">;</span>
+<span class="linenos">2</span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">kRightFrontRotorOffset</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">-</span><span class="mi">1</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">RIGHT_FRONT_ANGLE</span><span class="p">;</span>
+<span class="linenos">3</span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">kLeftRearRotorOffset</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">-</span><span class="mi">1</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">LEFT_REAR_ANGLE</span><span class="p">;</span>
+<span class="linenos">4</span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">kRightRearRotorOffset</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">-</span><span class="mi">1</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">RIGHT_REAR_ANGLE</span><span class="p">;</span>
 </pre></div>
 </div>
 <div class="admonition note">
@@ -138,109 +148,106 @@ wheels spin in the forward direction.</p>
 <p>The rotor offset will be added to the rotor encoder value. This is why
 the rotor offset is multiplied by -1.</p>
 </div>
-</div>
-<div class="section" id="rotor-motor-encoder-inversion">
-<h2>Rotor Motor &amp; Encoder Inversion<a class="headerlink" href="#rotor-motor-encoder-inversion" title="Permalink to this headline"></a></h2>
+</section>
+<section id="rotor-motor-encoder-inversion">
+<h2>Rotor Motor &amp; Encoder Inversion<a class="headerlink" href="#rotor-motor-encoder-inversion" title="Link to this heading"></a></h2>
 <p>The rotor motor and encoder may need to be inverted. When positive power is applied
 to the rotor motor, the rotor encoder should increase in value. If this is not the
 case, you will need to invert the rotor motor or encoder in the <code class="docutils literal notranslate"><span class="pre">Constants.java</span></code> file
 by changing the boolean value of the motor/encoder to <code class="docutils literal notranslate"><span class="pre">true</span></code>.</p>
-<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="kd">public</span> <span class="kd">static</span> <span class="kd">final</span> <span class="kt">boolean</span> <span class="n">kRotorEncoderDirection</span> <span class="o">=</span> <span class="kc">false</span><span class="p">;</span>
-<span class="linenos">2</span><span class="kd">public</span> <span class="kd">static</span> <span class="kd">final</span> <span class="kt">boolean</span> <span class="n">kRotorMotorInversion</span> <span class="o">=</span> <span class="kc">false</span><span class="p">;</span>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" role="tablist"><button aria-controls="panel-0-0-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-0-0-0" name="0-0" role="tab" tabindex="0">Talon FX &amp; CANCoder</button><button aria-controls="panel-0-0-1" aria-selected="false" class="sphinx-tabs-tab" id="tab-0-0-1" name="0-1" role="tab" tabindex="-1">SPARK MAX &amp; CANCoder</button><button aria-controls="panel-0-0-2" aria-selected="false" class="sphinx-tabs-tab" id="tab-0-0-2" name="0-2" role="tab" tabindex="-1">SPARK MAX &amp; Analog Absolute Encoder</button></div><div aria-labelledby="tab-0-0-0" class="sphinx-tabs-panel" id="panel-0-0-0" name="0-0" role="tabpanel" tabindex="0"><div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="n">SensorDirectionValue</span><span class="w"> </span><span class="n">kRotorEncoderDirection</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">SensorDirectionValue</span><span class="p">.</span><span class="na">CounterClockwise_Positive</span><span class="p">;</span>
+<span class="linenos">2</span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="n">InvertedValue</span><span class="w"> </span><span class="n">kRotorMotorInversion</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">InvertedValue</span><span class="p">.</span><span class="na">CounterClockwise_Positive</span><span class="p">;</span>
 </pre></div>
 </div>
+</div><div aria-labelledby="tab-0-0-1" class="sphinx-tabs-panel" hidden="true" id="panel-0-0-1" name="0-1" role="tabpanel" tabindex="0"><div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="n">SensorDirectionValue</span><span class="w"> </span><span class="n">kRotorEncoderDirection</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">SensorDirectionValue</span><span class="p">.</span><span class="na">CounterClockwise_Positive</span><span class="p">;</span>
+<span class="linenos">2</span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="kt">boolean</span><span class="w"> </span><span class="n">kRotorMotorInversion</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">false</span><span class="p">;</span>
+</pre></div>
 </div>
-<div class="section" id="swerve-kinematics">
-<h2>Swerve Kinematics<a class="headerlink" href="#swerve-kinematics" title="Permalink to this headline"></a></h2>
-<div class="figure align-default">
+</div><div aria-labelledby="tab-0-0-2" class="sphinx-tabs-panel" hidden="true" id="panel-0-0-2" name="0-2" role="tabpanel" tabindex="0"><div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="kt">boolean</span><span class="w"> </span><span class="n">kRotorEncoderDirection</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">false</span><span class="p">;</span>
+<span class="linenos">2</span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="kt">boolean</span><span class="w"> </span><span class="n">kRotorMotorInversion</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">false</span><span class="p">;</span>
+</pre></div>
+</div>
+</div></div>
+</section>
+<section id="swerve-kinematics">
+<h2>Swerve Kinematics<a class="headerlink" href="#swerve-kinematics" title="Link to this heading"></a></h2>
+<figure class="align-default">
 <a class="reference internal image-reference" href="../../_images/AnnotatedSwerve2.PNG"><img alt="Width &amp; length of swerve" src="../../_images/AnnotatedSwerve2.PNG" style="width: 508.0px; height: 346.0px;" /></a>
-</div>
+</figure>
 <p>Record the width and length of the robot (units in meters). Since
 positive X is forward, and positive Y is left, the configuration should
 look something like this.</p>
 <div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="c1">// Swerve module order: front left, front right, rear left, rear right</span>
-<span class="linenos">2</span><span class="kd">public</span> <span class="kd">static</span> <span class="kd">final</span> <span class="n">SwerveDriveKinematics</span> <span class="n">kSwerveKinematics</span> <span class="o">=</span> <span class="k">new</span> <span class="n">SwerveDriveKinematics</span><span class="p">(</span>
-<span class="linenos">3</span>    <span class="k">new</span> <span class="n">Translation2d</span><span class="p">(</span><span class="n">LENGTH</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="n">WIDTH</span><span class="o">/</span><span class="mi">2</span><span class="p">),</span>
-<span class="linenos">4</span>    <span class="k">new</span> <span class="n">Translation2d</span><span class="p">(</span><span class="n">LENGTH</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="n">WIDTH</span><span class="o">/</span><span class="mi">2</span><span class="p">),</span>
-<span class="linenos">5</span>    <span class="k">new</span> <span class="n">Translation2d</span><span class="p">(</span><span class="o">-</span><span class="n">LENGTH</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="n">WIDTH</span><span class="o">/</span><span class="mi">2</span><span class="p">),</span>
-<span class="linenos">6</span>    <span class="k">new</span> <span class="n">Translation2d</span><span class="p">(</span><span class="o">-</span><span class="n">LENGTH</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="n">WIDTH</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span>
+<span class="linenos">2</span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="n">SwerveDriveKinematics</span><span class="w"> </span><span class="n">kSwerveKinematics</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">SwerveDriveKinematics</span><span class="p">(</span>
+<span class="linenos">3</span><span class="w">    </span><span class="k">new</span><span class="w"> </span><span class="n">Translation2d</span><span class="p">(</span><span class="n">LENGTH</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="n">WIDTH</span><span class="o">/</span><span class="mi">2</span><span class="p">),</span>
+<span class="linenos">4</span><span class="w">    </span><span class="k">new</span><span class="w"> </span><span class="n">Translation2d</span><span class="p">(</span><span class="n">LENGTH</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="o">-</span><span class="n">WIDTH</span><span class="o">/</span><span class="mi">2</span><span class="p">),</span>
+<span class="linenos">5</span><span class="w">    </span><span class="k">new</span><span class="w"> </span><span class="n">Translation2d</span><span class="p">(</span><span class="o">-</span><span class="n">LENGTH</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="n">WIDTH</span><span class="o">/</span><span class="mi">2</span><span class="p">),</span>
+<span class="linenos">6</span><span class="w">    </span><span class="k">new</span><span class="w"> </span><span class="n">Translation2d</span><span class="p">(</span><span class="o">-</span><span class="n">LENGTH</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="o">-</span><span class="n">WIDTH</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span>
 <span class="linenos">7</span><span class="p">);</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="extra-constants">
-<h2>Extra Constants<a class="headerlink" href="#extra-constants" title="Permalink to this headline"></a></h2>
-<div class="section" id="max-speed-acceleration">
-<h3>Max Speed/Acceleration<a class="headerlink" href="#max-speed-acceleration" title="Permalink to this headline"></a></h3>
+</section>
+<section id="extra-constants">
+<h2>Extra Constants<a class="headerlink" href="#extra-constants" title="Link to this heading"></a></h2>
+<section id="max-speed-acceleration">
+<h3>Max Speed/Acceleration<a class="headerlink" href="#max-speed-acceleration" title="Link to this heading"></a></h3>
 <p>Record the maximum speed and acceleration of the robot (meters).</p>
-<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="kd">public</span> <span class="kd">static</span> <span class="kd">final</span> <span class="kt">double</span> <span class="n">kMaxVelocityMetersPerSecond</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">;</span>
-<span class="linenos">2</span><span class="kd">public</span> <span class="kd">static</span> <span class="kd">final</span> <span class="kt">double</span> <span class="n">kMaxAccelerationMetersPerSecond</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">;</span>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">kMaxVelocityMetersPerSecond</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.0</span><span class="p">;</span>
+<span class="linenos">2</span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">kMaxAccelerationMetersPerSecond</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.0</span><span class="p">;</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="wheel-diameter">
-<h3>Wheel Diameter<a class="headerlink" href="#wheel-diameter" title="Permalink to this headline"></a></h3>
+</section>
+<section id="wheel-diameter">
+<h3>Wheel Diameter<a class="headerlink" href="#wheel-diameter" title="Link to this heading"></a></h3>
 <p>Record the diameter of the swerve wheels (meters).</p>
-<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="kd">public</span> <span class="kd">static</span> <span class="kd">final</span> <span class="kt">double</span> <span class="n">kWheelDiameterMeters</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">;</span>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">kWheelDiameterMeters</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.0</span><span class="p">;</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="throttle-gear-ratio">
-<h3>Throttle Gear Ratio<a class="headerlink" href="#throttle-gear-ratio" title="Permalink to this headline"></a></h3>
+</section>
+<section id="throttle-gear-ratio">
+<h3>Throttle Gear Ratio<a class="headerlink" href="#throttle-gear-ratio" title="Link to this heading"></a></h3>
 <p>Record the throttle gear ratio (number of turns it takes the motor to rotate
 the wheel one revolution).</p>
-<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="kd">public</span> <span class="kd">static</span> <span class="kd">final</span> <span class="kt">double</span> <span class="n">kThrottleGearRatio</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">;</span>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">kThrottleGearRatio</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.0</span><span class="p">;</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="throttle-conversion-constant">
-<h3>Throttle Conversion Constant<a class="headerlink" href="#throttle-conversion-constant" title="Permalink to this headline"></a></h3>
+</section>
+<section id="throttle-conversion-constant">
+<h3>Throttle Conversion Constant<a class="headerlink" href="#throttle-conversion-constant" title="Link to this heading"></a></h3>
 <p>Finally, with the constants above, you can calculate the conversion constant that will
 be used to convert from throttle units to helpful units (meters).</p>
-<div class="section" id="position-constant">
-<h4>Position Constant<a class="headerlink" href="#position-constant" title="Permalink to this headline"></a></h4>
-<div class="sphinx-tabs docutils container">
-<div aria-label="Tabbed content" role="tablist"><button aria-controls="panel-0-0-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-0-0-0" name="0-0" role="tab" tabindex="0">Spark Max (Neo)</button><button aria-controls="panel-0-0-1" aria-selected="false" class="sphinx-tabs-tab" id="tab-0-0-1" name="0-1" role="tab" tabindex="-1">Talon FX (Falcon 500)</button></div><div aria-labelledby="tab-0-0-0" class="sphinx-tabs-panel" id="panel-0-0-0" name="0-0" role="tabpanel" tabindex="0"><p><span class="math notranslate nohighlight">\(conversion = \frac{1}{gear ratio} \times {wheel diameter} \times \pi\)</span></p>
-<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="kd">public</span> <span class="kd">static</span> <span class="kd">final</span> <span class="kt">double</span> <span class="n">kThrottleVelocityConversionFactor</span> <span class="o">=</span>
-<span class="linenos">2</span>    <span class="mi">1</span><span class="o">/</span><span class="n">kThrottleGearRatio</span><span class="o">*</span><span class="n">kWheelDiameterMeters</span><span class="o">*</span><span class="n">Math</span><span class="p">.</span><span class="na">PI</span><span class="p">;</span>
+<section id="position-constant">
+<h4>Position Constant<a class="headerlink" href="#position-constant" title="Link to this heading"></a></h4>
+<p><span class="math notranslate nohighlight">\(conversion = \frac{1}{gear ratio} \times {wheel diameter} \times \pi\)</span></p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">kThrottleVelocityConversionFactor</span><span class="w"> </span><span class="o">=</span>
+<span class="linenos">2</span><span class="w">    </span><span class="mi">1</span><span class="o">/</span><span class="n">kThrottleGearRatio</span><span class="o">*</span><span class="n">kWheelDiameterMeters</span><span class="o">*</span><span class="n">Math</span><span class="p">.</span><span class="na">PI</span><span class="p">;</span>
 </pre></div>
 </div>
-</div><div aria-labelledby="tab-0-0-1" class="sphinx-tabs-panel" hidden="true" id="panel-0-0-1" name="0-1" role="tabpanel" tabindex="0"><p><span class="math notranslate nohighlight">\(conversion = \frac{1}{gear ratio} \times \frac{1}{2048} \times {wheel diameter} \times \pi\)</span></p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>The <span class="math notranslate nohighlight">\(\frac{1}{2048}\)</span> is
-used to convert from Falcon encoder ticks to rotations.</p>
-</div>
-<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="kd">public</span> <span class="kd">static</span> <span class="kd">final</span> <span class="kt">double</span> <span class="n">kThrottleVelocityConversionFactor</span> <span class="o">=</span>
-<span class="linenos">2</span>    <span class="mi">1</span><span class="o">/</span><span class="n">kThrottleGearRatio</span><span class="o">/</span><span class="mi">2048</span><span class="o">*</span><span class="n">kWheelDiameterMeters</span><span class="o">*</span><span class="n">Math</span><span class="p">.</span><span class="na">PI</span><span class="p">;</span>
-</pre></div>
-</div>
-</div></div>
-</div>
-<div class="section" id="velocity-constant">
-<h4>Velocity Constant<a class="headerlink" href="#velocity-constant" title="Permalink to this headline"></a></h4>
+</section>
+<section id="velocity-constant">
+<h4>Velocity Constant<a class="headerlink" href="#velocity-constant" title="Link to this heading"></a></h4>
 <div class="sphinx-tabs docutils container">
 <div aria-label="Tabbed content" role="tablist"><button aria-controls="panel-1-1-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-1-1-0" name="1-0" role="tab" tabindex="0">Spark Max (Neo)</button><button aria-controls="panel-1-1-1" aria-selected="false" class="sphinx-tabs-tab" id="tab-1-1-1" name="1-1" role="tab" tabindex="-1">Talon FX (Falcon 500)</button></div><div aria-labelledby="tab-1-1-0" class="sphinx-tabs-panel" id="panel-1-1-0" name="1-0" role="tabpanel" tabindex="0"><p><span class="math notranslate nohighlight">\(conversion = \frac{1}{gear ratio} \times \frac{1}{60} \times {wheel diameter} \times \pi\)</span></p>
-<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="kd">public</span> <span class="kd">static</span> <span class="kd">final</span> <span class="kt">double</span> <span class="n">kThrottleVelocityConversionFactor</span> <span class="o">=</span>
-<span class="linenos">2</span>    <span class="mi">1</span><span class="o">/</span><span class="n">kThrottleGearRatio</span><span class="o">/</span><span class="mi">60</span><span class="o">*</span><span class="n">kWheelDiameterMeters</span><span class="o">*</span><span class="n">Math</span><span class="p">.</span><span class="na">PI</span><span class="p">;</span>
-</pre></div>
-</div>
-</div><div aria-labelledby="tab-1-1-1" class="sphinx-tabs-panel" hidden="true" id="panel-1-1-1" name="1-1" role="tabpanel" tabindex="0"><p><span class="math notranslate nohighlight">\(conversion = \frac{1}{gear ratio} \times \frac{1}{2048} \times {wheel diameter} \times \pi \times 10\)</span></p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>The <span class="math notranslate nohighlight">\(10\)</span> is used to convert from 100ms to 1s, since the Talon FX
-uses 100ms as the time unit for velocity. The <span class="math notranslate nohighlight">\(\frac{1}{2048}\)</span> is
-used to convert from Falcon encoder ticks to rotations.</p>
+<p>The “60” is used to convert from minutes to seconds because SPARK MAX
+uses rounds per minute for velocity but we want rounds per second</p>
 </div>
-<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="kd">public</span> <span class="kd">static</span> <span class="kd">final</span> <span class="kt">double</span> <span class="n">kThrottleVelocityConversionFactor</span> <span class="o">=</span>
-<span class="linenos">2</span>    <span class="mi">1</span><span class="o">/</span><span class="n">kThrottleGearRatio</span><span class="o">/</span><span class="mi">2048</span><span class="o">*</span><span class="n">kWheelDiameterMeters</span><span class="o">*</span><span class="n">Math</span><span class="p">.</span><span class="na">PI</span><span class="o">*</span><span class="mi">10</span><span class="p">;</span>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">kThrottleVelocityConversionFactor</span><span class="w"> </span><span class="o">=</span>
+<span class="linenos">2</span><span class="w">    </span><span class="mi">1</span><span class="o">/</span><span class="n">kThrottleGearRatio</span><span class="o">/</span><span class="mi">60</span><span class="o">*</span><span class="n">kWheelDiameterMeters</span><span class="o">*</span><span class="n">Math</span><span class="p">.</span><span class="na">PI</span><span class="p">;</span>
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-1-1-1" class="sphinx-tabs-panel" hidden="true" id="panel-1-1-1" name="1-1" role="tabpanel" tabindex="0"><p><span class="math notranslate nohighlight">\(conversion = \frac{1}{gear ratio} \times {wheel diameter} \times \pi\)</span></p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">kThrottleVelocityConversionFactor</span><span class="w"> </span><span class="o">=</span>
+<span class="linenos">2</span><span class="w">    </span><span class="mi">1</span><span class="o">/</span><span class="n">kThrottleGearRatio</span><span class="o">/</span><span class="mi">2048</span><span class="o">*</span><span class="n">kWheelDiameterMeters</span><span class="o">*</span><span class="n">Math</span><span class="p">.</span><span class="na">PI</span><span class="o">*</span><span class="mi">10</span><span class="p">;</span>
 </pre></div>
 </div>
 </div></div>
-</div>
-</div>
-</div>
-</div>
+</section>
+</section>
+</section>
+</section>
 
 
            </div>

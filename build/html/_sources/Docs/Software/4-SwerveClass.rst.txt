@@ -57,7 +57,7 @@ Constructor
             SwerveConstants.kSwerveKinematics, 
             mImu.getRotation2d(), 
             getModulePositions()
-        );    
+        );
     }
 
 Methods

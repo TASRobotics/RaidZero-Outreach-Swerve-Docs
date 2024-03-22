@@ -78,11 +78,31 @@ to the rotor motor, the rotor encoder should increase in value. If this is not t
 case, you will need to invert the rotor motor or encoder in the ``Constants.java`` file
 by changing the boolean value of the motor/encoder to ``true``.
 
-.. code-block:: java
-    :linenos:
+.. tabs::
 
-    public static final boolean kRotorEncoderDirection = false;
-    public static final boolean kRotorMotorInversion = false;
+    .. tab:: Talon FX & CANCoder
+
+        .. code-block:: java
+            :linenos:
+
+            public static final SensorDirectionValue kRotorEncoderDirection = SensorDirectionValue.CounterClockwise_Positive;
+            public static final InvertedValue kRotorMotorInversion = InvertedValue.CounterClockwise_Positive;
+
+    .. tab:: SPARK MAX & CANCoder
+
+        .. code-block:: java
+            :linenos:
+
+            public static final SensorDirectionValue kRotorEncoderDirection = SensorDirectionValue.CounterClockwise_Positive;
+            public static final boolean kRotorMotorInversion = false;
+
+    .. tab:: SPARK MAX & Analog Absolute Encoder
+
+        .. code-block:: java
+            :linenos:
+
+            public static final boolean kRotorEncoderDirection = false;
+            public static final boolean kRotorMotorInversion = false;
 
 Swerve Kinematics
 *****************
@@ -150,32 +170,13 @@ be used to convert from throttle units to helpful units (meters).
 Position Constant
 =================
 
-.. tabs::
+:math:`conversion = \frac{1}{gear ratio} \times {wheel diameter} \times \pi`
 
-    .. tab:: Spark Max (Neo)
+.. code-block:: java
+    :linenos:
 
-        :math:`conversion = \frac{1}{gear ratio} \times {wheel diameter} \times \pi`
-
-        .. code-block:: java
-            :linenos:
-
-            public static final double kThrottleVelocityConversionFactor = 
-                1/kThrottleGearRatio*kWheelDiameterMeters*Math.PI;
-
-    .. tab:: Talon FX (Falcon 500)
-
-        :math:`conversion = \frac{1}{gear ratio} \times \frac{1}{2048} \times {wheel diameter} \times \pi`
-
-        .. note::
-
-            The :math:`\frac{1}{2048}` is 
-            used to convert from Falcon encoder ticks to rotations.
-
-        .. code-block:: java
-            :linenos:
-
-            public static final double kThrottleVelocityConversionFactor = 
-                1/kThrottleGearRatio/2048*kWheelDiameterMeters*Math.PI;
+    public static final double kThrottleVelocityConversionFactor = 
+        1/kThrottleGearRatio*kWheelDiameterMeters*Math.PI;
 
 Velocity Constant
 =================
@@ -186,6 +187,11 @@ Velocity Constant
 
         :math:`conversion = \frac{1}{gear ratio} \times \frac{1}{60} \times {wheel diameter} \times \pi`
 
+        .. note::
+
+            The "60" is used to convert from minutes to seconds because SPARK MAX
+            uses rounds per minute for velocity but we want rounds per second
+
         .. code-block:: java
             :linenos:
 
@@ -194,13 +200,7 @@ Velocity Constant
 
     .. tab:: Talon FX (Falcon 500)
 
-        :math:`conversion = \frac{1}{gear ratio} \times \frac{1}{2048} \times {wheel diameter} \times \pi \times 10`
-
-        .. note::
-
-            The :math:`10` is used to convert from 100ms to 1s, since the Talon FX 
-            uses 100ms as the time unit for velocity. The :math:`\frac{1}{2048}` is 
-            used to convert from Falcon encoder ticks to rotations.
+        :math:`conversion = \frac{1}{gear ratio} \times {wheel diameter} \times \pi`
 
         .. code-block:: java
             :linenos:

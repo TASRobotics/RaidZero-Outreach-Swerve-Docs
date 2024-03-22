@@ -1,20 +1,24 @@
 <!DOCTYPE html>
-<html class="writer-html5" lang="en" >
+<html class="writer-html5" lang="en" data-content_root="../../">
 <head>
-  <meta charset="utf-8" />
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>TeleOp &mdash; 4253 Swerve Documentation 1.0.0 documentation</title>
-      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
-      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
-      <link rel="stylesheet" href="../../_static/tabs.css" type="text/css" />
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=fa44fd50" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../../_static/tabs.css?v=a5c4661c" />
+
+  
   <!--[if lt IE 9]>
     <script src="../../_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
-        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
-        <script src="../../_static/jquery.js"></script>
-        <script src="../../_static/underscore.js"></script>
-        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../_static/documentation_options.js?v=8d563738"></script>
+        <script src="../../_static/doctools.js?v=888ff710"></script>
+        <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
@@ -27,11 +31,15 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search" >
-            <a href="../../index.html" class="icon icon-home"> 4253 Swerve Documentation
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            4253 Swerve Documentation
           </a>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" />
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
@@ -69,7 +77,7 @@
         <div class="rst-content">
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-      <li><a href="../../index.html" class="icon icon-home"></a></li>
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
       <li class="breadcrumb-item active">TeleOp</li>
       <li class="wy-breadcrumbs-aside">
             <a href="../../_sources/Docs/Software/5-Teleop.rst.txt" rel="nofollow"> View page source</a>
@@ -80,23 +88,23 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <div class="section" id="teleop">
-<h1>TeleOp<a class="headerlink" href="#teleop" title="Permalink to this headline"></a></h1>
+  <section id="teleop">
+<h1>TeleOp<a class="headerlink" href="#teleop" title="Link to this heading"></a></h1>
 <p>This section will be explaining manual robot control (Teleop), which lasts 2 minutes and 15 seconds of the game.
 This documentation will be referring to the manual drive class, and specific parts of the RobotContainer class.
 More information about RobotContainer can be found <a class="reference external" href="https://docs.wpilib.org/en/stable/docs/software/commandbased/structuring-command-based-project.html#robotcontainer">here</a>.</p>
-<div class="section" id="driving">
-<h2>Driving<a class="headerlink" href="#driving" title="Permalink to this headline"></a></h2>
+<section id="driving">
+<h2>Driving<a class="headerlink" href="#driving" title="Link to this heading"></a></h2>
 <p>There are 2 main types of driving: field-oriented and robot-oriented.</p>
 <p>Field-oriented driving involves a drive system that provides strafing motion in all directions and rotations with respect to the field.
 For example, if the robot is facing east and the joystick is pushed forward, the robot would move north.</p>
 <p>Compared to robot-oriented driving, the joystick’s movement would be relative to the robot instead of the field.
 For example, if the robot was facing east and the joystick is pushed forward, the robot would move east.</p>
-<div class="figure align-default">
+<figure class="align-default">
 <a class="reference internal image-reference" href="../../_images/Field-robot-oriented.png"><img alt="Field/robot-oriented driving comparison" src="../../_images/Field-robot-oriented.png" style="width: 480.0px; height: 565.5px;" /></a>
-</div>
-<table class="colwidths-given docutils align-default" id="id1">
-<caption><span class="caption-text"><strong>Field vs robot-oriented driving</strong></span><a class="headerlink" href="#id1" title="Permalink to this table"></a></caption>
+</figure>
+<table class="docutils align-default" id="id1">
+<caption><span class="caption-text"><strong>Field vs robot-oriented driving</strong></span><a class="headerlink" href="#id1" title="Link to this table"></a></caption>
 <colgroup>
 <col style="width: 20%" />
 <col style="width: 40%" />
@@ -121,61 +129,61 @@ For example, if the robot was facing east and the joystick is pushed forward, th
 </table>
 <p>* IMU drift may cause slight inaccuracy in field-oriented driving.</p>
 <p>Here’s a demonstration of field-oriented control:</p>
-<iframe width="560" height="315" src="https://www.youtube.com/embed/50ZRrYFWPIc?start=21" title="Field oriented control" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
-<div class="section" id="drive-command">
-<h2>Drive Command<a class="headerlink" href="#drive-command" title="Permalink to this headline"></a></h2>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/50ZRrYFWPIc?start=21" title="Field oriented control" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></section>
+<section id="drive-command">
+<h2>Drive Command<a class="headerlink" href="#drive-command" title="Link to this heading"></a></h2>
 <p>Since we will be using <a class="reference external" href="https://docs.wpilib.org/en/latest/docs/software/commandbased/index.html">command based programming</a>, a drive command has to be created to
 manually operate the robot.</p>
-<div class="section" id="constructor">
-<h3>Constructor<a class="headerlink" href="#constructor" title="Permalink to this headline"></a></h3>
-<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="kd">private</span> <span class="kd">final</span> <span class="n">Swerve</span> <span class="n">mSwerve</span><span class="p">;</span>
-<span class="linenos"> 2</span><span class="kd">private</span> <span class="kd">final</span> <span class="n">XboxController</span> <span class="n">mController</span><span class="p">;</span>
+<section id="constructor">
+<h3>Constructor<a class="headerlink" href="#constructor" title="Link to this heading"></a></h3>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="kd">private</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="n">Swerve</span><span class="w"> </span><span class="n">mSwerve</span><span class="p">;</span>
+<span class="linenos"> 2</span><span class="kd">private</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="n">XboxController</span><span class="w"> </span><span class="n">mController</span><span class="p">;</span>
 <span class="linenos"> 3</span>
-<span class="linenos"> 4</span><span class="kd">public</span> <span class="nf">ManualDrive</span><span class="p">(</span><span class="n">Swerve</span> <span class="n">drive</span><span class="p">,</span> <span class="n">XboxController</span> <span class="n">controller</span><span class="p">)</span> <span class="p">{</span>
-<span class="linenos"> 5</span>    <span class="n">mSwerve</span> <span class="o">=</span> <span class="n">drive</span><span class="p">;</span>
-<span class="linenos"> 6</span>    <span class="n">mController</span> <span class="o">=</span> <span class="n">controller</span><span class="p">;</span>
+<span class="linenos"> 4</span><span class="kd">public</span><span class="w"> </span><span class="nf">ManualDrive</span><span class="p">(</span><span class="n">Swerve</span><span class="w"> </span><span class="n">drive</span><span class="p">,</span><span class="w"> </span><span class="n">XboxController</span><span class="w"> </span><span class="n">controller</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos"> 5</span><span class="w">    </span><span class="n">mSwerve</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">drive</span><span class="p">;</span>
+<span class="linenos"> 6</span><span class="w">    </span><span class="n">mController</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">controller</span><span class="p">;</span>
 <span class="linenos"> 7</span>
-<span class="linenos"> 8</span>    <span class="c1">// Adds the Swerve subsystem as a requirement to the command</span>
-<span class="linenos"> 9</span>    <span class="n">addRequirements</span><span class="p">(</span><span class="n">mSwerve</span><span class="p">);</span>
+<span class="linenos"> 8</span><span class="w">    </span><span class="c1">// Adds the Swerve subsystem as a requirement to the command</span>
+<span class="linenos"> 9</span><span class="w">    </span><span class="n">addRequirements</span><span class="p">(</span><span class="n">mSwerve</span><span class="p">);</span>
 <span class="linenos">10</span><span class="p">}</span>
 </pre></div>
 </div>
-<div class="section" id="parameters">
-<h4><strong>Parameters:</strong><a class="headerlink" href="#parameters" title="Permalink to this headline"></a></h4>
+<section id="parameters">
+<h4><strong>Parameters:</strong><a class="headerlink" href="#parameters" title="Link to this heading"></a></h4>
 <ol class="arabic simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">drive</span></code> - a swerve object for the drive</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">controller</span></code> - a XboxController method for the controller</p></li>
 </ol>
 <p>A drive command has to be created to manually operate the robot. Calling the
 constructor will create the drive command, where it will then be used in RobotContainer.</p>
-</div>
-</div>
-<div class="section" id="execute">
-<h3>execute<a class="headerlink" href="#execute" title="Permalink to this headline"></a></h3>
+</section>
+</section>
+<section id="execute">
+<h3>execute<a class="headerlink" href="#execute" title="Link to this heading"></a></h3>
 <p>The execute method is called repeatedly when the command is scheduled. This is
 where the code for teleop will be written.</p>
 <div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="nd">@Override</span>
-<span class="linenos">2</span><span class="kd">public</span> <span class="kt">void</span> <span class="nf">execute</span><span class="p">()</span> <span class="p">{</span>
-<span class="linenos">3</span>    <span class="c1">// Drives with XSpeed, YSpeed, zSpeed</span>
-<span class="linenos">4</span>    <span class="c1">// True/false for field-oriented driving</span>
-<span class="linenos">5</span>    <span class="n">mSwerve</span><span class="p">.</span><span class="na">drive</span><span class="p">(</span><span class="n">mController</span><span class="p">.</span><span class="na">getLeftY</span><span class="p">(),</span> <span class="n">mController</span><span class="p">.</span><span class="na">getLeftX</span><span class="p">(),</span> <span class="n">mController</span><span class="p">.</span><span class="na">getRightX</span><span class="p">(),</span> <span class="kc">true</span><span class="p">);</span>
+<span class="linenos">2</span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">execute</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos">3</span><span class="w">    </span><span class="c1">// Drives with XSpeed, YSpeed, zSpeed</span>
+<span class="linenos">4</span><span class="w">    </span><span class="c1">// True/false for field-oriented driving</span>
+<span class="linenos">5</span><span class="w">    </span><span class="n">mSwerve</span><span class="p">.</span><span class="na">drive</span><span class="p">(</span><span class="n">mController</span><span class="p">.</span><span class="na">getLeftY</span><span class="p">(),</span><span class="w"> </span><span class="n">mController</span><span class="p">.</span><span class="na">getLeftX</span><span class="p">(),</span><span class="w"> </span><span class="n">mController</span><span class="p">.</span><span class="na">getRightX</span><span class="p">(),</span><span class="w"> </span><span class="kc">true</span><span class="p">);</span>
 <span class="linenos">6</span><span class="p">}</span>
 </pre></div>
 </div>
-</div>
-</div>
-<div class="section" id="calling-the-drive-command">
-<h2>Calling the Drive Command<a class="headerlink" href="#calling-the-drive-command" title="Permalink to this headline"></a></h2>
+</section>
+</section>
+<section id="calling-the-drive-command">
+<h2>Calling the Drive Command<a class="headerlink" href="#calling-the-drive-command" title="Link to this heading"></a></h2>
 <p>Finally, the drive command has to be called in RobotContainer.</p>
 <div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="c1">// Create new instance of ManualDrive, passing Swerve and Controller as parameters</span>
-<span class="linenos"> 2</span><span class="kd">private</span> <span class="kd">final</span> <span class="n">ManualDrive</span> <span class="n">mManualDriveCommand</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ManualDrive</span><span class="p">(</span><span class="n">mSwerve</span><span class="p">,</span> <span class="n">mController</span><span class="p">);</span>
+<span class="linenos"> 2</span><span class="kd">private</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="n">ManualDrive</span><span class="w"> </span><span class="n">mManualDriveCommand</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">ManualDrive</span><span class="p">(</span><span class="n">mSwerve</span><span class="p">,</span><span class="w"> </span><span class="n">mController</span><span class="p">);</span>
 <span class="linenos"> 3</span>
-<span class="linenos"> 4</span><span class="kd">public</span> <span class="nf">RobotContainer</span><span class="p">()</span> <span class="p">{</span>
-<span class="linenos"> 5</span>    <span class="c1">// Configure the button bindings</span>
-<span class="linenos"> 6</span>    <span class="n">configureButtonBindings</span><span class="p">();</span>
+<span class="linenos"> 4</span><span class="kd">public</span><span class="w"> </span><span class="nf">RobotContainer</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos"> 5</span><span class="w">    </span><span class="c1">// Configure the button bindings</span>
+<span class="linenos"> 6</span><span class="w">    </span><span class="n">configureButtonBindings</span><span class="p">();</span>
 <span class="linenos"> 7</span>
-<span class="linenos"> 8</span>    <span class="c1">// set ManualDrive to be executed in teleop</span>
-<span class="linenos"> 9</span>    <span class="n">mSwerve</span><span class="p">.</span><span class="na">setDefaultCommand</span><span class="p">(</span><span class="n">mManualDriveCommand</span><span class="p">);</span>
+<span class="linenos"> 8</span><span class="w">    </span><span class="c1">// set ManualDrive to be executed in teleop</span>
+<span class="linenos"> 9</span><span class="w">    </span><span class="n">mSwerve</span><span class="p">.</span><span class="na">setDefaultCommand</span><span class="p">(</span><span class="n">mManualDriveCommand</span><span class="p">);</span>
 <span class="linenos">10</span><span class="p">}</span>
 </pre></div>
 </div>
@@ -187,8 +195,8 @@ be automatically executed.</p>
 <p class="admonition-title">Note</p>
 <p>Check out the code we use in these docs on our <a class="reference external" href="https://github.com/TASRobotics/RaidZero-Swerve-Template">Github</a>!</p>
 </div>
-</div>
-</div>
+</section>
+</section>
 
 
            </div>
